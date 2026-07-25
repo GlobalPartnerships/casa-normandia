@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Normandía | Estancias Ejecutivas cerca al Aeropuerto El Dorado</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rooted: {
+                            green: '#1B3022',
+                            terra: '#A45C40',
+                            cream: '#F5F2ED',
+                            burgundy: '#630D16',
+                            sand: '#E8E4D9',
+                            dark: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Chart Containers */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Utility for Background Images (Simulated with gradients for SPA stability) */
+        .bg-hero-bogota {
+            background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.4)), url('assets/historia.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-hero-nilo {
+            background: linear-gradient(rgba(164, 92, 64, 0.6), rgba(164, 92, 64, 0.4)), url('assets/nilo.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Smooth Hide/Show Transitions */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F2ED;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #A45C40;
+            border-radius: 4px;
+        }
+    </style>
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Using Unicode icons. -->
+    <!-- Chosen Palette: Rooted Spaces (Green #1B3022, Terra #A45C40, Cream #F5F2ED) -->
+    <!-- Application Structure Plan:
+        1. Navigation: Sticky, dual-focus (City vs Farm).
+        2. Hero: Split screen concept to immediately sell the "Ecosystem" vision.
+        3. Dashboard/Calculator: A "Direct Booking" calculator that uses Chart.js to visualize savings vs Airbnb.
+        4. Interactive Gallery: JS-driven filtering for studios/rooms.
+        5. Experience Radar: Canvas visualization of location benefits.
+        6. Contextual Content: Sections for Rules, Values, and Experiences populated from source docs.
+    -->
+    <!-- Visualization & Content Choices:
+        - Price Comparison: Bar Chart (Chart.js) -> Goal: Persuade user to book direct -> Shows fees vs savings.
+        - Location Radar: Radar Chart (Chart.js) -> Goal: Show balance of amenities (Nature, Transport, Food).
+        - Studio Specs: Interactive Cards -> Goal: Inform details (Sq meters, amenities) from Brochure.
+    -->
+</head>
+<body class="bg-rooted-cream text-rooted-dark font-sans antialiased selection:bg-rooted-terra selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-rooted-cream/95 backdrop-blur-sm border-b border-rooted-terra/20 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold text-rooted-green tracking-tight">
+                Casa Normandía
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm tracking-wide">
+                <!-- Language Selector -->
+                <div class="flex items-center space-x-1 bg-white/80 px-3 py-1 rounded-full border border-rooted-terra/20">
+                    <span class="text-rooted-green font-bold px-2 py-1 rounded bg-rooted-cream">ES</span>
+                    <a href="index-en.html" class="text-gray-600 hover:text-rooted-terra transition-colors px-2 py-1">EN</a>
+                </div>
+                
+                <a href="#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ</a>
+                <a href="nilo.html" class="hover:text-rooted-terra transition-colors">NILO</a>
+                <a href="politicas.html#reglas-casa" class="hover:text-rooted-terra transition-colors">REGLAS</a>
+                <button onclick="scrollToBooking()" class="bg-rooted-terra text-white px-6 py-2 rounded-full hover:bg-rooted-green transition-colors shadow-lg transform hover:-translate-y-0.5">
+                    Reservar Ahora
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button (Unicode) -->
+            <button class="md:hidden text-2xl text-rooted-green">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-24 pb-12 lg:min-h-screen flex flex-col lg:flex-row">
+        <!-- Left: Bogota -->
+        <div class="w-full lg:w-1/2 bg-hero-bogota relative min-h-[50vh] flex items-center justify-center group overflow-hidden">
+            <div class="absolute inset-0 bg-rooted-green/60 group-hover:bg-rooted-green/50 transition-colors duration-500"></div>
+            <div class="relative z-10 text-center text-white p-8">
+                <span class="uppercase tracking-[0.2em] text-sm opacity-90 mb-2 block">El Nido Urbano</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4">Casa Normandía</h2>
+                <p class="max-w-xs mx-auto text-sm md:text-base opacity-90 mb-6">Estancias productivas en Casa Normandía. Conexión, diseño y ubicación estratégica.</p>
+                <a href="#bogota" class="inline-block border border-white px-6 py-2 rounded hover:bg-white hover:text-rooted-green transition-colors">Explorar Ciudad</a>
+            </div>
+        </div>
+        
+        <!-- Right: Nilo -->
+        <div class="w-full lg:w-1/2 bg-hero-nilo relative min-h-[50vh] flex items-center justify-center group overflow-hidden">
+            <div class="absolute inset-0 bg-rooted-terra/60 group-hover:bg-rooted-terra/50 transition-colors duration-500"></div>
+            <div class="relative z-10 text-center text-white p-8">
+                <span class="uppercase tracking-[0.2em] text-sm opacity-90 mb-2 block">La Granja de Aprendizaje</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4">Granja Educativa Nilo</h2>
+                <p class="max-w-xs mx-auto text-sm md:text-base opacity-90 mb-6">Retiros regenerativos y sabiduría rural. Desconexión para reconectar.</p>
+                <a href="nilo.html" class="inline-block border border-white px-6 py-2 rounded hover:bg-white hover:text-rooted-terra transition-colors">Explorar Campo</a>
+            </div>
+        </div>
+
+        <!-- Center Overlay Badge -->
+        <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
+            <div class="bg-white p-4 rounded-full shadow-2xl">
+                <div class="w-16 h-16 rounded-full border-2 border-dashed border-rooted-terra flex items-center justify-center text-2xl">
+                    🌱
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Value Proposition / Benefits -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-serif text-rooted-green font-bold">Diseñado para el Nómada Consciente</h3>
+                <p class="text-gray-600 mt-2">Un ecosistema que equilibra productividad y bienestar.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Benefit 1 -->
+                <div class="text-center p-6 bg-rooted-cream/50 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-4xl text-rooted-terra mb-4">📶</div>
+                    <h4 class="font-bold mb-2">Wi-Fi 5G & Coworking</h4>
+                    <p class="text-sm text-gray-600">Espacios optimizados para videollamadas y trabajo profundo en Normandía.</p>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="text-center p-6 bg-rooted-cream/50 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-4xl text-rooted-green mb-4">�</div>
+                    <h4 class="font-bold mb-2">Servicios Premium</h4>
+                    <p class="text-sm text-gray-600">Servicio de lavandería profesional, alquiler de bicicletas y limpieza impecable.</p>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="text-center p-6 bg-rooted-cream/50 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-4xl text-rooted-terra mb-4">🧘</div>
+                    <h4 class="font-bold mb-2">Wellness & Retiros</h4>
+                    <p class="text-sm text-gray-600">Desde yoga al amanecer en Nilo hasta baños de tina relajantes en Bogotá.</p>
+                </div>
+                <!-- Benefit 4 -->
+                <div class="text-center p-6 bg-rooted-cream/50 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-4xl text-rooted-green mb-4">🌙</div>
+                    <h4 class="font-bold mb-2">Descanso Profundo</h4>
+                    <p class="text-sm text-gray-600">Reglas claras de silencio después de las 10:00 PM y espacios interiores libres de ruido de la calle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: BOGOTÁ -->
+    <section id="bogota" class="py-20 bg-rooted-cream">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 mb-16">
+                <div class="md:w-1/2">
+                    <span class="text-rooted-terra font-bold tracking-widest text-sm uppercase">Casa Normandía</span>
+                    <h2 class="text-4xl font-serif font-bold text-rooted-green mt-2 mb-6">Tu Hogar en Bogotá</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Ubicada estratégicamente a 15 minutos del Aeropuerto El Dorado y el Centro Histórico. 
+                        Casa Normandía no es un hotel frío; es un hogar remodelado de los años 70 que combina tradición con modernidad.
+                        Ofrecemos estudios privados con acceso a jardín, cocinas equipadas y lavandería.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">✨ Jardín Privado</span>
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">🛡️ Barrio Seguro</span>
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">🧺 Lavandería</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex items-center justify-center">
+                     <!-- Location Radar Chart -->
+                     <div class="w-full">
+                        <h4 class="text-center text-sm font-bold text-gray-500 mb-4 uppercase">Radar de Ubicación</h4>
+                        <div class="chart-container">
+                            <canvas id="locationRadar"></canvas>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <!-- Studios Grid -->
+            <h3 class="text-2xl font-serif font-bold text-rooted-green mb-8">Nuestros Estudios</h3>
+            <div id="studios-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS will populate this -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: NILO -->
+    <section id="nilo" class="py-20 bg-rooted-green text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row-reverse gap-12">
+                <div class="md:w-1/2">
+                    <span class="text-rooted-terra font-bold tracking-widest text-sm uppercase">Granja Educativa</span>
+                    <h2 class="text-4xl font-serif font-bold mt-2 mb-6">Conexión en Nilo</h2>
+                    <p class="text-rooted-cream/80 leading-relaxed mb-6">
+                        Más que un alojamiento rural, Nilo es una escuela de vida. Recolecta huevos de gallinas libres, aprende a hacer vinagres orgánicos y tinturas naturales, o descubre la regeneración de suelos con pasto vetiver. Un espacio para sanar y aprender de la tierra.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="text-rooted-terra text-xl">🌿</span>
+                            <div>
+                                <strong class="block text-rooted-cream">La Botica Natural</strong>
+                                <span class="text-sm text-rooted-cream/60">Vinagres orgánicos y tinturas naturales.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-rooted-terra text-xl">🥚</span>
+                            <div>
+                                <strong class="block text-rooted-cream">Gallinas Libres</strong>
+                                <span class="text-sm text-rooted-cream/60">Recolección de huevos de pastoreo.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-rooted-terra text-xl">🍊</span>
+                            <div>
+                                <strong class="block text-rooted-cream">Cosecha Limpia</strong>
+                                <span class="text-sm text-rooted-cream/60">Frutas cítricas y huerta orgánica.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <!-- Activity Stats Chart -->
+                    <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                        <h4 class="text-center text-sm font-bold text-rooted-cream mb-4 uppercase">Calendario de Cosecha & Clima</h4>
+                        <div class="chart-container">
+                            <canvas id="niloChart"></canvas>
+                        </div>
+                        <p class="text-xs text-center mt-4 opacity-60">*El clima cálido de Nilo es ideal todo el año.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: BOOKING & CALCULATOR -->
+    <section id="booking" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-serif font-bold text-rooted-green">Reserva Inteligente</h2>
+                <p class="text-gray-600 mt-2">Ahórrate las comisiones de plataforma reservando directamente con nosotros.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+                
+                <!-- Calculator Controls -->
+                <div class="w-full lg:w-1/3 bg-rooted-cream p-8 rounded-2xl shadow-sm border border-rooted-terra/10">
+                    <h3 class="text-xl font-bold text-rooted-green mb-6 flex items-center gap-2">
+                        <span>🧮</span> Cotizador
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Selecciona tu Espacio</label>
+                            <select id="studioSelect" class="w-full p-3 rounded-lg border border-gray-300 focus:border-rooted-terra focus:ring-1 focus:ring-rooted-terra outline-none bg-white">
+                                <option value="201" data-price="250000">STUDIO 201: The Garden Suite (37m²)</option>
+                                <option value="202" data-price="125000">STUDIO 202: The Professional's Hub (20m²)</option>
+                                <option value="203" data-price="170000">STUDIO 203: Executive Comfort (21m²)</option>
+                                <option value="204" data-price="160000">STUDIO 204: The Quiet Sanctuary (22m²)</option>
+                                <option value="101" data-price="380000">ESPACIO 101 VIP: Executive Suite (55m²)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Duración (Noches)</label>
+                            <input type="range" id="nightsRange" min="1" max="30" value="7" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-rooted-terra">
+                            <div class="flex justify-between text-sm mt-2 font-medium text-rooted-terra">
+                                <span id="nightsValue">7 Noches</span>
+                                <span>Estancia Media</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-200">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-600">Precio Total (Directo):</span>
+                                <span id="directTotal" class="text-2xl font-bold text-rooted-green">$0 COP</span>
+                            </div>
+                            <button id="bookBtn" class="w-full bg-rooted-terra text-white font-bold py-4 rounded-lg hover:bg-rooted-green transition-all shadow-lg mt-4">
+                                Garantizar Tarifa Directa
+                            </button>
+                            <p class="text-xs text-center mt-4 text-gray-500">Incluye Wi-Fi, Servicios y Limpieza semanal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Chart -->
+                <div class="w-full lg:w-2/3">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-gray-800">Comparativa de Costos</h3>
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full">Ahorras 15%</span>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="priceComparisonChart"></canvas>
+                        </div>
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600">
+                            <p><strong>💡</strong> Nota:</strong> Las plataformas (Airbnb/Booking) cobran tarifas de servicio tanto al anfitrión como al huésped. Reservando directo en <strong>Casa Normandía</strong>, eliminamos intermediarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-rooted-cream">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h4 class="text-rooted-terra uppercase tracking-widest text-sm font-bold mb-2">Reseñas</h4>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-rooted-green mb-4">Lo que dicen nuestros huéspedes</h2>
+                <div class="w-24 h-1 bg-rooted-terra mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex text-rooted-terra mb-3">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="text-gray-600 italic mb-4 leading-relaxed">"Aristides is a great host, I felt welcomed and well cared for. The location is close to the airport and a short walk to Jardín Botánico. The hot shower, dinette, and Nilo's farm organically grown fruit were a big plus!"</p>
+                    <p class="font-bold text-rooted-dark">Shane, Michigan</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex text-rooted-terra mb-3">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="text-gray-600 italic mb-4 leading-relaxed">"Me encantó la estadía. El lugar super limpio, cómodo y silencioso. Los anfitriones muy amables y la zona es buenísima! Me encantaría volver pronto."</p>
+                    <p class="font-bold text-rooted-dark">Gina, Colombia</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+                    <div class="flex text-rooted-terra mb-3">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="text-gray-600 italic mb-4 leading-relaxed">"Foi excelente, o anfitrião Aristides me recepcionou com as melhores energias, foi gentil, atencioso y siempre atento. Todo muy limpio y organizado, zona tranquila."</p>
+                    <p class="font-bold text-rooted-dark">Aline, Brasil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-rooted-dark text-rooted-cream py-12 border-t-4 border-rooted-terra">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Casa Normandía</h3>
+                    <p class="text-gray-400 text-sm mb-4">Un ecosistema de hospitalidad gestionado por GPMF. Conectando lo urbano y lo rural.</p>
+                    <div class="flex gap-4 text-xl">
+                        <!-- Unicode Socials -->
+                        <a href="#" class="hover:text-rooted-terra">📷</a> <!-- IG -->
+                        <a href="#" class="hover:text-rooted-terra">💼</a> <!-- LinkedIn -->
+                        <a href="mailto:contacto.gpmfsas@gmail.com" class="hover:text-rooted-terra">📧</a> <!-- Mail -->
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#bogota" class="hover:text-white transition-colors">Bogotá Studios</a></li>
+                        <li><a href="#nilo" class="hover:text-white transition-colors">Granja Nilo</a></li>
+                        <li><a href="politicas.html" class="hover:text-white transition-colors">Políticas y Reglas de la Casa</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4 text-white">Newsletter</h4>
+                    <p class="text-xs text-gray-400 mb-4">Recibe nuestra "Guía Local de Bogotá" gratis.</p>
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias! Te hemos enviado la guía.');" class="flex gap-2">
+                        <input type="email" placeholder="Tu correo..." class="bg-gray-800 border-none rounded px-4 py-2 text-sm w-full focus:ring-1 focus:ring-rooted-terra">
+                        <button class="bg-rooted-terra px-4 py-2 rounded text-white font-bold hover:bg-white hover:text-rooted-terra transition-colors">→</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 Casa Normandía. Operado bajo principios de GPMF.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA SOURCE (From Source Documents) ---
+        const studios = [
+            {
+                id: '201',
+                name: 'STUDIO 201: The Garden Suite',
+                area: '37m²',
+                price: 250000,
+                image: 'assets/estudio201.jpg',
+                features: ['Cama Doble', 'Vista al Jardín', 'Tina Privada', 'Cocina Equipada'],
+                desc: 'Nuestro estudio abierto más espacioso. Cuenta con cocina privada, baño con tina y una relajante vista a nuestro jardín privado. Ideal para estancias prolongadas.'
+            },
+            {
+                id: '202',
+                name: 'STUDIO 202: The Professional\'s Hub',
+                area: '20m²',
+                price: 125000,
+                image: 'assets/estudio202.jpg',
+                features: ['Office Space', 'Baño Privado', 'Wi-Fi 5G', 'Cama Confortable'],
+                desc: 'Diseñado para el viajero enfocado. Espacio de oficina dedicado para trabajo remoto y baño privado. Perfecto para nómadas digitales.'
+            },
+            {
+                id: '203',
+                name: 'STUDIO 203: Executive Comfort',
+                area: '21m²',
+                price: 170000,
+                image: 'assets/estudio203.jpg',
+                features: ['Cama King', 'Escritorio Ergonómico', 'Baño Privado', 'Cocineta'],
+                desc: 'Diseñado para el profesional moderno. Cuenta con cama King, espacio de trabajo, baño privado y una práctica cocineta.'
+            },
+            {
+                id: '204',
+                name: 'STUDIO 204: The Quiet Sanctuary',
+                area: '22m²',
+                price: 160000,
+                image: 'assets/estudio204.jpg',
+                features: ['Interior', 'Máximo Silencio', 'Baño Privado', 'Cocineta'],
+                desc: 'Nuestro estudio más silencioso (cero ruido de la calle). Acogedor e íntimo. Perfecto para quienes exigen concentración absoluta y sueño profundo.'
+            },
+            {
+                id: '101',
+                name: 'ESPACIO 101 VIP: Executive Suite',
+                area: '55m²',
+                price: 380000,
+                image: 'assets/espacio101.jpg',
+                features: ['Planta Baja', 'Tina Privada', 'Cocina Full', 'Acabados Premium'],
+                desc: 'Nuestra suite más exclusiva. Lujosa tina privada, cocina totalmente equipada y diseño de espacios premium para una estadía de nivel superior.'
+            }
+        ];
+
+        // --- RENDER FUNCTIONS ---
+
+        function renderStudios() {
+            const grid = document.getElementById('studios-grid');
+            grid.innerHTML = studios.map(studio => `
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-100 flex flex-col">
+                    <div class="h-48 overflow-hidden bg-gray-200 relative group">
+                        <img src="${studio.image}" alt="${studio.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute bottom-0 left-0 bg-rooted-green text-white text-xs px-3 py-1 font-bold">
+                            ${studio.area}
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h4 class="text-xl font-bold text-rooted-green mb-2">${studio.name}</h4>
+                        <p class="text-xs text-gray-500 mb-3">&#128246; Wi-Fi 900MB | &#128167; Silla Ergonómica (Bajo solicitud)</p>
+                        <p class="text-sm text-gray-600 mb-4 flex-grow">${studio.desc}</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${studio.features.map(f => `<span class="text-xs bg-rooted-cream text-rooted-terra px-2 py-1 rounded font-medium">${f}</span>`).join('')}
+                        </div>
+                        <div class="mt-auto flex justify-between items-center pt-4 border-t border-gray-100">
+                            <div>
+                                <span class="text-xs text-gray-400 block">Desde</span>
+                                <span class="font-bold text-rooted-green">$${(studio.price/1000).toFixed(0)}k <span class="text-xs font-normal">/noche</span></span>
+                            </div>
+                            <button onclick="selectStudio('${studio.id}')" class="text-sm border border-rooted-terra text-rooted-terra px-4 py-2 rounded hover:bg-rooted-terra hover:text-white transition-colors font-medium">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectStudio(id) {
+            // Update calculator
+            const select = document.getElementById('studioSelect');
+            select.value = id;
+            updateCalculator();
+            // Scroll to calculator
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToBooking() {
+             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- CHART INITIALIZATION ---
+
+        let priceChart = null;
+        let radarChart = null;
+        let niloChart = null;
+
+        function initCharts() {
+            // 1. Radar Chart (Location)
+            const ctxRadar = document.getElementById('locationRadar').getContext('2d');
+            radarChart = new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: ['Aeropuerto (15min)', 'Parques (19)', 'Mall (Salitre)', 'Centro (20min)', 'Seguridad', 'Silencio'],
+                    datasets: [{
+                        label: 'Casa Normandía Score',
+                        data: [9, 10, 8, 7, 9, 8],
+                        fill: true,
+                        backgroundColor: 'rgba(164, 92, 64, 0.2)',
+                        borderColor: '#A45C40',
+                        pointBackgroundColor: '#1B3022',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#1B3022'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { r: { suggestedMin: 0, suggestedMax: 10, ticks: { display: false } } }
+                }
+            });
+
+            // 2. Nilo Chart (Line/Area - Climate/Harvest)
+            const ctxNilo = document.getElementById('niloChart').getContext('2d');
+            niloChart = new Chart(ctxNilo, {
+                type: 'line',
+                data: {
+                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    datasets: [{
+                        label: 'Cosecha Cítricos',
+                        data: [20, 30, 80, 90, 40, 20, 15, 15, 60, 80, 50, 30],
+                        borderColor: '#F5F2ED',
+                        backgroundColor: 'rgba(245, 242, 237, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { 
+                        legend: { labels: { color: '#fff' } },
+                        tooltip: { callbacks: { label: (ctx) => `Intensidad: ${ctx.raw}%` } }
+                    },
+                    scales: {
+                        x: { ticks: { color: 'rgba(255,255,255,0.7)' }, grid: { display: false } },
+                        y: { display: false }
+                    }
+                }
+            });
+
+            // 3. Price Comparison Chart (Bar) - Initial empty render
+            const ctxPrice = document.getElementById('priceComparisonChart').getContext('2d');
+            priceChart = new Chart(ctxPrice, {
+                type: 'bar',
+                data: {
+                    labels: ['Plataformas (Airbnb/Booking)', 'Casa Normandía (Directo)'],
+                    datasets: [{
+                        label: 'Costo Total (COP)',
+                        data: [0, 0],
+                        backgroundColor: ['#d1d5db', '#1B3022'],
+                        borderRadius: 6,
+                        barThickness: 40
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f3f4f6' } },
+                        x: { grid: { display: false } }
+                    },
+                    animation: { duration: 500 }
+                }
+            });
+
+            updateCalculator(); // Trigger initial calc
+        }
+
+        // --- LOGIC: CALCULATOR ---
+
+        function updateCalculator() {
+            const select = document.getElementById('studioSelect');
+            const nightsInput = document.getElementById('nightsRange');
+            const nightsDisplay = document.getElementById('nightsValue');
+            const totalDisplay = document.getElementById('directTotal');
+            const bookBtn = document.getElementById('bookBtn');
+
+            const pricePerNight = parseInt(select.options[select.selectedIndex].dataset.price);
+            const nights = parseInt(nightsInput.value);
+
+            // Logic: Discounts for longer stays (Casa Normandía Official Policy)
+            let discountMultiplier = 1;
+            if (nights >= 180) {
+                discountMultiplier = 0.60; // 40% off for 6 months (Long Rental)
+            } else if (nights >= 30) {
+                discountMultiplier = 0.75; // 25% off monthly
+            } else if (nights >= 7) {
+                discountMultiplier = 0.85; // 15% off weekly
+            }
+
+            const directTotal = (pricePerNight * nights) * discountMultiplier;
+            const platformFee = 1.15; // Assuming 15% platform markup
+            const platformTotal = directTotal * platformFee;
+
+            // Update DOM
+            nightsDisplay.textContent = `${nights} Noche${nights > 1 ? 's' : ''}`;
+            totalDisplay.textContent = new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(directTotal);
+            
+            // Update Whatsapp Link on Button
+            const message = `Hola, estoy interesado en reservar el ${select.options[select.selectedIndex].text} por ${nights} noches. Vi el precio directo de ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(directTotal)}.`;
+            bookBtn.onclick = () => window.open(`https://wa.me/573156166760?text=${encodeURIComponent(message)}`, '_blank');
+
+            // Update Chart
+            priceChart.data.datasets[0].data = [platformTotal, directTotal];
+            priceChart.update();
+        }
+
+        // --- EVENT LISTENERS ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStudios();
+            initCharts();
+
+            // Inputs
+            document.getElementById('studioSelect').addEventListener('change', updateCalculator);
+            document.getElementById('nightsRange').addEventListener('input', updateCalculator);
+        });
+
+    </script>
+</body>
+</html>

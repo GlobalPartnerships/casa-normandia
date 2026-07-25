@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas & Reglas | Casa Normandía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rooted: { green: '#1B3022', terra: '#A45C40', cream: '#F5F2ED', sand: '#E8E4D9', dark: '#111827' }
+                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Montserrat"', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-rooted-cream font-sans text-rooted-dark min-h-screen">
+
+    <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl font-bold text-rooted-green">CASA NORMANDÍA</a>
+            <div class="flex gap-2">
+                <button onclick="changeLang('es')" id="es-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white">ES</button>
+                <button onclick="changeLang('en')" id="en-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-16 text-center bg-rooted-green text-white">
+        <h1 id="hero-title" class="font-serif text-4xl mb-4">Manual de Convivencia</h1>
+        <p id="hero-sub" class="text-rooted-sand italic opacity-80">"Reglas claras para una estancia excepcional."</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 -mt-8 pb-20">
+        <!-- Tabs -->
+        <div class="flex bg-white rounded-t-2xl shadow-lg overflow-hidden border-b">
+            <button onclick="setTab('casa')" id="tab-casa" class="flex-1 py-5 font-bold text-sm border-b-4 border-rooted-terra bg-white">🏠 <span class="lang" data-es="LA CASA" data-en="THE HOUSE">LA CASA</span></button>
+            <button onclick="setTab('mascotas')" id="tab-mascotas" class="flex-1 py-5 font-bold text-sm text-gray-400 border-b-4 border-transparent">🐾 <span class="lang" data-es="MASCOTAS" data-en="PETS">MASCOTAS</span></button>
+            <button onclick="setTab('legal')" id="tab-legal" class="flex-1 py-5 font-bold text-sm text-gray-400 border-b-4 border-transparent">⚖️ <span class="lang" data-es="LEGAL" data-en="LEGAL">LEGAL</span></button>
+        </div>
+
+        <div class="bg-white p-8 rounded-b-2xl shadow-lg">
+            
+            <!-- SECCIÓN: LA CASA -->
+            <div id="sec-casa" class="space-y-8">
+                <div class="border-b pb-6">
+                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Horario de Silencio" data-en="Quiet Hours">Horario de Silencio</h2>
+                    <p class="text-gray-600 mb-4 lang" data-es="10:00 PM – 8:00 AM. Se prioriza el descanso profundo." data-en="10:00 PM – 8:00 AM. Deep rest is prioritized."></p>
+                    <details class="group">
+                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Ver política extendida..." data-en="See extended policy..."></summary>
+                        <div class="mt-4 p-4 bg-rooted-sand/20 rounded-lg text-sm text-gray-600 lang" 
+                             data-es="El silencio absoluto aplica para pasillos y áreas comunes. Durante el día, mantenga un volumen moderado para facilitar el teletrabajo. El uso de electrodomésticos ruidosos después de las 10 PM está restringido." 
+                             data-en="Absolute silence applies to hallways and common areas. During the day, keep a moderate volume to facilitate remote work. Use of noisy appliances after 10 PM is restricted."></div>
+                    </details>
+                </div>
+                <div class="border-b pb-6">
+                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Cero Humo y Fuego" data-en="No Smoke & Fire">Cero Humo y Fuego</h2>
+                    <p class="text-gray-600 mb-4 lang" data-es="Prohibido fumar y encender velas/inciensos. Multa de $200.000 COP." data-en="Smoking and lighting candles/incense are prohibited. $200,000 COP fine."></p>
+                    <details class="group">
+                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Ver detalles de la sanción..." data-en="View penalty details..."></summary>
+                        <div class="mt-4 p-4 bg-rooted-sand/20 rounded-lg text-sm text-gray-600 lang"
+                             data-es="La multa cubre la limpieza profunda con ozono necesaria para eliminar olores y alérgenos. Incluye cigarrillos electrónicos. La reincidencia causará la terminación de la estancia."
+                             data-en="The fine covers the deep ozone cleaning necessary to remove odors and allergens. Includes e-cigarettes. Recurrence will result in termination of stay."></div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: MASCOTAS -->
+            <div id="sec-mascotas" class="hidden space-y-8">
+                <div class="bg-rooted-cream p-6 rounded-xl border-l-4 border-rooted-terra">
+                    <h2 class="font-bold text-xl mb-2 lang" data-es="Protocolo Pet-Friendly" data-en="Pet-Friendly Protocol">Protocolo Pet-Friendly</h2>
+                    <p class="text-gray-600 mb-4 lang" data-es="Aceptamos una mascota por estudio con un cargo de $50.000 COP por estancia." data-en="We accept one pet per studio with a $50,000 COP fee per stay."></p>
+                    <h3 class="font-bold text-sm uppercase text-rooted-green mb-2 lang" data-es="Reglas de Oro:" data-en="Golden Rules:">Reglas de Oro:</h3>
+                    <ul class="text-sm text-gray-600 space-y-2 list-disc pl-5 lang"
+                        data-es="<li>No subir a mobiliario.</li><li>Uso de correa en zonas comunes.</li>"
+                        data-en="<li>Do not climb on furniture.</li><li>Always use a leash in common areas.</li>"></ul>
+                    <details class="mt-4">
+                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Mascotas no convencionales..." data-en="Non-conventional pets..."></summary>
+                        <div class="mt-4 p-4 bg-white/50 rounded-lg text-sm text-gray-600 lang"
+                             data-es="Aves o roedores requieren aprobación previa. Deben permanecer en hábitats seguros. Cualquier daño a cables o mobiliario será cobrado."
+                             data-en="Birds or rodents require prior approval. They must stay in secure habitats. Any damage to cables or furniture will be charged."></div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- SECCIÓN: LEGAL -->
+            <div id="sec-legal" class="hidden space-y-8">
+                <div class="prose prose-sm max-w-none text-gray-600">
+                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Tratamiento de Datos" data-en="Data Privacy">Tratamiento de Datos</h2>
+                    <p class="mb-4 lang" 
+                       data-es="En cumplimiento de la Ley 1581 de 2012, Casa Normandía informa que recolecta sus datos con fines de registro legal ante Migración Colombia (SIRE)."
+                       data-en="In compliance with Law 1581 of 2012, Casa Normandía informs that it collects your data for legal registration purposes before Migración Colombia (SIRE)."></p>
+                    <div class="bg-gray-50 p-6 rounded-lg text-xs space-y-4">
+                        <p class="lang" data-es="<b>Derechos:</b> Actualizar y rectificar su información vía contacto.gpmfsas@gmail.com." data-en="<b>Rights:</b> Update and rectify your information via contacto.gpmfsas@gmail.com."></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón de Registro -->
+            <div class="mt-12 p-6 bg-rooted-green text-white rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-center md:text-left">
+                    <p class="font-bold lang" data-es="¡Paso Obligatorio!" data-en="Mandatory Step!">¡Paso Obligatorio!</p>
+                    <p class="text-xs opacity-80 lang" data-es="Diligencia el formulario para habilitar tus accesos." data-en="Complete the form to enable your access codes."></p>
+                </div>
+                <a href="https://forms.gle/JRicQokLquVgCDU97" target="_blank" class="bg-rooted-terra px-6 py-3 rounded-full font-bold text-sm lang" data-es="REGISTRARME" data-en="REGISTER">REGISTRARME</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function setTab(name) {
+            ['casa', 'mascotas', 'legal'].forEach(s => {
+                document.getElementById('sec-' + s).classList.add('hidden');
+                document.getElementById('tab-' + s).classList.replace('border-rooted-terra', 'border-transparent');
+                document.getElementById('tab-' + s).classList.replace('text-rooted-green', 'text-gray-400');
+            });
+            document.getElementById('sec-' + name).classList.remove('hidden');
+            document.getElementById('tab-' + name).classList.replace('border-transparent', 'border-rooted-terra');
+            document.getElementById('tab-' + name).classList.replace('text-gray-400', 'text-rooted-green');
+        }
+
+        function changeLang(lang) {
+            document.querySelectorAll('.lang').forEach(el => {
+                el.innerHTML = el.getAttribute('data-' + lang);
+            });
+            const btnEs = document.getElementById('es-btn'), btnEn = document.getElementById('en-btn');
+            const titles = { es: ["Manual de Convivencia", "Reglas claras."], en: ["House Manual", "Clear rules."] };
+            document.getElementById('hero-title').innerText = titles[lang][0];
+            document.getElementById('hero-sub').innerText = titles[lang][1];
+            if(lang === 'es') {
+                btnEs.className = "px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white";
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500";
+            } else {
+                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white";
+                btnEs.className = "px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500";
+            }
+        }
+        window.onload = () => changeLang('es');
+    </script>
+</body>
+</html>
