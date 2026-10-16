@@ -77,14 +77,28 @@
                     <span class="text-rooted-green font-bold px-2 py-1 rounded bg-rooted-cream">EN</span>
                 </div>
                 
-                <a href="index.html#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ (Urban)</a>
-                <a href="index.html#nilo" class="hover:text-rooted-terra transition-colors">NILO (Rural)</a>
-                <a href="index.html#booking" class="hover:text-rooted-terra transition-colors">BOOK</a>
+                <a href="index-en.html#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ (Urban)</a>
+                <a href="nilo.html" class="hover:text-rooted-terra transition-colors">NILO (Rural)</a>
+                <a href="index-en.html#booking" class="hover:text-rooted-terra transition-colors">BOOK</a>
                 <a href="policies.html" class="text-rooted-terra font-bold">POLICIES</a>
+                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">🛎️ GUEST PORTAL</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-2xl text-rooted-green">☰</button>
+            <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-rooted-green">☰</button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 border-t border-rooted-terra/10 px-6 py-4 space-y-3 font-medium text-sm">
+            <div class="flex items-center space-x-2 pb-2 border-b border-gray-100">
+                <a href="politicas.html" class="text-gray-600">ES (Español)</a>
+                <span class="text-gray-300">|</span>
+                <span class="text-rooted-green font-bold">EN (English)</span>
+            </div>
+            <a href="index-en.html#bogota" class="block hover:text-rooted-terra">BOGOTÁ</a>
+            <a href="nilo.html" class="block hover:text-rooted-terra">NILO</a>
+            <a href="index-en.html#booking" class="block hover:text-rooted-terra">BOOK</a>
+            <a href="policies.html" class="block text-rooted-terra font-bold">POLICIES</a>
+            <a href="concierge.html" class="block text-rooted-terra font-bold">🛎️ DIGITAL GUEST PORTAL</a>
         </div>
     </nav>
 

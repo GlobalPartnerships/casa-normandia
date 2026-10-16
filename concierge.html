@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Casa Normandía — Guía Digital & Concierge del Huésped</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1b4332;
+      --primary-dark: #081c15;
+      --primary-light: #2d6a4f;
+      --accent: #d4a373;
+      --accent-soft: #fefae0;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text: #212529;
+      --text-muted: #6c757d;
+      --border: #e9ecef;
+      --success: #2b9348;
+      --whatsapp: #25d366;
+      --radius: 16px;
+      --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+      --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 90px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 32px 20px 24px;
+      border-radius: 0 0 24px 24px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-back-home:hover {
+      background: rgba(255, 255, 255, 0.28);
+      color: #fff;
+    }
+
+    .hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .concierge-badge {
+      background: var(--accent);
+      color: #1b4332;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .lang-toggle {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 16px;
+    }
+
+    /* Wi-Fi Quick Card */
+    .wifi-box {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .wifi-info {
+      font-size: 0.85rem;
+    }
+
+    .wifi-name {
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+    }
+
+    .btn-wifi {
+      background: var(--accent);
+      color: #1b4332;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* Search & Assist */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 18px 16px;
+    }
+
+    .search-section {
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+
+    .search-bar {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px 14px 44px;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-sm);
+      outline: none;
+    }
+
+    .search-wrapper {
+      position: relative;
+    }
+
+    .search-wrapper span {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+
+    /* Quick Action Tiles */
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Studio Selector Pills */
+    .studio-selector {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .btn-studio {
+      flex: 1;
+      min-width: 85px;
+      padding: 10px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-studio.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(27,67,50,0.25);
+    }
+
+    .studio-detail-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 12px;
+    }
+
+    .studio-detail-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .studio-badge {
+      font-size: 0.72rem;
+      background: #eaf7ee;
+      color: #128c7e;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .studio-features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      padding: 8px 10px;
+      background: #fdfbf7;
+      border-radius: 10px;
+      border: 1px solid #f0ece1;
+    }
+
+    .feature-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .feature-text strong {
+      color: var(--primary-dark);
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+    }
+
+    .feature-text span {
+      color: #555;
+      font-size: 0.82rem;
+    }
+
+    .quick-tiles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .tile {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tile:active {
+      transform: scale(0.98);
+      border-color: var(--primary);
+    }
+
+    .tile-icon {
+      font-size: 1.5rem;
+    }
+
+    .tile-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+    }
+
+    .tile-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Items Directory Cards */
+    .item-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .item-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .item-icon {
+      font-size: 1.4rem;
+      background: #f1f8f4;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .item-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .item-location {
+      font-size: 0.78rem;
+      background: #eef2f6;
+      color: #3b5998;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .item-text {
+      font-size: 0.86rem;
+      color: #495057;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .item-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eaf7ee;
+      color: #128c7e;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Fixed Bottom Help Bar */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    }
+
+    .anfitrion-info {
+      font-size: 0.82rem;
+    }
+
+    .anfitrion-name {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .btn-wa-call {
+      background: var(--whatsapp);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #1e293b;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 24px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      z-index: 200;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-top-nav">
+      <a href="index.html" id="backToHomeBtn" class="btn-back-home" title="Volver al Sitio Principal">
+        <span>←</span> <span id="backToHomeTxt">Volver al Sitio Web</span>
+      </a>
+      <button class="lang-toggle" onclick="toggleLanguage()">🌐 English</button>
+    </div>
+    <div class="hero-brand">
+      <h1>🏡 Casa Normandía</h1>
+      <span class="concierge-badge">Concierge Digital</span>
+    </div>
+    <p id="welcomeTxt">Tu guía digital de estancia independiente. Todo lo que necesitas saber en un solo lugar.</p>
+    
+    <!-- Wi-Fi Box -->
+    <div class="wifi-box">
+      <div class="wifi-info">
+        <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8;">Red Wi-Fi</div>
+        <div class="wifi-name">Normandia_Guests</div>
+      </div>
+      <button class="btn-wifi" onclick="copyWifi()">
+        <span>📶 Copiar Clave</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Buscador en tiempo real -->
+    <div class="search-section">
+      <div class="search-wrapper">
+        <span>🔍</span>
+        <input type="text" id="searchInput" class="search-bar" placeholder="¿Buscas la plancha, especias, basuras, tina...?" oninput="filterConcierge()">
+      </div>
+    </div>
+
+    <!-- Selector de Estudio: Dotación Específica -->
+    <h2 class="section-title">🛋️ Dotación de tu Estudio</h2>
+    <div class="studio-selector" id="studioSelector">
+      <button class="btn-studio active" onclick="selectStudio('201')">Studio 201</button>
+      <button class="btn-studio" onclick="selectStudio('202')">Studio 202</button>
+      <button class="btn-studio" onclick="selectStudio('203')">Studio 203</button>
+      <button class="btn-studio" onclick="selectStudio('204')">Studio 204</button>
+      <button class="btn-studio" onclick="selectStudio('101')">Apto 101 VIP</button>
+    </div>
+    <div id="studioDetails" class="studio-detail-card"></div>
+
+    <!-- Acciones Rápidas (Self Service) -->
+    <h2 class="section-title" style="margin-top: 24px;">📍 Zonas Comunes & Recursos</h2>
+    <div class="quick-tiles">
+      <div class="tile" onclick="scrollToItem('plancha')">
+        <span class="tile-icon">👔</span>
+        <span class="tile-title">Plancha de ropa</span>
+        <span class="tile-desc">Armario café del pasillo (Piso 2)</span>
+      </div>
+      <div class="tile" onclick="scrollToItem('especias')">
+        <span class="tile-icon">🧂</span>
+        <span class="tile-title">Sal & Especias</span>
+        <span class="tile-desc">Cajoncito común en el pasillo</span>
+      </div>
+      <div class="tile" onclick="scrollToItem('basura')">
+        <span class="tile-icon">♻️</span>
+        <span class="tile-title">Basuras & Reciclaje</span>
+        <span class="tile-desc">Canecas y días de recolección</span>
+      </div>
+      <div class="tile" onclick="scrollToItem('prestamo')">
+        <span class="tile-icon">🍳</span>
+        <span class="tile-title">Préstamo de Cocina</span>
+        <span class="tile-desc">Licuadora, tostadora u ollas</span>
+      </div>
+    </div>
+
+    <!-- Lista de Respuestas & Recursos -->
+    <h2 class="section-title">💡 Preguntas Frecuentes & Normas</h2>
+    <div id="itemsList"></div>
+
+    <!-- Retorno a la Página Principal & Cotizador -->
+    <div style="text-align: center; margin: 32px 0 20px; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow-sm);">
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;" id="footerBackTxt">¿Deseas explorar los estudios, la Granja en Nilo o reservar una nueva estancia directa?</p>
+      <a href="index.html" id="footerBackLink" style="display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; text-decoration: none; font-weight: 700; font-size: 0.88rem; padding: 10px 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(27,67,50,0.25);">
+        <span>🏡 Ir al Sitio Web Principal & Cotizador →</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Bottom Bar: Contacto Directo Anfitrión -->
+  <footer class="bottom-bar">
+    <div class="anfitrion-info">
+      <div class="anfitrion-name">Aristides & Esperanza</div>
+      <div style="color: var(--text-muted); font-size: 0.75rem;">Tus anfitriones en Normandía</div>
+    </div>
+    <a href="https://wa.me/573156166760?text=Hola%20Aristides,%20te%20escribo%20desde%20Casa%20Normandia." class="btn-wa-call" target="_blank">
+      <span>💬 WhatsApp</span>
+    </a>
+  </footer>
+
+  <div class="toast" id="toast">✅ Clave Wi-Fi copiada</div>
+
+  <script>
+    let isEnglish = false;
+
+    const conciergeItems = [
+      {
+        id: "plancha",
+        icon: "👔",
+        title_es: "Plancha y Tabla de Planchar",
+        title_en: "Clothes Iron & Ironing Board",
+        loc_es: "Armario café del pasillo (Piso 2)",
+        loc_en: "Brown hallway cabinet (2nd floor)",
+        desc_es: "De uso libre y gratuito para todos los huéspedes. Puedes llevarla a tu estudio y devolverla fría al armario al terminar.",
+        desc_en: "Free of charge for all guests. Feel free to use it in your studio and kindly return it cold to the cabinet afterwards.",
+        action: null
+      },
+      {
+        id: "especias",
+        icon: "🧂",
+        title_es: "Cajoncito de Especias, Sal y Café",
+        title_en: "Shared Spice & Coffee Station",
+        loc_es: "Pasillo común / Repisa de servicio",
+        loc_en: "Common hallway / Service shelf",
+        desc_es: "Sal, azúcar, pimienta, café y té de cortesía para preparar tus alimentos sin tener que comprar paquetes enteros por unos días.",
+        desc_en: "Complimentary salt, sugar, pepper, coffee and tea so you don't need to purchase full packs for short stays.",
+        action: null
+      },
+      {
+        id: "prestamo",
+        icon: "🍳",
+        title_es: "Préstamo de Utensilios de Cocina",
+        title_en: "Kitchen Appliances Loan (Free)",
+        loc_es: "Bajo solicitud previa",
+        loc_en: "Upon request",
+        desc_es: "¿Necesitas licuadora, tostadora eléctrica, exprimidor o una olla más grande? Te la facilitamos sin costo adicional.",
+        desc_en: "Need a blender, electric toaster, citrus juicer or a larger soup pot? We'll gladly lend it to you at no extra cost.",
+        action: {
+          label_es: "Solicitar por WhatsApp",
+          label_en: "Request via WhatsApp",
+          url: "https://wa.me/573156166760?text=Hola%20Aristides,%20quisiera%20pedir%20prestado%20un%20utensilio%20de%20cocina."
+        }
+      },
+      {
+        id: "lavanderia",
+        icon: "🧺",
+        title_es: "Servicio de Lavandería ($120.000 COP)",
+        title_en: "Laundry Service ($120,000 COP)",
+        loc_es: "Canasta amarilla frente a tu puerta",
+        loc_en: "Yellow basket outside your door",
+        desc_es: "Coloca tu ropa en la canasta amarilla y avísanos. Te la entregamos limpia, seca y doblada en 24 a 48 horas.",
+        desc_en: "Leave your clothes in the yellow basket and text us. Returned clean, dry and folded within 24-48 hrs.",
+        action: {
+          label_es: "Pedir Canasta de Lavado",
+          label_en: "Request Laundry Basket",
+          url: "https://wa.me/573156166760?text=Hola%20Aristides,%20quisiera%20solicitar%20el%20servicio%20de%20lavanderia."
+        }
+      },
+      {
+        id: "basura",
+        icon: "♻️",
+        title_es: "Manejo de Basuras y Reciclaje",
+        title_en: "Trash & Recycling Schedule",
+        loc_es: "Punto ecológico del pasillo",
+        loc_en: "Hallway recycling station",
+        desc_es: "Blanca: Reciclaje limpio y seco (plástico, papel, cartón). Negra: Residuos ordinarios. El camión recolector pasa los martes, jueves y sábados en la noche.",
+        desc_en: "White bin: Clean recyclables (plastic, paper, cans). Black bin: General waste. Trash pickup days are Tue, Thu, Sat night.",
+        action: null
+      },
+      {
+        id: "agua",
+        icon: "🚿",
+        title_es: "Agua Caliente Continua & Tina",
+        title_en: "Hot Water & Bathtub Instructions",
+        loc_es: "En tu baño privado",
+        loc_en: "In your private bathroom",
+        desc_es: "El calentador funciona de forma continua. Abre la llave izquierda y deja correr el agua 10-15 segundos. En Studio 201 la tina clásica mide 150x70 cm para relajarse.",
+        desc_en: "Continuous heater. Turn left knob and let water run 10-15 seconds. In Studio 201 the vintage bathtub is 150x70 cm for soaking.",
+        action: null
+      },
+      {
+        id: "sabanas",
+        icon: "🛏️",
+        title_es: "Limpieza Semanal & Suministros",
+        title_en: "Weekly Housekeeping & Supplies",
+        loc_es: "Estancias de más de 20 días",
+        loc_en: "Stays over 20 days",
+        desc_es: "La limpieza semanal profunda está incluida únicamente en estancias de más de 20 días. Entregamos kit inicial de bienvenida (papel, toallas, jabón). Consumibles adicionales son provistos por el huésped.",
+        desc_en: "Weekly deep cleaning is included exclusively for stays of over 20 days. Initial welcome kit provided upon arrival. Additional consumables are replenished by guests.",
+        action: null
+      },
+      {
+        id: "silla",
+        icon: "🪑",
+        title_es: "Préstamo de Silla Ergonómica de Oficina",
+        title_en: "Ergonomic Office Chair Loan",
+        loc_es: "Bajo solicitud previa (Disponibilidad: 2 unidades en casa)",
+        loc_en: "Upon request (Availability: 2 units in house)",
+        desc_es: "¿Tienes jornadas intensivas de teletrabajo? Disponemos de 2 sillas ergonómicas de oficina para préstamo sin costo a solicitud previa (sujeto a disponibilidad).",
+        desc_en: "Need extra ergonomic comfort for long work calls? We have 2 ergonomic office chairs available for free loan upon advance request (subject to availability).",
+        action: {
+          label_es: "Solicitar Silla Ergonómica",
+          label_en: "Request Ergonomic Chair",
+          url: "https://wa.me/573156166760?text=Hola%20Aristides,%20quisiera%20solicitar%20el%20prestamo%20de%20la%20silla%20ergonomica%20para%20mi%20estudio."
+        }
+      },
+      {
+        id: "parqueadero",
+        icon: "🚗",
+        title_es: "Parqueadero Privado (Diario o Mensual)",
+        title_en: "Private Parking (Daily or Monthly)",
+        loc_es: "Antejardín de la casa",
+        loc_en: "Front gated driveway",
+        desc_es: "Disponible bajo reserva previa: $50.000 COP/día o $560.000 COP/mes. Espacio vigilado y coordinado para fácil acceso.",
+        desc_en: "Available upon advance reservation: $50,000 COP/day or $560,000 COP/month. Secure and coordinated access.",
+        action: {
+          label_es: "Apartar Parqueadero",
+          label_en: "Book Parking",
+          url: "https://wa.me/573156166760?text=Hola%20Aristides,%20quisiera%20consultar%20disponibilidad%20de%20parqueadero."
+        }
+      },
+      {
+        id: "botiquin",
+        icon: "🩹",
+        title_es: "Botiquín & Farmacias Cercanas",
+        title_en: "First Aid & Nearby Pharmacies",
+        loc_es: "Recepción / A menos de 100m",
+        loc_en: "Front desk / Within 100m",
+        desc_es: "¿Te sientes indispuesto? Tenemos botiquín básico y a 1 cuadra encuentras Farmatodo y Drogas La Rebaja con servicio a domicilio.",
+        desc_en: "Feeling unwell? We have a first aid kit, plus full 24/7 pharmacies (Farmatodo) within 1 block.",
+        action: null
+      }
+    ];
+
+    function renderConcierge() {
+      const container = document.getElementById('itemsList');
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = conciergeItems.filter(item => {
+        const title = isEnglish ? item.title_en : item.title_es;
+        const desc = isEnglish ? item.desc_en : item.desc_es;
+        const loc = isEnglish ? item.loc_en : item.loc_es;
+        return !query || 
+               title.toLowerCase().includes(query) || 
+               desc.toLowerCase().includes(query) || 
+               loc.toLowerCase().includes(query);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+            <p style="font-size: 2rem;">🔍</p>
+            <p>${isEnglish ? 'No items found. Ask us directly on WhatsApp!' : 'No encontramos ese elemento. ¡Pregúntanos directo por WhatsApp!'}</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <article class="item-card" id="card-${item.id}">
+          <div class="item-header">
+            <div class="item-icon">${item.icon}</div>
+            <div>
+              <div class="item-title">${isEnglish ? item.title_en : item.title_es}</div>
+              <span class="item-location">📍 ${isEnglish ? item.loc_en : item.loc_es}</span>
+            </div>
+          </div>
+          <div class="item-text">${isEnglish ? item.desc_en : item.desc_es}</div>
+          ${item.action ? `
+            <a href="${item.action.url}" class="item-btn" target="_blank">
+              <span>💬 ${isEnglish ? item.action.label_en : item.action.label_es}</span>
+            </a>
+          ` : ''}
+        </article>
+      `).join('');
+    }
+
+    function filterConcierge() {
+      renderConcierge();
+    }
+
+    function scrollToItem(id) {
+      const card = document.getElementById('card-' + id);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.borderColor = 'var(--primary)';
+        card.style.boxShadow = '0 0 12px rgba(27,67,50,0.2)';
+        setTimeout(() => {
+          card.style.borderColor = 'var(--border)';
+          card.style.boxShadow = 'var(--shadow-sm)';
+        }, 1500);
+      }
+    }
+
+    function copyWifi() {
+      navigator.clipboard.writeText("Normandia2026*").then(() => {
+        showToast(isEnglish ? "✅ Wi-Fi password copied!" : "✅ Clave Wi-Fi copiada");
+      }).catch(() => {
+        showToast("Normandia2026*");
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    let currentStudio = '201';
+
+    const studioData = {
+      '201': {
+        title_es: "Studio 201 — The Garden Suite (Cocina Grande & Tina)",
+        title_en: "Studio 201 — The Garden Suite (Large Kitchen & Tub)",
+        badge_es: "Estudio Amplio (37m²)",
+        badge_en: "Spacious Studio (37m²)",
+        features_es: [
+          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, 4 almohadas, sábanas de algodón, cobijas térmicas, mesitas de noche y clóset amplio." },
+          { icon: "🛁", title: "Baño con Tina", desc: "Tina tradicional profunda (150x70 cm, sin hidromasaje), ducha con calentador continuo y juego de toallas." },
+          { icon: "🍳", title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, nevera con congelador, microondas, hornilla, cafetera, set de ollas y vajilla completa." },
+          { icon: "💻", title: "Trabajo & Estar", desc: "Escritorio de madera para teletrabajo, Smart TV / Roku, mesa auxiliar y vista al jardín interior." }
+        ],
+        features_en: [
+          { icon: "🛏️", title: "Bed & Sleep", desc: "Double bed, 4 pillows, cotton linens, thermal blankets, nightstands and spacious closet." },
+          { icon: "🛁", title: "Bathroom with Tub", desc: "Deep traditional bathtub (150x70 cm, soaking tub), continuous hot water shower and fresh towels." },
+          { icon: "🍳", title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, fridge with freezer, microwave, electric burner, coffee maker, cookware and tableware." },
+          { icon: "💻", title: "Work & Living", desc: "Wooden laptop desk, Smart TV / Roku, auxiliary dining table and garden views." }
+        ]
+      },
+      '202': {
+        title_es: "Studio 202 — Habitación Ejecutiva (Sin Cocina)",
+        title_en: "Studio 202 — Executive Bedroom (No Kitchen)",
+        badge_es: "Habitación Privada (20m²)",
+        badge_en: "Private Bedroom (20m²)",
+        features_es: [
+          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama funcional confortable con lencería limpia, mesita de noche, lámpara de lectura y armario amplio." },
+          { icon: "🚿", title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado, espejo iluminado y toallas limpias." },
+          { icon: "🚫", title: "Habitación Sin Cocina", desc: "Esta habitación independiente no cuenta con cocina ni estufa. Ideal para estancias de trabajo o tránsito y pedidos a domicilio." },
+          { icon: "📺", title: "Trabajo & Entretenimiento", desc: "Mesa de trabajo para computador con Wi-Fi 900 Mbps, silla cómoda y Smart TV / Roku para streaming." }
+        ],
+        features_en: [
+          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable bed with fresh linens, nightstand, reading lamp and full wardrobe." },
+          { icon: "🚿", title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition, lighted mirror and fresh towels." },
+          { icon: "🚫", title: "No Kitchen", desc: "This independent room has no kitchen or stove. Perfect for business travelers or short stays." },
+          { icon: "📺", title: "Work & Entertainment", desc: "Computer work desk with 900 Mbps Wi-Fi, comfortable chair, and Smart TV / Roku for streaming." }
+        ]
+      },
+      '203': {
+        title_es: "Studio 203 — Executive Comfort (Cocina Compacta)",
+        title_en: "Studio 203 — Executive Comfort (Compact Kitchen)",
+        badge_es: "Estudio con Balcón/Luz (21m²)",
+        badge_en: "Daylight Studio (21m²)",
+        features_es: [
+          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, mesitas de noche, espejo de cuerpo entero y clóset amplio." },
+          { icon: "🚿", title: "Baño Privado", desc: "Ducha con división de vidrio templado, agua caliente continua, extractor y toalleros." },
+          { icon: "🍳", title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), estufa eléctrica, nevera, microondas, cafetera y menaje básico." },
+          { icon: "📺", title: "Trabajo & Estar", desc: "Escritorio con excelente luz natural, Smart TV / Roku para streaming y conexión rápida a internet." }
+        ],
+        features_en: [
+          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable double bed, nightstands, full-length mirror and spacious wardrobe." },
+          { icon: "🚿", title: "Private Bathroom", desc: "Tempered glass shower partition, continuous hot water, exhaust fan and fresh towels." },
+          { icon: "🍳", title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), electric stove, refrigerator, microwave, coffee maker and basic cookware." },
+          { icon: "📺", title: "Work & Living", desc: "Desk with natural daylight, Smart TV / Roku for streaming and fast 900 Mbps connection." }
+        ]
+      },
+      '204': {
+        title_es: "Studio 204 — The Quiet Sanctuary (Cocina Compacta)",
+        title_en: "Studio 204 — The Quiet Sanctuary (Compact Kitchen)",
+        badge_es: "Máximo Silencio Interior (22m²)",
+        badge_en: "Maximum Acoustic Quiet (22m²)",
+        features_es: [
+          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, lencería hotelera, clóset doble, perchas y espejo de cuerpo entero." },
+          { icon: "🚿", title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado y espejo con iluminación." },
+          { icon: "🍳", title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), nevera con congelador, microondas, cafetera y vajilla básica." },
+          { icon: "🤫", title: "Trabajo & Aislamiento Acústico", desc: "Estudio interior con cero ruido de calle, escritorio de trabajo, Smart TV / Roku y sofá de 2 puestos." }
+        ],
+        features_en: [
+          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable double bed, premium hotel-grade linens, double closet with hangers and full-length mirror." },
+          { icon: "🚿", title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition and vanity mirror." },
+          { icon: "🍳", title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), fridge with freezer, microwave, coffee maker and essential tableware." },
+          { icon: "🤫", title: "Work & Acoustic Silence", desc: "Interior studio with zero street noise, laptop work desk, Smart TV / Roku, and 2-seat sofa." }
+        ]
+      },
+      '101': {
+        title_es: "Espacio 101 VIP — Executive Suite (Cocina Grande & Tina)",
+        title_en: "Espacio 101 VIP — Executive Suite (Large Kitchen & Tub)",
+        badge_es: "Suite Planta Baja (55m²)",
+        badge_en: "Ground Floor Suite (55m²)",
+        features_es: [
+          { icon: "🛏️", title: "Dormitorio & Descanso", desc: "Cama amplia en habitación independiente, lencería de primera y clóset espacioso." },
+          { icon: "🛁", title: "Baño Privado con Tina", desc: "Baño amplio con tina tradicional, ducha con agua caliente continua y toallas de alta calidad." },
+          { icon: "🍳", title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, estufa, nevera grande con congelador, microondas y vajilla completa." },
+          { icon: "🛋️", title: "Sala, Comedor & Smart TV", desc: "Sala de estar independiente con sofá, mesa de comedor, escritorio de trabajo y Smart TV / Roku." }
+        ],
+        features_en: [
+          { icon: "🛏️", title: "Bedroom & Sleep", desc: "Spacious bed in private master bedroom, premium linens and expansive wardrobe." },
+          { icon: "🛁", title: "Private Bathroom with Tub", desc: "Full bathroom with traditional soaking bathtub, continuous hot water shower and plush towels." },
+          { icon: "🍳", title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, full refrigerator/freezer, microwave and extended dinnerware." },
+          { icon: "🛋️", title: "Living, Dining & Smart TV", desc: "Separate living room, dining area, laptop workspace and Smart TV / Roku." }
+        ]
+      }
+    };
+
+    function selectStudio(studioId) {
+      currentStudio = studioId;
+      document.querySelectorAll('.btn-studio').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.includes(studioId));
+      });
+      renderStudio();
+    }
+
+    function renderStudio() {
+      const data = studioData[currentStudio];
+      const container = document.getElementById('studioDetails');
+      if (!data || !container) return;
+
+      const title = isEnglish ? data.title_en : data.title_es;
+      const badge = isEnglish ? data.badge_en : data.badge_es;
+      const features = isEnglish ? data.features_en : data.features_es;
+
+      container.innerHTML = `
+        <div class="studio-detail-title">
+          <span>${title}</span>
+          <span class="studio-badge">${badge}</span>
+        </div>
+        <div class="studio-features-grid">
+          ${features.map(f => `
+            <div class="feature-row">
+              <span class="feature-icon">${f.icon}</span>
+              <div class="feature-text">
+                <strong>${f.title}</strong>
+                <span>${f.desc}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function toggleLanguage() {
+      isEnglish = !isEnglish;
+      document.querySelector('.lang-toggle').innerText = isEnglish ? '🌐 Español' : '🌐 English';
+      document.getElementById('welcomeTxt').innerText = isEnglish 
+        ? 'Your digital guide to independent stays. Everything you need to know in one place.' 
+        : 'Tu guía digital de estancia independiente. Todo lo que necesitas saber en un solo lugar.';
+      document.getElementById('searchInput').placeholder = isEnglish 
+        ? 'Looking for the iron, spices, trash, bathtub...?' 
+        : '¿Buscas la plancha, especias, basuras, tina...?';
+      
+      const backTxt = document.getElementById('backToHomeTxt');
+      const backLink = document.getElementById('backToHomeBtn');
+      if (backTxt && backLink) {
+        backTxt.innerText = isEnglish ? 'Back to Website' : 'Volver al Sitio Web';
+        backLink.href = isEnglish ? 'index-en.html' : 'index.html';
+      }
+
+      const footerBackTxt = document.getElementById('footerBackTxt');
+      const footerBackLink = document.getElementById('footerBackLink');
+      if (footerBackTxt && footerBackLink) {
+        footerBackTxt.innerText = isEnglish 
+          ? 'Want to explore our studio apartments, Nilo Educational Farm, or book a new direct stay?' 
+          : '¿Deseas explorar los estudios, la Granja en Nilo o reservar una nueva estancia directa?';
+        footerBackLink.innerHTML = isEnglish 
+          ? '<span>🏡 Go to Main Website & Booking Calculator →</span>' 
+          : '<span>🏡 Ir al Sitio Web Principal & Cotizador →</span>';
+        footerBackLink.href = isEnglish ? 'index-en.html' : 'index.html';
+      }
+
+      renderStudio();
+      renderConcierge();
+    }
+
+    renderStudio();
+    renderConcierge();
+  </script>
+</body>
+</html>

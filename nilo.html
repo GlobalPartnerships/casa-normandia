@@ -102,14 +102,24 @@
                 <a href="index.html#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ</a>
                 <a href="index.html#nilo" class="hover:text-rooted-terra transition-colors">NILO</a>
                 <a href="politicas.html#reglas-casa" class="hover:text-rooted-terra transition-colors">REGLAS</a>
+                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">🛎️ GUÍA HUÉSPED</a>
                 <button onclick="window.location.href='index.html#booking'" class="bg-rooted-terra text-white px-6 py-2 rounded-full hover:bg-rooted-green transition-colors shadow-lg transform hover:-translate-y-0.5">
                     RESERVAR
                 </button>
-                <a href="politicas.html" class="hover:text-rooted-terra transition-colors">POLÍTICAS</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-2xl text-rooted-green">☰</button>
+            <button onclick="document.getElementById('mobileMenuNilo').classList.toggle('hidden')" class="md:hidden text-2xl text-rooted-green">☰</button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenuNilo" class="hidden md:hidden bg-white/95 border-t border-rooted-terra/10 px-6 py-4 space-y-3 font-medium text-sm">
+            <a href="index.html#bogota" class="block hover:text-rooted-terra">BOGOTÁ (Studios)</a>
+            <a href="nilo.html" class="block text-rooted-terra font-bold">NILO (Granja)</a>
+            <a href="politicas.html" class="block hover:text-rooted-terra">REGLAS Y POLÍTICAS</a>
+            <a href="concierge.html" class="block text-rooted-terra font-bold">🛎️ GUÍA DIGITAL DEL HUÉSPED</a>
+            <button onclick="window.location.href='index.html#booking'" class="w-full bg-rooted-terra text-white py-2 rounded-full">
+                RESERVAR DIRECTO
+            </button>
         </div>
     </nav>
 

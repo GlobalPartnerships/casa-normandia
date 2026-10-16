@@ -128,13 +128,29 @@
                 <a href="#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ</a>
                 <a href="nilo.html" class="hover:text-rooted-terra transition-colors">NILO</a>
                 <a href="politicas.html#reglas-casa" class="hover:text-rooted-terra transition-colors">REGLAS</a>
+                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">🛎️ GUÍA HUÉSPED</a>
                 <button onclick="scrollToBooking()" class="bg-rooted-terra text-white px-6 py-2 rounded-full hover:bg-rooted-green transition-colors shadow-lg transform hover:-translate-y-0.5">
                     Reservar Ahora
                 </button>
             </div>
 
             <!-- Mobile Menu Button (Unicode) -->
-            <button class="md:hidden text-2xl text-rooted-green">☰</button>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-rooted-green">☰</button>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 border-t border-rooted-terra/10 px-6 py-4 space-y-3 font-medium text-sm">
+            <div class="flex items-center space-x-2 pb-2 border-b border-gray-100">
+                <span class="text-rooted-green font-bold">ES</span>
+                <span class="text-gray-300">|</span>
+                <a href="index-en.html" class="text-gray-600">EN (English)</a>
+            </div>
+            <a href="#bogota" onclick="toggleMobileMenu()" class="block hover:text-rooted-terra">BOGOTÁ</a>
+            <a href="nilo.html" class="block hover:text-rooted-terra">NILO</a>
+            <a href="politicas.html#reglas-casa" class="block hover:text-rooted-terra">REGLAS</a>
+            <a href="concierge.html" class="block text-rooted-terra font-bold">🛎️ GUÍA DIGITAL DEL HUÉSPED</a>
+            <button onclick="scrollToBooking(); toggleMobileMenu();" class="w-full bg-rooted-terra text-white py-2 rounded-full">
+                Reservar Ahora
+            </button>
         </div>
     </nav>
 
@@ -238,8 +254,35 @@
                 </div>
             </div>
 
+            <!-- Shared Amenities Banner -->
+            <div class="bg-white/80 backdrop-blur-sm border border-rooted-terra/20 rounded-2xl p-4 md:p-6 mb-10 shadow-sm">
+                <div class="text-center mb-3">
+                    <span class="text-xs uppercase tracking-widest text-rooted-terra font-bold">Estándar de Casa Normandía</span>
+                    <h4 class="text-base font-serif font-bold text-rooted-green">Comodidades Incluidas en Todos los Estudios</h4>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                    <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
+                        <span class="text-base">📶</span>
+                        <span>Fibra 900 Mbps</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
+                        <span class="text-base">📺</span>
+                        <span>Smart TV / Roku</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
+                        <span class="text-base">🚿</span>
+                        <span>Agua Caliente Continua</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
+                        <span class="text-base">🌿</span>
+                        <span>Ambiente Seguro & Silencioso</span>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-gray-500 mt-3">*Limpieza semanal incluida para estancias de más de 20 días. Préstamo de silla ergonómica bajo solicitud (sujeto a disponibilidad).</p>
+            </div>
+
             <!-- Studios Grid -->
-            <h3 class="text-2xl font-serif font-bold text-rooted-green mb-8">Nuestros Estudios</h3>
+            <h3 class="text-2xl font-serif font-bold text-rooted-green mb-8">Nuestros Estudios Independientes</h3>
             <div id="studios-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- JS will populate this -->
             </div>
@@ -339,7 +382,23 @@
                             <button id="bookBtn" class="w-full bg-rooted-terra text-white font-bold py-4 rounded-lg hover:bg-rooted-green transition-all shadow-lg mt-4">
                                 Garantizar Tarifa Directa
                             </button>
-                            <p class="text-xs text-center mt-4 text-gray-500">Incluye Wi-Fi, Servicios y Limpieza semanal.</p>
+                            <p class="text-xs text-center mt-3 text-gray-500">Incluye Wi-Fi 900 Mbps, Servicios y Limpieza semanal (en estancias de más de 20 días).</p>
+                            
+                            <!-- Trust Badges -->
+                            <div class="mt-4 pt-3 border-t border-gray-200/60 space-y-2 text-xs text-gray-600">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-rooted-terra font-bold text-sm">🛡️</span>
+                                    <span><strong>Sin comisiones:</strong> Ahorras 15% reservando directo</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-rooted-terra font-bold text-sm">📶</span>
+                                    <span><strong>Conectividad:</strong> Fibra 900 Mbps para teletrabajo</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-rooted-terra font-bold text-sm">🔑</span>
+                                    <span><strong>Llegada flexible:</strong> Bienvenida personal o acceso coordinado</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -432,7 +491,7 @@
                         <li><a href="#bogota" class="hover:text-white transition-colors">Bogotá Studios</a></li>
                         <li><a href="#nilo" class="hover:text-white transition-colors">Granja Nilo</a></li>
                         <li><a href="politicas.html" class="hover:text-white transition-colors">Políticas y Reglas de la Casa</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></li>
+                        <li><a href="concierge.html" class="hover:text-white transition-colors text-rooted-terra font-medium">🛎️ Concierge & Guía del Huésped</a></li>
                     </ul>
                 </div>
                 <div>
@@ -457,47 +516,52 @@
             {
                 id: '201',
                 name: 'STUDIO 201: The Garden Suite',
+                tagline: '🛁 Tina Clásica Profunda • 🍳 Cocina Grande con Campana',
                 area: '37m²',
                 price: 250000,
                 image: 'assets/estudio201.jpg',
-                features: ['Cama Doble', 'Vista al Jardín', 'Tina Privada', 'Cocina Equipada'],
-                desc: 'Nuestro estudio abierto más espacioso. Cuenta con cocina privada, baño con tina y una relajante vista a nuestro jardín privado. Ideal para estancias prolongadas.'
+                features: ['Cama Doble', 'Cocina Grande', 'Campana Extractora', 'Tina Clásica', 'Smart TV / Roku'],
+                desc: 'Nuestro estudio abierto más espacioso. Cuenta con cocina grande completa y campana extractora, baño privado con tina tradicional profunda, Smart TV/Roku y vista a nuestro jardín interior. Ideal para estancias prolongadas.'
             },
             {
                 id: '202',
                 name: 'STUDIO 202: The Professional\'s Hub',
+                tagline: '💼 Habitación Ejecutiva • 📺 Smart TV / Roku',
                 area: '20m²',
                 price: 125000,
                 image: 'assets/estudio202.jpg',
-                features: ['Office Space', 'Baño Privado', 'Wi-Fi 5G', 'Cama Confortable'],
-                desc: 'Diseñado para el viajero enfocado. Espacio de oficina dedicado para trabajo remoto y baño privado. Perfecto para nómadas digitales.'
+                features: ['Mesa de Trabajo', 'Baño Privado', 'Smart TV / Roku', 'Sin Cocina'],
+                desc: 'Habitación ejecutiva independiente diseñada para trabajo y descanso. Cuenta con mesa de trabajo, baño privado, Smart TV/Roku y cama confortable. Espacio sin cocina, ideal para estancias de tránsito o trabajo.'
             },
             {
                 id: '203',
                 name: 'STUDIO 203: Executive Comfort',
+                tagline: '🍳 Cocina Compacta • ☀️ Gran Luz Natural',
                 area: '21m²',
                 price: 170000,
                 image: 'assets/estudio203.jpg',
-                features: ['Cama King', 'Escritorio Ergonómico', 'Baño Privado', 'Cocineta'],
-                desc: 'Diseñado para el profesional moderno. Cuenta con cama King, espacio de trabajo, baño privado y una práctica cocineta.'
+                features: ['Cama Doble Premium', 'Cocina Compacta', 'Mesa de Trabajo', 'Smart TV / Roku'],
+                desc: 'Diseñado para estancias cómodas. Cuenta con cama doble, espacio de trabajo con luz natural, baño privado, Smart TV/Roku y una práctica cocina compacta (sin campana extractora).'
             },
             {
                 id: '204',
                 name: 'STUDIO 204: The Quiet Sanctuary',
+                tagline: '🤫 Máximo Silencio Interior • 🍳 Cocina Compacta',
                 area: '22m²',
                 price: 160000,
                 image: 'assets/estudio204.jpg',
-                features: ['Interior', 'Máximo Silencio', 'Baño Privado', 'Cocineta'],
-                desc: 'Nuestro estudio más silencioso (cero ruido de la calle). Acogedor e íntimo. Perfecto para quienes exigen concentración absoluta y sueño profundo.'
+                features: ['Ubicación Interior', 'Máximo Silencio', 'Cocina Compacta', 'Smart TV / Roku'],
+                desc: 'Nuestro estudio más silencioso, ubicado en el interior de la casa (cero ruido de la calle). Cuenta con cocina compacta, baño privado, Smart TV/Roku y ambiente óptimo para concentración y sueño profundo.'
             },
             {
                 id: '101',
                 name: 'ESPACIO 101 VIP: Executive Suite',
+                tagline: '🛋️ Suite Planta Baja (55m²) • 🍳 Cocina Grande con Campana',
                 area: '55m²',
                 price: 380000,
                 image: 'assets/espacio101.jpg',
-                features: ['Planta Baja', 'Tina Privada', 'Cocina Full', 'Acabados Premium'],
-                desc: 'Nuestra suite más exclusiva. Lujosa tina privada, cocina totalmente equipada y diseño de espacios premium para una estadía de nivel superior.'
+                features: ['Planta Baja (55m²)', 'Cocina Grande', 'Campana Extractora', 'Tina Tradicional', 'Smart TV / Roku'],
+                desc: 'Nuestra suite más amplia e independiente en planta baja. Cuenta con cocina grande completa y campana extractora, tina tradicional, Smart TV/Roku y acabados de primer nivel.'
             }
         ];
 
@@ -514,8 +578,8 @@
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
-                        <h4 class="text-xl font-bold text-rooted-green mb-2">${studio.name}</h4>
-                        <p class="text-xs text-gray-500 mb-3">&#128246; Wi-Fi 900MB | &#128167; Silla Ergonómica (Bajo solicitud)</p>
+                        <h4 class="text-xl font-bold text-rooted-green mb-1">${studio.name}</h4>
+                        <p class="text-xs font-semibold text-rooted-terra mb-3">${studio.tagline}</p>
                         <p class="text-sm text-gray-600 mb-4 flex-grow">${studio.desc}</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             ${studio.features.map(f => `<span class="text-xs bg-rooted-cream text-rooted-terra px-2 py-1 rounded font-medium">${f}</span>`).join('')}
@@ -691,6 +755,11 @@
             priceChart.update();
         }
 
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
+
         // --- EVENT LISTENERS ---
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -701,7 +770,6 @@
             document.getElementById('studioSelect').addEventListener('change', updateCalculator);
             document.getElementById('nightsRange').addEventListener('input', updateCalculator);
         });
-
     </script>
 </body>
 </html>

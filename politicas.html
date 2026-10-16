@@ -23,10 +23,17 @@
 
     <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-serif text-xl font-bold text-rooted-green">CASA NORMANDÍA</a>
-            <div class="flex gap-2">
-                <button onclick="changeLang('es')" id="es-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white">ES</button>
-                <button onclick="changeLang('en')" id="en-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500">EN</button>
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="font-serif text-xl font-bold text-rooted-green">CASA NORMANDÍA</a>
+                <a href="index.html" class="hidden sm:inline-block text-xs font-semibold text-gray-500 hover:text-rooted-terra transition-colors">← Volver al Inicio</a>
+                <a href="concierge.html" class="hidden sm:inline-block text-xs font-semibold text-rooted-terra hover:underline">🛎️ Guía Huésped</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="policies.html" class="text-xs text-gray-500 hover:text-rooted-terra hidden md:inline">Full English (Legal) ↗</a>
+                <div class="flex gap-1 bg-gray-100 p-1 rounded-full">
+                    <button onclick="changeLang('es')" id="es-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white">ES</button>
+                    <button onclick="changeLang('en')" id="en-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-transparent text-gray-500">EN</button>
+                </div>
             </div>
         </div>
     </nav>
