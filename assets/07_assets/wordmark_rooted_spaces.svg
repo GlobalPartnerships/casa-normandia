@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap');
+      .wm-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 36px;
+        font-weight: 600;
+        fill: #1B4332;
+        letter-spacing: 2.5px;
+      }
+      .wm-sub {
+        font-family: 'Outfit', sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        fill: #C86D51;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+
+  <text x="210" y="42" class="wm-title" text-anchor="middle">Rooted Spaces</text>
+  <line x1="80" y1="52" x2="340" y2="52" stroke="#D4A373" stroke-width="0.8" opacity="0.7" />
+  <text x="210" y="68" class="wm-sub" text-anchor="middle">CONSCIOUS HOSPITALITY</text>
+</svg>

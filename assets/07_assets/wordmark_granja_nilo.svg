@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 75" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap');
+      .wm-nilo-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 32px;
+        font-weight: 600;
+        fill: #1B4332;
+        letter-spacing: 1.5px;
+      }
+      .wm-nilo-sub {
+        font-family: 'Outfit', sans-serif;
+        font-size: 8.5px;
+        font-weight: 600;
+        fill: #C86D51;
+        letter-spacing: 4.5px;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+
+  <text x="230" y="38" class="wm-nilo-title" text-anchor="middle">Granja Nilo</text>
+  <line x1="90" y1="48" x2="370" y2="48" stroke="#D4A373" stroke-width="0.8" opacity="0.7" />
+  <text x="230" y="64" class="wm-nilo-sub" text-anchor="middle">BY ROOTED SPACES · NILO</text>
+</svg>

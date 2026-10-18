@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Casa Normandía — Guía Digital & Concierge del Huésped</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -487,8 +488,9 @@
       </a>
       <button class="lang-toggle" onclick="toggleLanguage()">🌐 English</button>
     </div>
-    <div class="hero-brand">
-      <h1>🏡 Casa Normandía</h1>
+    <div class="hero-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+      <img src="favicon_dark_bg.svg" alt="Sello Casa Normandía" style="width: 36px; height: 36px;">
+      <h1 style="margin: 0; font-size: 1.35rem; font-family: 'Outfit', sans-serif;">Casa Normandía</h1>
       <span class="concierge-badge">Concierge Digital</span>
     </div>
     <p id="welcomeTxt">Tu guía digital de estancia independiente. Todo lo que necesitas saber en un solo lugar.</p>
@@ -497,7 +499,7 @@
     <div class="wifi-box">
       <div class="wifi-info">
         <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8;">Red Wi-Fi</div>
-        <div class="wifi-name">Normandia_Guests</div>
+        <div class="wifi-name">Casa Normandia / Casa Normandia Plus</div>
       </div>
       <button class="btn-wifi" onclick="copyWifi()">
         <span>📶 Copiar Clave</span>
@@ -769,10 +771,10 @@
     }
 
     function copyWifi() {
-      navigator.clipboard.writeText("Normandia2026*").then(() => {
+      navigator.clipboard.writeText("Manabries1975").then(() => {
         showToast(isEnglish ? "✅ Wi-Fi password copied!" : "✅ Clave Wi-Fi copiada");
       }).catch(() => {
-        showToast("Normandia2026*");
+        showToast("Manabries1975");
       });
     }
 

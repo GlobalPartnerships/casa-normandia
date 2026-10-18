@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap');
+      .dark-title {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 34px;
+        font-weight: 600;
+        fill: #FAF8F5;
+        letter-spacing: 1.5px;
+      }
+      .dark-sub {
+        font-family: 'Outfit', sans-serif;
+        font-size: 9.5px;
+        font-weight: 600;
+        fill: #D4A373;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+
+  <!-- ISOTIPO EN BLANCO CREMA / DORADO PARA FONDOS OSCUROS -->
+  <g transform="translate(10, 8)">
+    <path d="M 50 60 C 48 46 47 30 50 18" fill="none" stroke="#FAF8F5" stroke-width="3.8" stroke-linecap="round" />
+    <path d="M 48 32 C 30 27 18 36 20 45 C 30 49 44 41 48 32 Z" fill="#D4A373" />
+    <path d="M 50 18 C 54 5 68 -2 74 5 C 76 16 63 25 50 18 Z" fill="#FAF8F5" />
+
+    <path d="M 50 60 C 38 65 22 63 8 68" fill="none" stroke="#FAF8F5" stroke-width="2.6" stroke-linecap="round" />
+    <path d="M 50 60 C 62 65 78 63 92 68" fill="none" stroke="#FAF8F5" stroke-width="2.6" stroke-linecap="round" />
+    <path d="M 44 63 C 34 70 25 74 16 77" fill="none" stroke="#D4A373" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M 56 63 C 66 70 75 74 84 77" fill="none" stroke="#D4A373" stroke-width="1.8" stroke-linecap="round" />
+  </g>
+
+  <!-- LÍNEA SEPARADORA DORADA -->
+  <line x1="120" y1="20" x2="120" y2="85" stroke="#D4A373" stroke-width="1" opacity="0.8" />
+
+  <!-- TEXTO DERECHA EN CREMA Y ORO -->
+  <g transform="translate(140, 20)">
+    <text x="0" y="38" class="dark-title">Rooted Spaces</text>
+    <text x="2" y="60" class="dark-sub">CONSCIOUS HOSPITALITY</text>
+  </g>
+</svg>
