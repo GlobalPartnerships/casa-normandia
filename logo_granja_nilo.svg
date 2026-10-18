@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 110" width="100%" height="100%">
+  <!-- LOGO COMERCIAL DIRECTO GRANJA NILO (SIN ENDOSO ROOTED SPACES) -->
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;family=Outfit:wght@300;400;500;600&amp;display=swap');
@@ -11,16 +12,16 @@
       }
       .h-nilo-sub {
         font-family: 'Outfit', sans-serif;
-        font-size: 9px;
+        font-size: 9.5px;
         font-weight: 600;
         fill: #C86D51;
-        letter-spacing: 4px;
+        letter-spacing: 3.5px;
         text-transform: uppercase;
       }
     </style>
   </defs>
 
-  <!-- ISOTIPO IZQUIERDA: EL BROTE CON RAÍCES EXPANSIVAS -->
+  <!-- ISOTIPO IZQUIERDA: EL BROTE CON RAÍCES EXPANSIVAS (VERDE BOSQUE PROFUNDO) -->
   <g transform="translate(10, 8)">
     <path d="M 50 60 C 48 46 47 30 50 18" fill="none" stroke="#1B4332" stroke-width="3.8" stroke-linecap="round" />
     <path d="M 48 32 C 30 27 18 36 20 45 C 30 49 44 41 48 32 Z" fill="#1B4332" />
@@ -32,12 +33,12 @@
     <path d="M 56 63 C 66 70 75 74 84 77" fill="none" stroke="#1B4332" stroke-width="1.8" stroke-linecap="round" />
   </g>
 
-  <!-- LÍNEA SEPARADORA VERTICAL TENUE -->
-  <line x1="120" y1="20" x2="120" y2="85" stroke="#D4A373" stroke-width="1" opacity="0.6" />
+  <!-- LÍNEA SEPARADORA VERTICAL TENUE (DORADO ARENA) -->
+  <line x1="120" y1="20" x2="120" y2="85" stroke="#D4A373" stroke-width="1.2" opacity="0.75" />
 
-  <!-- TEXTO DERECHA -->
+  <!-- TEXTO DERECHA: MARCA COMERCIAL LIMPIA CON SUBTÍTULO TERRACOTA -->
   <g transform="translate(140, 20)">
     <text x="0" y="38" class="h-nilo-title">Granja Nilo</text>
-    <text x="2" y="60" class="h-nilo-sub">BY ROOTED SPACES · CUNDINAMARCA</text>
+    <text x="2" y="60" class="h-nilo-sub">AGROECOLOGÍA &amp; TIERRA VIVA · CUNDINAMARCA</text>
   </g>
 </svg>
