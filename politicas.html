@@ -1,160 +1,718 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Políticas & Reglas | Casa Normandía</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        rooted: { green: '#1B3022', terra: '#A45C40', cream: '#F5F2ED', sand: '#E8E4D9', dark: '#111827' }
-                    },
-                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Montserrat"', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Políticas &amp; Manual de Convivencia — Casa Normandía by Rooted Spaces</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  
+  <!-- Google Fonts: Playfair Display + Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --verde-bosque: #1B4332;
+      --verde-dark: #0F281E;
+      --dorado: #D4A373;
+      --dorado-suave: #F3E9DD;
+      --terracota: #C86D51;
+      --crema: #FAF8F5;
+      --crema-card: #FFFFFF;
+      --gris-texto: #4B5563;
+      --gris-oscuro: #1F2937;
+      --border-color: rgba(212, 163, 115, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--crema);
+      color: var(--gris-oscuro);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* Solid high-contrast navigation bar - NO dark gradient to preserve logo clarity */
+    .top-navbar {
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 12px 24px;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--gris-texto);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--terracota);
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      background: var(--dorado-suave);
+      padding: 3px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 163, 115, 0.5);
+    }
+
+    .lang-btn {
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      background: var(--verde-bosque);
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(27,67,50,0.2);
+    }
+
+    .lang-btn:not(.active) {
+      background: transparent;
+      color: var(--verde-bosque);
+    }
+
+    /* Hero Section - Airy, bright, editorial */
+    .hero-section {
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--crema) 100%);
+      border-bottom: 1px solid var(--border-color);
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--terracota);
+      background: rgba(200, 109, 81, 0.12);
+      padding: 4px 16px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--verde-bosque);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--gris-texto);
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+
+    /* Key Standards Pills */
+    .pills-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .standard-pill {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--verde-bosque);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 36px 20px 60px;
+    }
+
+    /* Category Tab Selector */
+    .tabs-wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 14px 18px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gris-texto);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--terracota);
+      background: #FFFAF8;
+    }
+
+    .tab-btn.active {
+      background: var(--verde-bosque);
+      color: #FFFFFF;
+      border-color: var(--verde-bosque);
+      box-shadow: 0 4px 14px rgba(27,67,50,0.25);
+    }
+
+    /* Policy Content Cards */
+    .policy-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .policy-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .policy-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .card-header-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #F3E9DD;
+    }
+
+    .card-icon-box {
+      width: 44px;
+      height: 44px;
+      background: var(--dorado-suave);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .card-title-group h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--verde-bosque);
+    }
+
+    .card-title-group p {
+      font-size: 12.5px;
+      color: var(--terracota);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .rule-block {
+      margin-bottom: 18px;
+    }
+
+    .rule-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .rule-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--verde-dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rule-block p {
+      font-size: 14px;
+      color: var(--gris-texto);
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+
+    .rule-list {
+      list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rule-list li {
+      font-size: 13.5px;
+      color: #374151;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .rule-list li::before {
+      content: "•";
+      color: var(--terracota);
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Warning / Alert Callouts */
+    .policy-callout {
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .policy-callout.warning {
+      background: #FFFBEB;
+      border-left: 4px solid #D97706;
+      color: #92400E;
+    }
+
+    .policy-callout.danger {
+      background: #FEF2F2;
+      border-left: 4px solid var(--terracota);
+      color: #991B1B;
+    }
+
+    .policy-callout.info {
+      background: #F0FDF4;
+      border-left: 4px solid var(--verde-bosque);
+      color: #166534;
+    }
+
+    /* Form Call to Action Banner */
+    .register-banner {
+      background: linear-gradient(135deg, var(--verde-bosque) 0%, var(--verde-dark) 100%);
+      color: #FFFFFF;
+      border-radius: 18px;
+      padding: 28px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      box-shadow: 0 8px 24px rgba(27,67,50,0.25);
+    }
+
+    .banner-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .banner-text p {
+      font-size: 13px;
+      color: #E2E8F0;
+      max-width: 540px;
+      line-height: 1.45;
+    }
+
+    .btn-register-cta {
+      background: var(--terracota);
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 14px rgba(200, 109, 81, 0.4);
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn-register-cta:hover {
+      transform: translateY(-2px);
+      background: #B3583D;
+    }
+
+    /* Host Contact Box */
+    .host-contact-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .host-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--verde-bosque);
+      margin-bottom: 3px;
+    }
+
+    .host-info p {
+      font-size: 12.5px;
+      color: var(--gris-texto);
+    }
+
+    .host-contacts-list {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--verde-bosque);
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--crema);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      color: var(--verde-bosque);
+    }
+
+    .contact-badge:hover {
+      color: var(--terracota);
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #9CA3AF;
+      background: #FFFFFF;
+    }
+  </style>
 </head>
-<body class="bg-rooted-cream font-sans text-rooted-dark min-h-screen">
+<body>
 
-    <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <img src="favicon.svg" alt="Sello Casa Normandía" class="w-8 h-8 group-hover:rotate-6 transition-transform">
-                    <div class="flex flex-col">
-                        <span class="font-serif text-lg font-bold text-rooted-green leading-none">Casa Normandía</span>
-                        <span class="text-[8px] font-sans font-semibold tracking-widest text-rooted-terra uppercase">Reglas & Convivencia</span>
-                    </div>
-                </a>
-                <a href="index.html" class="hidden sm:inline-block text-xs font-semibold text-gray-500 hover:text-rooted-terra transition-colors">← Volver al Inicio</a>
-                <a href="concierge.html" class="hidden sm:inline-block text-xs font-semibold text-rooted-terra hover:underline">🛎️ Guía Huésped</a>
-            </div>
-            <div class="flex items-center gap-3">
-                <a href="policies.html" class="text-xs text-gray-500 hover:text-rooted-terra hidden md:inline">Full English (Legal) ↗</a>
-                <div class="flex gap-1 bg-gray-100 p-1 rounded-full">
-                    <button onclick="changeLang('es')" id="es-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white">ES</button>
-                    <button onclick="changeLang('en')" id="en-btn" class="px-3 py-1 text-xs font-bold rounded-full bg-transparent text-gray-500">EN</button>
-                </div>
-            </div>
+  <!-- High-Contrast Top Navigation (Pure white/cream background so Sprout logo is 100% visible) -->
+  <nav class="top-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-link" title="Casa Normandía">
+        <img src="logo_casa_normandia.svg" alt="Casa Normandía by Rooted Spaces" class="brand-logo-img">
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">← Volver al Inicio</a>
+        <a href="concierge.html" class="nav-link">🛎️ Concierge Digital</a>
+        <a href="nilo.html" class="nav-link">🌿 Granja Nilo</a>
+        
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active">ES</button>
+          <a href="policies.html" class="lang-btn">EN</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <header class="py-16 text-center bg-rooted-green text-white">
-        <h1 id="hero-title" class="font-serif text-4xl mb-4">Manual de Convivencia</h1>
-        <p id="hero-sub" class="text-rooted-sand italic opacity-80">"Reglas claras para una estancia excepcional."</p>
-    </header>
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <span class="hero-badge">Estándares de Convivencia · Hospitalidad Urbana</span>
+    <h1 class="hero-title">Manual de Convivencia &amp; Políticas</h1>
+    <p class="hero-desc">Reglas claras y acuerdos de respeto mutuo para garantizar una estancia tranquila, silenciosa y confortable en todos nuestros estudios.</p>
+    
+    <div class="pills-bar">
+      <div class="standard-pill">🌙 Horario de Silencio: 10:00 PM – 7:00 AM</div>
+      <div class="standard-pill">🚭 100% Libre de Humo &amp; Fuego</div>
+      <div class="standard-pill">🐾 Protocolo Pet-Friendly Responsable</div>
+      <div class="standard-pill">⚖️ Registro Oficial TRA / Migración SIRE</div>
+    </div>
+  </header>
 
-    <main class="max-w-4xl mx-auto px-6 -mt-8 pb-20">
-        <!-- Tabs -->
-        <div class="flex bg-white rounded-t-2xl shadow-lg overflow-hidden border-b">
-            <button onclick="setTab('casa')" id="tab-casa" class="flex-1 py-5 font-bold text-sm border-b-4 border-rooted-terra bg-white">🏠 <span class="lang" data-es="LA CASA" data-en="THE HOUSE">LA CASA</span></button>
-            <button onclick="setTab('mascotas')" id="tab-mascotas" class="flex-1 py-5 font-bold text-sm text-gray-400 border-b-4 border-transparent">🐾 <span class="lang" data-es="MASCOTAS" data-en="PETS">MASCOTAS</span></button>
-            <button onclick="setTab('legal')" id="tab-legal" class="flex-1 py-5 font-bold text-sm text-gray-400 border-b-4 border-transparent">⚖️ <span class="lang" data-es="LEGAL" data-en="LEGAL">LEGAL</span></button>
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <!-- Category Tabs -->
+    <div class="tabs-wrapper">
+      <button class="tab-btn active" onclick="switchTab('casa', this)">
+        <span>🏠</span> La Casa &amp; Silencio
+      </button>
+      <button class="tab-btn" onclick="switchTab('mascotas', this)">
+        <span>🐾</span> Política de Mascotas
+      </button>
+      <button class="tab-btn" onclick="switchTab('seguridad', this)">
+        <span>🔑</span> Accesos &amp; Visitas
+      </button>
+      <button class="tab-btn" onclick="switchTab('legal', this)">
+        <span>⚖️</span> Registro Legal &amp; Datos
+      </button>
+    </div>
+
+    <!-- PANEL 1: LA CASA & SILENCIO -->
+    <section id="panel-casa" class="policy-panel active">
+      <div class="policy-card">
+        <div class="card-header-bar">
+          <div class="card-icon-box">🌙</div>
+          <div class="card-title-group">
+            <h2>Descanso Profundo &amp; Horario de Silencio</h2>
+            <p>10:00 PM a 7:00 AM · Prioridad de Convivencia</p>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-b-2xl shadow-lg">
-            
-            <!-- SECCIÓN: LA CASA -->
-            <div id="sec-casa" class="space-y-8">
-                <div class="border-b pb-6">
-                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Horario de Silencio" data-en="Quiet Hours">Horario de Silencio</h2>
-                    <p class="text-gray-600 mb-4 lang" data-es="10:00 PM – 8:00 AM. Se prioriza el descanso profundo." data-en="10:00 PM – 8:00 AM. Deep rest is prioritized."></p>
-                    <details class="group">
-                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Ver política extendida..." data-en="See extended policy..."></summary>
-                        <div class="mt-4 p-4 bg-rooted-sand/20 rounded-lg text-sm text-gray-600 lang" 
-                             data-es="El silencio absoluto aplica para pasillos y áreas comunes. Durante el día, mantenga un volumen moderado para facilitar el teletrabajo. El uso de electrodomésticos ruidosos después de las 10 PM está restringido." 
-                             data-en="Absolute silence applies to hallways and common areas. During the day, keep a moderate volume to facilitate remote work. Use of noisy appliances after 10 PM is restricted."></div>
-                    </details>
-                </div>
-                <div class="border-b pb-6">
-                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Cero Humo y Fuego" data-en="No Smoke & Fire">Cero Humo y Fuego</h2>
-                    <p class="text-gray-600 mb-4 lang" data-es="Prohibido fumar y encender velas/inciensos. Multa de $200.000 COP." data-en="Smoking and lighting candles/incense are prohibited. $200,000 COP fine."></p>
-                    <details class="group">
-                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Ver detalles de la sanción..." data-en="View penalty details..."></summary>
-                        <div class="mt-4 p-4 bg-rooted-sand/20 rounded-lg text-sm text-gray-600 lang"
-                             data-es="La multa cubre la limpieza profunda con ozono necesaria para eliminar olores y alérgenos. Incluye cigarrillos electrónicos. La reincidencia causará la terminación de la estancia."
-                             data-en="The fine covers the deep ozone cleaning necessary to remove odors and allergens. Includes e-cigarettes. Recurrence will result in termination of stay."></div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: MASCOTAS -->
-            <div id="sec-mascotas" class="hidden space-y-8">
-                <div class="bg-rooted-cream p-6 rounded-xl border-l-4 border-rooted-terra">
-                    <h2 class="font-bold text-xl mb-2 lang" data-es="Protocolo Pet-Friendly" data-en="Pet-Friendly Protocol">Protocolo Pet-Friendly</h2>
-                    <p class="text-gray-600 mb-4 lang" data-es="Aceptamos una mascota por estudio con un cargo de $50.000 COP por estancia." data-en="We accept one pet per studio with a $50,000 COP fee per stay."></p>
-                    <h3 class="font-bold text-sm uppercase text-rooted-green mb-2 lang" data-es="Reglas de Oro:" data-en="Golden Rules:">Reglas de Oro:</h3>
-                    <ul class="text-sm text-gray-600 space-y-2 list-disc pl-5 lang"
-                        data-es="<li>No subir a mobiliario.</li><li>Uso de correa en zonas comunes.</li>"
-                        data-en="<li>Do not climb on furniture.</li><li>Always use a leash in common areas.</li>"></ul>
-                    <details class="mt-4">
-                        <summary class="text-rooted-terra font-semibold text-sm cursor-pointer lang" data-es="Mascotas no convencionales..." data-en="Non-conventional pets..."></summary>
-                        <div class="mt-4 p-4 bg-white/50 rounded-lg text-sm text-gray-600 lang"
-                             data-es="Aves o roedores requieren aprobación previa. Deben permanecer en hábitats seguros. Cualquier daño a cables o mobiliario será cobrado."
-                             data-en="Birds or rodents require prior approval. They must stay in secure habitats. Any damage to cables or furniture will be charged."></div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- SECCIÓN: LEGAL -->
-            <div id="sec-legal" class="hidden space-y-8">
-                <div class="prose prose-sm max-w-none text-gray-600">
-                    <h2 class="font-serif text-2xl text-rooted-green mb-4 lang" data-es="Tratamiento de Datos" data-en="Data Privacy">Tratamiento de Datos</h2>
-                    <p class="mb-4 lang" 
-                       data-es="En cumplimiento de la Ley 1581 de 2012, Casa Normandía informa que recolecta sus datos con fines de registro legal ante Migración Colombia (SIRE)."
-                       data-en="In compliance with Law 1581 of 2012, Casa Normandía informs that it collects your data for legal registration purposes before Migración Colombia (SIRE)."></p>
-                    <div class="bg-gray-50 p-6 rounded-lg text-xs space-y-4">
-                        <p class="lang" data-es="<b>Derechos:</b> Actualizar y rectificar su información vía contacto.gpmfsas@gmail.com." data-en="<b>Rights:</b> Update and rectify your information via contacto.gpmfsas@gmail.com."></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Botón de Registro -->
-            <div class="mt-12 p-6 bg-rooted-green text-white rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
-                <div class="text-center md:text-left">
-                    <p class="font-bold lang" data-es="¡Paso Obligatorio!" data-en="Mandatory Step!">¡Paso Obligatorio!</p>
-                    <p class="text-xs opacity-80 lang" data-es="Diligencia el formulario para habilitar tus accesos." data-en="Complete the form to enable your access codes."></p>
-                </div>
-                <a href="https://forms.gle/JRicQokLquVgCDU97" target="_blank" class="bg-rooted-terra px-6 py-3 rounded-full font-bold text-sm lang" data-es="REGISTRARME" data-en="REGISTER">REGISTRARME</a>
-            </div>
+        <div class="rule-block">
+          <h3>Horario de Silencio Estricto</h3>
+          <p>Casa Normandía es un espacio de descanso y productividad pensado para profesionales, nómadas digitales y viajeros que valoran la serenidad. Entre las <strong>10:00 PM y las 7:00 AM</strong> rige el silencio absoluto en pasillos, accesos y estudios.</p>
+          <ul class="rule-list">
+            <li>Mantén el televisor, música y llamadas a volumen moderado en todo momento.</li>
+            <li>Evita cerrar puertas con fuerza o hacer ruidos de impacto en horas nocturnas.</li>
+            <li>Quedan estrictamente prohibidas fiestas, reuniones ruidosas o eventos dentro de los estudios.</li>
+          </ul>
         </div>
-    </main>
 
-    <script>
-        function setTab(name) {
-            ['casa', 'mascotas', 'legal'].forEach(s => {
-                document.getElementById('sec-' + s).classList.add('hidden');
-                document.getElementById('tab-' + s).classList.replace('border-rooted-terra', 'border-transparent');
-                document.getElementById('tab-' + s).classList.replace('text-rooted-green', 'text-gray-400');
-            });
-            document.getElementById('sec-' + name).classList.remove('hidden');
-            document.getElementById('tab-' + name).classList.replace('border-transparent', 'border-rooted-terra');
-            document.getElementById('tab-' + name).classList.replace('text-gray-400', 'text-rooted-green');
-        }
+        <div class="policy-callout danger">
+          <strong>🚭 Política Estricta Cero Humo y Cero Fuego (Multa: $200.000 COP)</strong><br>
+          Está rotundamente prohibido fumar cigarrillos tradicionales, vapear (cigarrillos electrónicos), consumir tabaco o encender velas e inciensos en habitaciones, baños o áreas comunes. Cualquier infracción generará automáticamente un cobro de <strong>$200.000 COP</strong> para cubrir el tratamiento químico y de ozono necesario para desodorizar el estudio y proteger a huéspedes alérgicos.
+        </div>
 
-        function changeLang(lang) {
-            document.querySelectorAll('.lang').forEach(el => {
-                el.innerHTML = el.getAttribute('data-' + lang);
-            });
-            const btnEs = document.getElementById('es-btn'), btnEn = document.getElementById('en-btn');
-            const titles = { es: ["Manual de Convivencia", "Reglas claras."], en: ["House Manual", "Clear rules."] };
-            document.getElementById('hero-title').innerText = titles[lang][0];
-            document.getElementById('hero-sub').innerText = titles[lang][1];
-            if(lang === 'es') {
-                btnEs.className = "px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white";
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500";
-            } else {
-                btnEn.className = "px-3 py-1 text-xs font-bold rounded-full bg-rooted-terra text-white";
-                btnEs.className = "px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-500";
-            }
-        }
-        window.onload = () => changeLang('es');
-    </script>
+        <div class="rule-block">
+          <h3>Horarios de Check-in y Check-out</h3>
+          <ul class="rule-list">
+            <li><strong>Check-in:</strong> A partir de las <strong>3:00 PM</strong>. Si requieres llegada nocturna, avísanos con antelación para coordinar el acceso sin contratiempos.</li>
+            <li><strong>Check-out:</strong> Hasta las <strong>11:00 AM puntual</strong>. La puntualidad es indispensable para que nuestro equipo de camareras realice la desinfección y preparación del estudio para el siguiente huésped.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: MASCOTAS -->
+    <section id="panel-mascotas" class="policy-panel">
+      <div class="policy-card">
+        <div class="card-header-bar">
+          <div class="card-icon-box">🐾</div>
+          <div class="card-title-group">
+            <h2>Protocolo Pet-Friendly Responsable</h2>
+            <p>Convivencia Armónica con Nuestros Amigos de 4 Patas</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <p>En Casa Normandía acogemos con gusto a tu perro o gato bajo un acuerdo de tenencia responsable para salvaguardar la tranquilidad y la higiene de toda la comunidad:</p>
+          
+          <div class="policy-callout info">
+            <strong>Tarifa de Aseo Profundo:</strong> Se aplica un cargo único de <strong>$50.000 COP</strong> por estancia para la desinfección e higienización hipoalergénica especializada al salir. Máximo 1 mascota por estudio previa notificación.
+          </div>
+
+          <h3>Reglas de Oro para Mascotas</h3>
+          <ul class="rule-list">
+            <li><strong>Siempre con correa:</strong> Tu perro debe transitar siempre con correa en pasillos, escaleras y áreas comunes de la casa.</li>
+            <li><strong>Cuidado del mobiliario:</strong> Por respeto higiénico con futuros huéspedes alérgicos, no permitas que tu mascota suba a camas, sábanas o sofás. Trae su camita o manta propia.</li>
+            <li><strong>Paseos exteriores:</strong> Las necesidades fisiológicas deben realizarse siempre fuera de la casa. Recoge inmediatamente sus desechos.</li>
+            <li><strong>Supervisión constante:</strong> No dejes a tu mascota sola en el estudio si suele llorar, ladrar o sufrir ansiedad por separación.</li>
+          </ul>
+        </div>
+
+        <div class="policy-callout warning">
+          <strong>⚠️ Prohibición de Fauna Silvestre o Animales Exóticos:</strong> Por normativa ambiental de Colombia y seguridad de los huéspedes, no se permite el ingreso de aves silvestres, reptiles, arácnidos o especies no convencionales.
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: ACCESOS & SEGURIDAD -->
+    <section id="panel-seguridad" class="policy-panel">
+      <div class="policy-card">
+        <div class="card-header-bar">
+          <div class="card-icon-box">🔑</div>
+          <div class="card-title-group">
+            <h2>Seguridad, Visitas &amp; Cerraduras</h2>
+            <p>Tranquilidad y Privacidad para Todos</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <h3>Puerta Principal &amp; Cerraduras</h3>
+          <p>Para la seguridad de todos los huéspedes, la puerta exterior de la casa debe mantenerse <strong>siempre cerrada</strong>. Al entrar o salir, empuja suavemente y confirma que el pestillo y la cerradura hayan encajado a fondo.</p>
+        </div>
+
+        <div class="rule-block">
+          <h3>Política de Visitas</h3>
+          <ul class="rule-list">
+            <li>Solo se autoriza el pernocte a los huéspedes debidamente registrados en la reserva original.</li>
+            <li>Visitas diurnas puntuales de trabajo están permitidas previa consulta, manteniendo un comportamiento discreto y respetuoso.</li>
+            <li>No se permite el ingreso de personas ajenas en horario nocturno ni fiestas de ningún tipo.</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <h3>Check-out y Entrega de Llaves</h3>
+          <p>Al finalizar tu estancia, verifica no olvidar cargadores ni documentos personales. Cierra la puerta de tu estudio y <strong>deposita las llaves en el buzón metálico</strong> ubicado junto a la puerta principal de salida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: LEGAL & SIRE -->
+    <section id="panel-legal" class="policy-panel">
+      <div class="policy-card">
+        <div class="card-header-bar">
+          <div class="card-icon-box">⚖️</div>
+          <div class="card-title-group">
+            <h2>Cumplimiento Legal &amp; Protección de Datos</h2>
+            <p>Normativa Nacional de Turismo · Leyes Colombianas</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <h3>Tarjeta de Registro de Alojamiento (TRA) &amp; Migración Colombia</h3>
+          <p>En cumplimiento de la legislación colombiana (Ley 300 de 1996, Ley 2068 de 2020 y Decreto 2590 de 2009), todo establecimiento de hospedaje e independiente debe registrar la identidad de cada viajero nacional y extranjero.</p>
+          <ul class="rule-list">
+            <li><strong>Viajeros Extranjeros:</strong> Se reporta de forma obligatoria al sistema <strong>SIRE de Migración Colombia</strong> dentro de las primeras 24 horas posteriores al ingreso.</li>
+            <li><strong>Viajeros Nacionales:</strong> Deben presentar cédula de ciudadanía o documento legal vigente para su registro en la tarjeta digital TRA.</li>
+            <li><strong>Menores de Edad:</strong> Deben estar acompañados por sus padres o presentar autorización legal autenticada conforme al Código de Infancia y Adolescencia (Ley 1098 de 2006). Rechazamos tajantemente toda forma de explotación sexual de menores (Ley 679 de 2001).</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <h3>Protección de Datos Personales (Ley 1581 de 2012)</h3>
+          <p>Tus datos personales y copias de documentos son tratados con estricta confidencialidad exclusivamente con fines de registro legal turístico, facturación y comunicación de tu estancia. Puedes ejercer tus derechos de actualización o rectificación escribiéndonos a <strong>reservas@casanormandia.co</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mandatory Registration CTA Banner -->
+    <div class="register-banner">
+      <div class="banner-text">
+        <h3>📝 Registro Digital de Huéspedes Obligatorio</h3>
+        <p>Para habilitar tus accesos y cumplir con la normativa de Migración Colombia y el Ministerio de Turismo, por favor completa tu ficha antes de tu llegada.</p>
+      </div>
+      <a href="https://forms.gle/JRicQokLquVgCDU97" target="_blank" rel="noopener" class="btn-register-cta">
+        <span>Completar Ficha de Registro</span> →
+      </a>
+    </div>
+
+    <!-- Host Contact Card (Official hospitality team - No family privacy breaches) -->
+    <div class="host-contact-card">
+      <div class="host-info">
+        <h4>Equipo de Atención &amp; Concierge · Casa Normandía</h4>
+        <p>Hospitalidad Urbana Independiente · Carrera 71 # 53-72, Bogotá D.C.</p>
+      </div>
+      <div class="host-contacts-list">
+        <a href="https://wa.me/573102418140" target="_blank" class="contact-badge">
+          <span>💬 WhatsApp: +57 310 241 8140</span>
+        </a>
+        <a href="mailto:reservas@casanormandia.co" class="contact-badge">
+          <span>✉️ reservas@casanormandia.co</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <p>&copy; 2026 Casa Normandía by Rooted Spaces · Hospitalidad Urbana &amp; Ecosistemas Regenerativos.</p>
+  </footer>
+
+  <script>
+    function switchTab(tabId, btn) {
+      // Deactivate all tabs
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.policy-panel').forEach(p => p.classList.remove('active'));
+      
+      // Activate selected
+      btn.classList.add('active');
+      const targetPanel = document.getElementById('panel-' + tabId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    }
+  </script>
+
 </body>
 </html>
