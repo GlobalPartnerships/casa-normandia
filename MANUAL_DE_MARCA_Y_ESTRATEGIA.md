@@ -80,24 +80,50 @@ graph TD
 
 Todos los archivos oficiales aprobados se encuentran centralizados en el directorio [`07_assets/`](file:///c:/Development/casa-normandia-ops/07_assets/):
 
-### Catálogo de Archivos Oficiales en `07_assets/`
+### Catálogo Modular de Archivos Oficiales en `07_assets/`
 
+#### 🏨 Módulo 01: Casa Normandía (Bogotá Urbano)
 | Archivo Vectorial SVG | Tipología | Uso Principal |
 | :--- | :---: | :--- |
-| [`isotipo_sprout_solo.svg`](file:///c:/Development/casa-normandia-ops/07_assets/isotipo_sprout_solo.svg) | **Isotipo Maestro (Claro)** | Favicon web 32x32, foto perfil WhatsApp Concierge, sello de cera. |
-| [`isotipo_sprout_solo_dark_bg.svg`](file:///c:/Development/casa-normandia-ops/07_assets/isotipo_sprout_solo_dark_bg.svg) | **Isotipo Maestro (Oscuro)** | Aplicaciones sobre Verde Bosque `#1B4332`, bordados dorados. |
-| [`logo_rooted_spaces_sprout.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_rooted_spaces_sprout.svg) | **Rooted Vertical** | Portadas, sellos de presentación institucional, papelería corporativa. |
-| [`logo_rooted_spaces_horizontal.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_rooted_spaces_horizontal.svg) | **Rooted Horizontal** | Barra de navegación web (Navbar), firmas de correo, membretes. |
-| [`logo_rooted_spaces_dark_bg.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_rooted_spaces_dark_bg.svg) | **Rooted Nocturno** | Fondos oscuros, menús de noche, packaging de lujo. |
-| [`logo_casa_normandia_sprout_vertical.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_casa_normandia_sprout_vertical.svg) | **Casa Normandía Vertical** | Cartelería de fachada, carpetas de bienvenida en habitación. |
-| [`logo_casa_normandia_sprout_horizontal.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_casa_normandia_sprout_horizontal.svg) | **Casa Normandía Horizontal** | Navbar del sitio web, cotizaciones directas a empresas, contratos. |
-| [`logo_casa_normandia_sprout_dark_bg.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_casa_normandia_sprout_dark_bg.svg) | **Casa Normandía Nocturno** | Llaveros grabados en madera oscura, avisos exteriores nocturnos. |
-| [`logo_granja_nilo_sprout_vertical.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_granja_nilo_sprout_vertical.svg) | **Granja Nilo Vertical** | Etiquetas de botica botánica, vinagres vivos, cacao y café de finca. |
-| [`logo_granja_nilo_sprout_horizontal.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_granja_nilo_sprout_horizontal.svg) | **Granja Nilo Horizontal** | Encabezados de retiros, folletos turísticos, web de la granja. |
-| [`logo_granja_nilo_sprout_dark_bg.svg`](file:///c:/Development/casa-normandia-ops/07_assets/logo_granja_nilo_sprout_dark_bg.svg) | **Granja Nilo Nocturno** | Señalética rústica de madera en finca. |
-| [`wordmark_rooted_spaces.svg`](file:///c:/Development/casa-normandia-ops/07_assets/wordmark_rooted_spaces.svg) | **Wordmark Rooted** | Contratos de holding, firmas legales de alta gama. |
-| [`wordmark_casa_normandia.svg`](file:///c:/Development/casa-normandia-ops/07_assets/wordmark_casa_normandia.svg) | **Wordmark Normandía** | Contratos de arrendamiento legal, facturas Dian, pie de página. |
-| [`wordmark_granja_nilo.svg`](file:///c:/Development/casa-normandia-ops/07_assets/wordmark_granja_nilo.svg) | **Wordmark Granja Nilo** | Remisiones agrícolas, sellos notariales y empaques minimalistas. |
+| [`01_casa_normandia/logo_casa_normandia_endosado_terracota.svg`](file:///c:/Development/casa-normandia-ops/07_assets/01_casa_normandia/logo_casa_normandia_endosado_terracota.svg) | **Oficial Endosado (Terracota)** | Logotipo oficial con divisor dorado y subtítulo en terracota (`BY ROOTED SPACES · BOGOTÁ`). |
+| [`01_casa_normandia/logo_casa_normandia_directo.svg`](file:///c:/Development/casa-normandia-ops/07_assets/01_casa_normandia/logo_casa_normandia_directo.svg) | **Directo Comercial (95%)** | Brote + Casa Normandía + `HOSPITALIDAD URBANA · BOGOTÁ` (para reservas y material rápido). |
+| [`01_casa_normandia/logo_casa_normandia_puro.svg`](file:///c:/Development/casa-normandia-ops/07_assets/01_casa_normandia/logo_casa_normandia_puro.svg) | **Puro Minimalista** | Brote + `Casa Normandía` a secas. |
+
+#### 🌿 Módulo 02: Granja Nilo (Cundinamarca Rural)
+| Archivo Vectorial SVG | Tipología | Uso Principal |
+| :--- | :---: | :--- |
+| [`02_granja_nilo/logo_granja_nilo_endosado_terracota.svg`](file:///c:/Development/casa-normandia-ops/07_assets/02_granja_nilo/logo_granja_nilo_endosado_terracota.svg) | **Oficial Endosado (Terracota)** | Logotipo oficial con divisor dorado y subtítulo en terracota (`BY ROOTED SPACES · CUNDINAMARCA`). |
+| [`02_granja_nilo/logo_granja_nilo_directo.svg`](file:///c:/Development/casa-normandia-ops/07_assets/02_granja_nilo/logo_granja_nilo_directo.svg) | **Directo Comercial (95%)** | Brote + Granja Nilo + `AGROECOLOGÍA & SANTUARIO RURAL · CUNDINAMARCA`. |
+| [`02_granja_nilo/logo_granja_nilo_puro.svg`](file:///c:/Development/casa-normandia-ops/07_assets/02_granja_nilo/logo_granja_nilo_puro.svg) | **Puro Minimalista** | Brote + `Granja Nilo` a secas. |
+
+#### 🏛️ Módulo 03: Rooted Spaces (Holding Matriz & Futuro)
+| Archivo Vectorial SVG | Tipología | Uso Principal |
+| :--- | :---: | :--- |
+| [`03_rooted_spaces/logo_rooted_spaces_matriz.svg`](file:///c:/Development/casa-normandia-ops/07_assets/03_rooted_spaces/logo_rooted_spaces_matriz.svg) | **Holding Matriz Vertical** | Presentación institucional y gobernanza. |
+| [`03_rooted_spaces/logo_rooted_spaces_horizontal.svg`](file:///c:/Development/casa-normandia-ops/07_assets/03_rooted_spaces/logo_rooted_spaces_horizontal.svg) | **Holding Matriz Horizontal** | Documentos institucionales del holding. |
+
+#### 📱 Módulo 04: Favicons e Íconos (Brote Maestro / Sprout)
+| Archivo | Formato | Resolución / Color |
+| :--- | :---: | :--- |
+| [`04_favicons_e_iconos/sprout_green.svg`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_green.svg) | SVG | Vectorial Verde Bosque `#1B4332`. |
+| [`04_favicons_e_iconos/sprout_green_512.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_green_512.png) | PNG | 512×512 px transparente (Verde). |
+| [`04_favicons_e_iconos/sprout_green_192.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_green_192.png) | PNG | 192×192 px transparente (Verde). |
+| [`04_favicons_e_iconos/sprout_green_32.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_green_32.png) | PNG | 32×32 px transparente (Verde). |
+| [`04_favicons_e_iconos/sprout_white.svg`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_white.svg) | SVG | Vectorial Blanco Puro `#FFFFFF` para fondos oscuros. |
+| [`04_favicons_e_iconos/sprout_white_512.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_white_512.png) | PNG | 512×512 px transparente (Blanco). |
+| [`04_favicons_e_iconos/sprout_white_192.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_white_192.png) | PNG | 192×192 px transparente (Blanco). |
+| [`04_favicons_e_iconos/sprout_white_32.png`](file:///c:/Development/casa-normandia-ops/07_assets/04_favicons_e_iconos/sprout_white_32.png) | PNG | 32×32 px transparente (Blanco). |
+
+---
+
+### 📜 Política Canónica: Dónde SÍ y Dónde NUNCA usar "Rooted Spaces"
+
+| ❌ DÓNDE NUNCA SE USA (Prohibición Estricta) | ✅ DÓNDE EXCLUSIVAMENTE SE USA (Prestigio & Calidad) |
+| :--- | :--- |
+| **Navbars / Headers Web:** Prohibido apretar *"by Rooted Spaces"* en la barra de menú superior. La web debe decir limpia: **Casa Normandía** \| *Hospitalidad Urbana*. | **Nota Conceptual de Pie de Página:**<br>«🌿 *Iniciativa de restauración ecológica y bienestar Rooted Spaces.*<br>© 2026 Casa Normandía. Operado bajo principios de GPMF.» |
+| **Portales y OTAs (Airbnb, Booking, VRBO):** En los listings de venta rápida se comercializa 100% como **Casa Normandía**. | **Dossier Familiar y Gobernanza:** Para explicar a la familia fundadora la visión patrimonial a futuro. |
+| **Volantes y Folletos Rápidos:** Se usa el logotipo directo limpio sin mención de paraguas. | **Bioproductos de Granja Nilo:** Vinagres vivos, quesos de finca, tinturas botánicas y aromáticas (*«Cosechado bajo principios Rooted Spaces»*). |
+| **Redes Sociales:** Cero perfiles independientes de Rooted Spaces mientras no haya cabañas de hospedaje activo en Nilo. | **Sellos de Calidad Futura:** Se activará formalmente cuando la finca tenga ocupación continua. |
 
 ---
 
@@ -201,22 +227,22 @@ Cada uno de los 5 espacios tiene un **perfil de cliente y propuesta de valor ún
 
 ```mermaid
 graph LR
-    E1["Studio 201 (37m²)"] --- H1["Tina Profunda + Cocina Grande c/ Campana"]
-    E2["Studio 202 (20m²)"] --- H2["Hub Ejecutivo: Mesa + Baño + TV (Sin Cocina)"]
-    E3["Studio 203 (21m²)"] --- H3["Cocina Compacta + Gran Luz Natural Exterior"]
-    E4["Studio 204 (22m²)"] --- H4["Aislamiento Acústico Interior + Cocina Compacta"]
-    E5["Espacio 101 (55m²)"] --- H5["Suite VIP Planta Baja + Cocina Grande c/ Campana + Tina"]
+    E1["Studio 201"] --- H1["Tina Profunda + Cocina Grande c/ Campana"]
+    E2["Studio 202"] --- H2["Hub Ejecutivo: Mesa + Baño + TV (Sin Cocina)"]
+    E3["Studio 203"] --- H3["Cocina Compacta + Gran Luz Natural Exterior"]
+    E4["Studio 204"] --- H4["Aislamiento Acústico Interior + Cocina Compacta"]
+    E5["Espacio 101"] --- H5["Suite VIP Planta Baja + Cocina Grande c/ Campana + Tina"]
 ```
 
 ### Ficha Maestra de Espacios
 
-| Código | Nombre Comercial | Área | Perfil del Huésped | Tipo de Cocina | Campana | Tina | TV / Streaming |
+| Código | Nombre Comercial | Tipología | Perfil del Huésped | Tipo de Cocina | Campana | Tina | TV / Streaming |
 | :---: | :--- | :---: | :--- | :--- | :---: | :---: | :---: |
-| **201** | **The Garden Suite** | 37 m² | Estancias largas, parejas, bienestar | **Cocina grande completa** | **SÍ** | **SÍ** (Profunda) | Smart TV / Roku |
-| **202** | **The Professional's Hub** | 20 m² | Nómadas solos, ejecutivos de tránsito | **NO TIENE COCINA** | No | No | Smart TV / Roku |
-| **203** | **Executive Comfort** | 21 m² | Teletrabajadores que valoran luz natural | **Cocina compacta** | No | No | Smart TV / Roku |
-| **204** | **The Quiet Sanctuary** | 22 m² | Trabajo profundo, sueño ligero sin ruido | **Cocina compacta** | No | No | Smart TV / Roku |
-| **101** | **Espacio 101 VIP Suite** | 55 m² | Familias, directivos, movilidad reducida | **Cocina grande completa** | **SÍ** | **SÍ** (Clásica) | Smart TV / Roku |
+| **201** | **The Garden Suite** | Estudio Amplio | Estancias largas, parejas, bienestar | **Cocina grande completa** | **SÍ** | **SÍ** (Profunda) | Smart TV / Roku |
+| **202** | **The Professional's Hub** | Habitación Privada | Nómadas solos, ejecutivos de tránsito | **NO TIENE COCINA** | No | No | Smart TV / Roku |
+| **203** | **Executive Comfort** | Estudio con Balcón/Luz | Teletrabajadores que valoran luz natural | **Cocina compacta** | No | No | Smart TV / Roku |
+| **204** | **The Quiet Sanctuary** | Estudio Interior | Trabajo profundo, sueño ligero sin ruido | **Cocina compacta** | No | No | Smart TV / Roku |
+| **101** | **Espacio 101 VIP Suite** | Suite Planta Baja | Familias, directivos, movilidad reducida | **Cocina grande completa** | **SÍ** | **SÍ** (Clásica) | Smart TV / Roku |
 
 > [!CAUTION]
 > **Regla de Oro de las Cocinas y Campanas:**

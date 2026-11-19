@@ -6,6 +6,19 @@
     <title>Casa Normandía | Estancias Ejecutivas cerca al Aeropuerto El Dorado</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     
+    <!-- PWA Android / Chrome -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1B3022">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA iOS / Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Casa Normandía">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -131,8 +144,9 @@
                 
                 <a href="#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ</a>
                 <a href="nilo.html" class="hover:text-rooted-terra transition-colors">NILO</a>
+                <a href="galeria.html" class="hover:text-rooted-terra transition-colors font-semibold text-rooted-terra">GALERÍA</a>
                 <a href="politicas.html#reglas-casa" class="hover:text-rooted-terra transition-colors">REGLAS</a>
-                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">🛎️ GUÍA HUÉSPED</a>
+                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">GUÍA HUÉSPED</a>
                 <button onclick="scrollToBooking()" class="bg-rooted-terra text-white px-6 py-2 rounded-full hover:bg-rooted-green transition-colors shadow-lg transform hover:-translate-y-0.5">
                     Reservar Ahora
                 </button>
@@ -150,8 +164,9 @@
             </div>
             <a href="#bogota" onclick="toggleMobileMenu()" class="block hover:text-rooted-terra">BOGOTÁ</a>
             <a href="nilo.html" class="block hover:text-rooted-terra">NILO</a>
+            <a href="galeria.html" class="block hover:text-rooted-terra font-semibold text-rooted-terra">📸 GALERÍA FOTOGRÁFICA</a>
             <a href="politicas.html#reglas-casa" class="block hover:text-rooted-terra">REGLAS</a>
-            <a href="concierge.html" class="block text-rooted-terra font-bold">🛎️ GUÍA DIGITAL DEL HUÉSPED</a>
+            <a href="concierge.html" class="block text-rooted-terra font-bold">Concierge Digital DEL HUÉSPED</a>
             <button onclick="scrollToBooking(); toggleMobileMenu();" class="w-full bg-rooted-terra text-white py-2 rounded-full">
                 Reservar Ahora
             </button>
@@ -250,9 +265,9 @@
                         Ofrecemos estudios privados con acceso a jardín, cocinas equipadas y lavandería.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">✨ Jardín Privado</span>
-                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">🛡️ Barrio Seguro</span>
-                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">🧺 Lavandería</span>
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">Jardín Interior</span>
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">Entorno Residencial</span>
+                        <span class="bg-white px-4 py-2 rounded shadow-sm text-sm font-medium">Zona de Lavandería</span>
                     </div>
                 </div>
                 <div class="md:w-1/2 flex items-center justify-center">
@@ -274,19 +289,19 @@
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
                     <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
-                        <span class="text-base">📶</span>
+                        <svg class="w-4 h-4 fill-current inline-block text-rooted-terra" viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4zm0 2.9c3.75 0 7.15 1.43 9.72 3.77L12 19.42 2.28 10.67C4.85 8.33 8.25 6.9 12 6.9zm0 4.1a6.97 6.97 0 0 0-4.95 2.05L12 18.15l4.95-5.1A6.97 6.97 0 0 0 12 11z"/></svg>
                         <span>Fibra 900 Mbps</span>
                     </div>
                     <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
-                        <span class="text-base">📺</span>
+                        <svg class="w-4 h-4 fill-current inline-block text-rooted-terra" viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
                         <span>Smart TV / Roku</span>
                     </div>
                     <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
-                        <span class="text-base">🚿</span>
+                        <svg class="w-4 h-4 fill-current inline-block text-rooted-terra" viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5zm-3 5a3 3 0 0 1 6 0v3H9V7z"/></svg>
                         <span>Agua Caliente Continua</span>
                     </div>
                     <div class="flex items-center justify-center gap-2 p-2 bg-rooted-cream/60 rounded-lg text-xs md:text-sm font-medium text-gray-700">
-                        <span class="text-base">🌿</span>
+                        <svg class="w-4 h-4 fill-current inline-block text-rooted-green" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
                         <span>Ambiente Seguro & Silencioso</span>
                     </div>
                 </div>
@@ -313,21 +328,21 @@
                     </p>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3">
-                            <span class="text-rooted-terra text-xl">🌿</span>
+                            <span class="text-xs uppercase tracking-widest text-rooted-terra font-bold">01</span>
                             <div>
                                 <strong class="block text-rooted-cream">La Botica Natural</strong>
                                 <span class="text-sm text-rooted-cream/60">Vinagres orgánicos y tinturas naturales.</span>
                             </div>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-rooted-terra text-xl">🥚</span>
+                            <span class="text-xs uppercase tracking-widest text-rooted-terra font-bold">02</span>
                             <div>
                                 <strong class="block text-rooted-cream">Gallinas Libres</strong>
                                 <span class="text-sm text-rooted-cream/60">Recolección de huevos de pastoreo.</span>
                             </div>
                         </li>
                         <li class="flex items-center gap-3">
-                            <span class="text-rooted-terra text-xl">🍊</span>
+                            <span class="text-xs uppercase tracking-widest text-rooted-terra font-bold">03</span>
                             <div>
                                 <strong class="block text-rooted-cream">Cosecha Limpia</strong>
                                 <span class="text-sm text-rooted-cream/60">Frutas cítricas y huerta orgánica.</span>
@@ -362,18 +377,18 @@
                 <!-- Calculator Controls -->
                 <div class="w-full lg:w-1/3 bg-rooted-cream p-8 rounded-2xl shadow-sm border border-rooted-terra/10">
                     <h3 class="text-xl font-bold text-rooted-green mb-6 flex items-center gap-2">
-                        <span>🧮</span> Cotizador
+                        Cotizador de Tarifas Directas
                     </h3>
                     
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Selecciona tu Espacio</label>
                             <select id="studioSelect" class="w-full p-3 rounded-lg border border-gray-300 focus:border-rooted-terra focus:ring-1 focus:ring-rooted-terra outline-none bg-white">
-                                <option value="201" data-price="250000">STUDIO 201: The Garden Suite (37m²)</option>
-                                <option value="202" data-price="125000">STUDIO 202: The Professional's Hub (20m²)</option>
-                                <option value="203" data-price="170000">STUDIO 203: Executive Comfort (21m²)</option>
-                                <option value="204" data-price="160000">STUDIO 204: The Quiet Sanctuary (22m²)</option>
-                                <option value="101" data-price="380000">ESPACIO 101 VIP: Executive Suite (55m²)</option>
+                                <option value="201" data-price="250000">STUDIO 201: The Garden Suite</option>
+                                <option value="202" data-price="125000">STUDIO 202: The Professional's Hub</option>
+                                <option value="203" data-price="170000">STUDIO 203: Executive Comfort</option>
+                                <option value="204" data-price="160000">STUDIO 204: The Quiet Sanctuary</option>
+                                <option value="101" data-price="380000">ESPACIO 101 VIP: Executive Suite</option>
                             </select>
                         </div>
 
@@ -399,15 +414,15 @@
                             <!-- Trust Badges -->
                             <div class="mt-4 pt-3 border-t border-gray-200/60 space-y-2 text-xs text-gray-600">
                                 <div class="flex items-center gap-2">
-                                    <span class="text-rooted-terra font-bold text-sm">🛡️</span>
+                                    •
                                     <span><strong>Sin comisiones:</strong> Ahorras 15% reservando directo</span>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-rooted-terra font-bold text-sm">📶</span>
+                                    •
                                     <span><strong>Conectividad:</strong> Fibra 900 Mbps para teletrabajo</span>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <span class="text-rooted-terra font-bold text-sm">🔑</span>
+                                    •
                                     <span><strong>Llegada flexible:</strong> Bienvenida personal o acceso coordinado</span>
                                 </div>
                             </div>
@@ -426,7 +441,7 @@
                             <canvas id="priceComparisonChart"></canvas>
                         </div>
                         <div class="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600">
-                            <p><strong>💡</strong> Nota:</strong> Las plataformas (Airbnb/Booking) cobran tarifas de servicio tanto al anfitrión como al huésped. Reservando directo en <strong>Casa Normandía</strong>, eliminamos intermediarios.</p>
+                            <p><strong>Transparencia Directa:</strong> Las plataformas (Airbnb/Booking) cobran tarifas de servicio tanto al anfitrión como al huésped. Reservando directo en <strong>Casa Normandía</strong>, eliminamos intermediarios.</p>
                         </div>
                     </div>
                 </div>
@@ -533,8 +548,8 @@
             {
                 id: '201',
                 name: 'STUDIO 201: The Garden Suite',
-                tagline: '🛁 Tina Clásica Profunda • 🍳 Cocina Grande con Campana',
-                area: '37m²',
+                tagline: 'Tina Clásica Profunda • Cocina Grande con Campana',
+                area: 'Estudio Amplio',
                 price: 250000,
                 image: 'assets/estudio201.jpg',
                 features: ['Cama Doble', 'Cocina Grande', 'Campana Extractora', 'Tina Clásica', 'Smart TV / Roku'],
@@ -543,8 +558,8 @@
             {
                 id: '202',
                 name: 'STUDIO 202: The Professional\'s Hub',
-                tagline: '💼 Habitación Ejecutiva • 📺 Smart TV / Roku',
-                area: '20m²',
+                tagline: 'Suite Ejecutiva • Smart TV & Escritorio',
+                area: 'Habitación Privada',
                 price: 125000,
                 image: 'assets/estudio202.jpg',
                 features: ['Mesa de Trabajo', 'Baño Privado', 'Smart TV / Roku', 'Sin Cocina'],
@@ -553,8 +568,8 @@
             {
                 id: '203',
                 name: 'STUDIO 203: Executive Comfort',
-                tagline: '🍳 Cocina Compacta • ☀️ Gran Luz Natural',
-                area: '21m²',
+                tagline: 'Cocina Compacta • Gran Luz Natural',
+                area: 'Estudio con Balcón',
                 price: 170000,
                 image: 'assets/estudio203.jpg',
                 features: ['Cama Doble Premium', 'Cocina Compacta', 'Mesa de Trabajo', 'Smart TV / Roku'],
@@ -563,8 +578,8 @@
             {
                 id: '204',
                 name: 'STUDIO 204: The Quiet Sanctuary',
-                tagline: '🤫 Máximo Silencio Interior • 🍳 Cocina Compacta',
-                area: '22m²',
+                tagline: 'Máximo Silencio Interior • Cocina Compacta',
+                area: 'Estudio Interior',
                 price: 160000,
                 image: 'assets/estudio204.jpg',
                 features: ['Ubicación Interior', 'Máximo Silencio', 'Cocina Compacta', 'Smart TV / Roku'],
@@ -573,11 +588,11 @@
             {
                 id: '101',
                 name: 'ESPACIO 101 VIP: Executive Suite',
-                tagline: '🛋️ Suite Planta Baja (55m²) • 🍳 Cocina Grande con Campana',
-                area: '55m²',
+                tagline: 'Suite Planta Baja • Cocina Grande con Campana',
+                area: 'Suite Planta Baja',
                 price: 380000,
                 image: 'assets/espacio101.jpg',
-                features: ['Planta Baja (55m²)', 'Cocina Grande', 'Campana Extractora', 'Tina Tradicional', 'Smart TV / Roku'],
+                features: ['Planta Baja', 'Cocina Grande', 'Campana Extractora', 'Tina Tradicional', 'Smart TV / Roku'],
                 desc: 'Nuestra suite más amplia e independiente en planta baja. Cuenta con cocina grande completa y campana extractora, tina tradicional, Smart TV/Roku y acabados de primer nivel.'
             }
         ];
@@ -787,6 +802,17 @@
             document.getElementById('studioSelect').addEventListener('change', updateCalculator);
             document.getElementById('nightsRange').addEventListener('input', updateCalculator);
         });
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('[PWA] Service Worker activo en scope:', reg.scope))
+            .catch((err) => console.warn('[PWA] Error SW:', err));
+        });
+      }
     </script>
 </body>
 </html>

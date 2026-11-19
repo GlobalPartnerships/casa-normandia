@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Fotográfica Oficial | Casa Normandía & Granja Nilo</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- PWA Android / Chrome -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1B3022">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA iOS / Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Casa Normandía">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rooted: {
+                            green: '#1B3022',
+                            terra: '#A45C40',
+                            cream: '#F5F2ED',
+                            burgundy: '#630D16',
+                            sand: '#E8E4D9',
+                            dark: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F2ED;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #A45C40;
+            border-radius: 4px;
+        }
+
+        .gallery-card {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-rooted-cream text-rooted-dark font-sans antialiased selection:bg-rooted-terra selection:text-white min-h-screen flex flex-col">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-40 bg-rooted-cream/95 backdrop-blur-md border-b border-rooted-terra/20 py-4 shadow-sm">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="favicon.svg" alt="Sello Casa Normandía"
+                    class="w-9 h-9 group-hover:rotate-6 transition-transform">
+                <div class="flex flex-col">
+                    <span class="text-xl font-serif font-bold text-rooted-green tracking-tight leading-none">Casa
+                        Normandía</span>
+                    <span
+                        class="text-[9px] font-sans font-semibold tracking-widest text-rooted-terra uppercase">Showroom
+                        Fotográfico Oficial</span>
+                </div>
+            </a>
+
+            <div class="flex items-center space-x-3">
+                <a href="index.html"
+                    class="text-xs md:text-sm font-medium text-rooted-green hover:text-rooted-terra transition-colors flex items-center gap-1 bg-white/80 px-3 py-1.5 rounded-full border border-rooted-terra/20">
+                    ← <span>Volver a la Web</span>
+                </a>
+                <a href="https://wa.me/573156166760?text=Hola,%20vi%20la%20galer%C3%ADa%20y%20me%20gustar%C3%ADa%20consultar%20disponibilidad"
+                    target="_blank"
+                    class="bg-rooted-terra text-white text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full hover:bg-rooted-green transition-colors shadow">
+                    WhatsApp Concierge
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-rooted-green text-white py-12 px-6 text-center relative overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-10 bg-[radial-gradient(#F5F2ED_1px,transparent_1px)] [background-size:16px_16px]">
+        </div>
+        <div class="container mx-auto max-w-4xl relative z-10">
+            <span class="text-xs uppercase tracking-[0.25em] text-rooted-sand/90 font-semibold mb-2 block">Catálogo
+                Visual de Alta Resolución</span>
+            <h1 class="text-3xl md:text-5xl font-serif font-bold mb-4">Galería de Espacios y Naturaleza</h1>
+            <p class="text-rooted-sand/80 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                Navega cada apartamento independiente, comodidades y el santuario rural de Granja Nilo con la máxima
+                fidelidad y sin intermediarios.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filters & Search Toolbar -->
+    <section class="bg-white/80 border-b border-rooted-terra/20 sticky top-[69px] z-30 backdrop-blur-md py-4 px-6">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row gap-4 justify-between items-center">
+
+            <!-- Category Pills -->
+            <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="filterContainer">
+                <button onclick="filterCategory('all')" data-cat="all"
+                    class="filter-btn active bg-rooted-green text-white text-xs font-medium px-4 py-2 rounded-full transition-all shadow-sm">
+                    🌟 Todos (<span id="count-all">0</span>)
+                </button>
+                <button onclick="filterCategory('studio201')" data-cat="studio201"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🛁 Studio 201
+                </button>
+                <button onclick="filterCategory('studio202')" data-cat="studio202"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    💼 Studio 202
+                </button>
+                <button onclick="filterCategory('studio203')" data-cat="studio203"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🌿 Studio 203
+                </button>
+                <button onclick="filterCategory('studio204')" data-cat="studio204"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🍳 Studio 204
+                </button>
+                <button onclick="filterCategory('vip101')" data-cat="vip101"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🛋️ Espacio 101 VIP
+                </button>
+                <button onclick="filterCategory('comunes')" data-cat="comunes"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🚲 Zonas Comunes
+                </button>
+                <button onclick="filterCategory('nilo')" data-cat="nilo"
+                    class="filter-btn bg-rooted-cream text-rooted-green hover:bg-rooted-terra/10 text-xs font-medium px-4 py-2 rounded-full transition-all border border-rooted-terra/20">
+                    🌾 Granja Nilo
+                </button>
+            </div>
+
+            <!-- Fast Live Search -->
+            <div class="w-full md:w-64 relative">
+                <input type="text" id="searchInput" oninput="handleSearch()"
+                    placeholder="Buscar detalle (ej. tina, cocina)..."
+                    class="w-full text-xs bg-rooted-cream border border-rooted-terra/30 rounded-full px-4 py-2 pl-9 focus:outline-none focus:border-rooted-green transition-colors text-rooted-dark placeholder-gray-500">
+                <span class="absolute left-3 top-2 text-xs text-gray-500">🔍</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <main class="container mx-auto max-w-6xl px-6 py-10 flex-grow">
+        <div id="galleryContainer" class="space-y-12">
+            <!-- Cards or sections will be populated by JavaScript -->
+        </div>
+
+        <div id="noResults" class="hidden text-center py-16">
+            <span class="text-4xl block mb-2">🌿</span>
+            <p class="text-rooted-green font-serif text-lg font-bold">No encontramos fotos con ese criterio</p>
+            <p class="text-xs text-gray-500 mt-1">Prueba con palabras como "tina", "cama", "cocina", "sala" o "nilo".
+            </p>
+        </div>
+    </main>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-50 bg-black/95 hidden flex flex-col items-center justify-between p-4 md:p-8 backdrop-blur-sm select-none">
+
+        <!-- Lightbox Header -->
+        <div class="w-full flex justify-between items-center text-white/90 z-20 max-w-5xl">
+            <div class="flex flex-col">
+                <span id="lbBadge"
+                    class="text-[10px] tracking-widest uppercase font-semibold text-rooted-terra bg-white/10 px-2 py-0.5 rounded w-max mb-1">CATEGORÍA</span>
+                <h3 id="lbTitle" class="text-sm md:text-lg font-serif font-bold text-white">Título de la fotografía</h3>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span id="lbCounter" class="text-xs text-gray-400 font-mono">1 / 27</span>
+                <button onclick="closeLightbox()"
+                    class="bg-white/10 hover:bg-white/20 p-2 rounded-full text-white text-xl leading-none transition-colors">✕</button>
+            </div>
+        </div>
+
+        <!-- Lightbox Image & Navigation -->
+        <div class="relative flex-grow flex items-center justify-center w-full max-w-5xl my-2 overflow-hidden">
+            <button onclick="prevImage()"
+                class="absolute left-2 md:left-4 z-20 bg-black/50 hover:bg-rooted-terra text-white p-3 rounded-full transition-colors text-lg">❮</button>
+            <img id="lbImg" src="" alt=""
+                class="max-h-[72vh] max-w-full object-contain rounded shadow-2xl transition-opacity duration-200">
+            <button onclick="nextImage()"
+                class="absolute right-2 md:right-4 z-20 bg-black/50 hover:bg-rooted-terra text-white p-3 rounded-full transition-colors text-lg">❯</button>
+        </div>
+
+        <!-- Lightbox Footer with Direct WhatsApp CTA -->
+        <div
+            class="w-full max-w-5xl flex flex-col sm:flex-row justify-between items-center gap-3 text-white/80 pt-2 border-t border-white/10 text-xs">
+            <p id="lbDesc" class="text-gray-300 text-center sm:text-left text-xs max-w-xl">Descripción del espacio o
+                detalle arquitectónico.</p>
+            <div class="flex items-center gap-2">
+                <a id="lbWaBtn" href="" target="_blank"
+                    class="bg-rooted-terra hover:bg-rooted-green text-white px-4 py-2 rounded-full font-semibold transition-colors flex items-center gap-1.5 shadow">
+                    <span>Consultar este espacio</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        class="bg-rooted-green text-white py-8 border-t border-rooted-terra/20 text-center text-xs text-rooted-sand/80">
+        <div class="container mx-auto px-6 space-y-2">
+            <p class="font-serif text-sm font-semibold text-white">Casa Normandía · Hospitalidad Urbana & Apartamentos
+                Independientes</p>
+            <p>© 2026 Casa Normandía. Operado bajo principios de GPMF S.A.S.</p>
+            <p class="text-[10px] text-rooted-sand/60">Cra. 71 # 53-72, Normandía, Bogotá D.C. · WhatsApp: +57 315 616
+                6760</p>
+        </div>
+    </footer>
+
+    <!-- Gallery Data & Scripts -->
+    <script>
+        const GALLERY_ITEMS = [
+            // Studio 201
+            // Studio 201 (Suite Principal con Tina Profunda y Cocina Amplia)
+            {
+                id: 's201-1',
+                category: 'studio201',
+                badge: 'Studio 201 · Signature',
+                title: 'Tina Tradicional Profunda',
+                desc: 'Hero Shot de Studio 201: Bañera clásica profunda con azulejo cerámico beige, mampara de cristal y nicho decorativo.',
+                src: 'assets/galeria/studio_201_bano_tina_tradicional_profunda.jpg',
+                tags: 'tina bañera bano tradicional profunda studio 201 suite lujo relax bano tina'
+            },
+            {
+                id: 's201-2',
+                category: 'studio201',
+                badge: 'Studio 201 · Panorámica',
+                title: 'Perspectiva Integral Suite y Salón',
+                desc: 'Gran amplitud con techos altos, credenza de madera con Smart TV, comedor auxiliar y conexión fluida al dormitorio.',
+                src: 'assets/galeria/studio_201_panoramica_suite_dormitorio.jpg',
+                tags: 'panoramica suite sala tv dormitorio techos altos studio 201 amplitud'
+            },
+            {
+                id: 's201-3',
+                category: 'studio201',
+                badge: 'Studio 201 · Dormitorio',
+                title: 'Cama Queen y Piso en Parquet Clásico',
+                desc: 'Dormitorio independiente con cama Queen de alto confort, mesas de noche en madera, lámparas cálidas y suelo de parquet tradicional.',
+                src: 'assets/galeria/studio_201_dormitorio_cama_queen_parquet.jpg',
+                tags: 'cama queen dormitorio parquet madera almohadas lamparas studio 201 descanso'
+            },
+            {
+                id: 's201-4',
+                category: 'studio201',
+                badge: 'Studio 201 · Cocina Integral',
+                title: 'Cocina Amplia con Campana Extractora',
+                desc: 'Cocina grande y completamente equipada: campana extractora, salpicadero geométrico en baldosín hidráulico, alacenas de madera y mesón en granito.',
+                src: 'assets/galeria/studio_201_cocina_amplia_campana_baldosin.jpg',
+                tags: 'cocina grande campana extractora baldosin hidraulico granito microondas vajilla studio 201'
+            },
+            {
+                id: 's201-5',
+                category: 'studio201',
+                badge: 'Studio 201 · Sala de Estar',
+                title: 'Sala de Lectura con Sofá Azul',
+                desc: 'Zona social acogedora con sofá azul tapizado, mesa de centro, comedor de dos puestos y piso hidráulico artesanal en cocina.',
+                src: 'assets/galeria/studio_201_sala_lectura_sofa_azul.jpg',
+                tags: 'sala sofa azul lectura comedor mesa alfombra studio 201 relax'
+            },
+            {
+                id: 's201-6',
+                category: 'studio201',
+                badge: 'Studio 201 · Baño Cenital',
+                title: 'Baño con Claraboyas y Tocador Clásico',
+                desc: 'Iluminación cenital natural por doble claraboya, tocador en madera con lavamanos de sobreponer y tina profunda.',
+                src: 'assets/galeria/studio_201_bano_claraboyas_vanity_tina.jpg',
+                tags: 'bano claraboyas luz cenital tocador madera espejo tina toallas studio 201'
+            },
+            {
+                id: 's201-7',
+                category: 'studio201',
+                badge: 'Studio 201 · Iluminación',
+                title: 'Luz Natural y Calidez Botánica',
+                desc: 'Perspectiva desde el comedor hacia el gran ventanal de la suite con arreglos florales frescos y luz natural constante.',
+                src: 'assets/galeria/studio_201_perspectiva_flores_luz_natural.jpg',
+                tags: 'luz natural flores ventana comedor sofa calidez studio 201'
+            },
+            {
+                id: 's201-8',
+                category: 'studio201',
+                badge: 'Studio 201 · Home Office',
+                title: 'Comedor y Estación de Trabajo Funcional',
+                desc: 'Mesa multifuncional perfecta para laptop o desayunos, con WiFi simétrico de alta velocidad y vista serena.',
+                src: 'assets/galeria/studio_201_comedor_espacio_trabajo_ambiente.jpg',
+                tags: 'trabajo laptop mesa comedor wifi cafe studio 201 estancia larga'
+            },
+            {
+                id: 's201-9',
+                category: 'studio201',
+                badge: 'Studio 201 · Detalles',
+                title: 'Rincón de Lectura y Cultura',
+                desc: 'Mesa de centro con libros de fotografía y naturaleza colombiana, flores frescas y detalles de hospitalidad boutique.',
+                src: 'assets/galeria/studio_201_detalle_mesa_centro_sofa.jpg',
+                tags: 'detalle libros colombia salvaje mesa centro flores hospitalidad studio 201'
+            },
+
+            // Studio 202 (Suite Ejecutiva de Trabajo - Baño Privado, Sin Cocina)
+            {
+                id: 's202-1',
+                category: 'studio202',
+                badge: 'Studio 202 · Suite Ejecutiva',
+                title: 'Dormitorio Confort Botánico',
+                desc: 'Cabecera con edredón floral, iluminación de lectura cálida, vegetación viva y espejo vestidor en suite privada.',
+                src: 'assets/galeria/studio_202_dormitorio.jpg',
+                tags: 'dormitorio cama flores espejo luz suite studio 202 trabajo silencio'
+            },
+            {
+                id: 's202-2',
+                category: 'studio202',
+                badge: 'Studio 202 · Workplace',
+                title: 'Mesa de Trabajo y Comedor con Frutas',
+                desc: 'Estación de trabajo ejecutiva en madera maciza para laptop, hervidor eléctrico de agua y frutero de cortesía.',
+                src: 'assets/galeria/studio_202_workplace.jpg',
+                tags: 'trabajo mesa laptop frutas hervidor te studio 202 ejecutiva wifi'
+            },
+            {
+                id: 's202-3',
+                category: 'studio202',
+                badge: 'Studio 202 · Suite & Smart TV',
+                title: 'Suite Panorámica con Smart TV y Lectura',
+                desc: 'Ambiente de descanso y entretenimiento con Smart TV, libro de fotografía "Colombia Salvaje", vela aromática y cama botánica.',
+                src: 'assets/galeria/studio_202_suite_smart_tv_colombia_salvaje.jpg',
+                tags: 'suite tv smart colombia salvaje cama descanso vela studio 202'
+            },
+            {
+                id: 's202-4',
+                category: 'studio202',
+                badge: 'Studio 202 · Estación de Trabajo',
+                title: 'Estación de Trabajo con Vista Exterior y Frutero',
+                desc: 'Escritorio ejecutivo con laptop, frutero de bienvenida, hervidor de agua, Smart TV y vista a la calle arbolada de Normandía.',
+                src: 'assets/galeria/studio_202_mesa_trabajo_laptop_frutero_calle.jpg',
+                tags: 'trabajo laptop escritorio frutero ventana calle arbolada luz hervidor studio 202'
+            },
+            {
+                id: 's202-5',
+                category: 'studio202',
+                badge: 'Studio 202 · Baño Privado Ensuite',
+                title: 'Tocador Flotante en Madera y Espejo Contemporáneo',
+                desc: 'Baño privado ensuite con mueble flotante de madera oscura, lavamanos cerámico, sanitario moderno y espejo de pared.',
+                src: 'assets/galeria/studio_202_bano_privado_vanity_madera.jpg',
+                tags: 'bano ensuite tocador mueble madera espejo privado moderno studio 202'
+            },
+            {
+                id: 's202-6',
+                category: 'studio202',
+                badge: 'Studio 202 · Baño & Ducha',
+                title: 'Ducha Walk-in con Cancelería de Cristal Templado',
+                desc: 'Zona de ducha contemporánea con cancelería en cristal templado, grifería cromada y revestimiento en porcelanato gris.',
+                src: 'assets/galeria/studio_202_bano_ducha_cristal_porcelanato.jpg',
+                tags: 'ducha bano cristal templado porcelanato gris griferia studio 202'
+            },
+
+            // Studio 203 (Suite Funcional con Cocina Compacta y Cómoda Vintage)
+            {
+                id: 's203-1',
+                category: 'studio203',
+                badge: 'Studio 203 · Panorámica',
+                title: 'Suite Panorámica con Estación de Trabajo',
+                desc: 'Perspectiva completa: Cama botánica, mesa de trabajo con laptop, Smart TV sobre cómoda vintage y persianas de madera.',
+                src: 'assets/galeria/studio_203_suite_panoramica_cama_escritorio.jpg',
+                tags: 'suite panoramica cama escritorio laptop tv persianas madera studio 203'
+            },
+            {
+                id: 's203-2',
+                category: 'studio203',
+                badge: 'Studio 203 · Mobiliario Vintage',
+                title: 'Credenza Vintage Restaurada y Smart TV',
+                desc: 'Mueble clásico restaurado en azul grisáceo con Smart TV, plantas de interior y cocina al fondo.',
+                src: 'assets/galeria/studio_203_credenza_vintage_smart_tv_cocina.jpg',
+                tags: 'credenza vintage azul tv smart plantas cocina studio 203'
+            },
+            {
+                id: 's203-3',
+                category: 'studio203',
+                badge: 'Studio 203 · Cocina Funcional',
+                title: 'Nevera Minibar y Salpicadero Geométrico',
+                desc: 'Nevera minibar en acero, mesón de cocina, salpicadero artesanal en baldosín y alacenas de madera.',
+                src: 'assets/galeria/studio_203_cocina_compacta_nevera_baldosin.jpg',
+                tags: 'cocina nevera minibar baldosin madera planta studio 203'
+            },
+            {
+                id: 's203-4',
+                category: 'studio203',
+                badge: 'Studio 203 · Dormitorio & Suite',
+                title: 'Dormitorio y Entrada a Baño en Suite',
+                desc: 'Cama confortable con edredón de hojas botánicas, mesita de noche, lámpara cálida y acceso directo al baño privado.',
+                src: 'assets/galeria/studio_203_dormitorio_bano_ensuite_claraboya.jpg',
+                tags: 'cama dormitorio bano ensuite puerta claraboya guernica studio 203'
+            },
+            {
+                id: 's203-5',
+                category: 'studio203',
+                badge: 'Studio 203 · Baño Privado',
+                title: 'Baño con Ducha de Cristal y Espejo en Madera',
+                desc: 'Baño privado completo con mampara de cristal templado, toallero, lavamanos de pedestal, espejo rústico y detalles cálidos.',
+                src: 'assets/galeria/studio_203_bano_privado_espejo_ducha.jpg',
+                tags: 'bano privado ducha cristal lavamanos espejo madera vela toalla studio 203'
+            },
+            {
+                id: 's203-6',
+                category: 'studio203',
+                badge: 'Studio 203 · Luz Cenital',
+                title: 'Luz Natural por Claraboya Cenital en Baño',
+                desc: 'Baño iluminado con luz natural a través de claraboya enmarcada en madera, con flores frescas y ambiente acogedor.',
+                src: 'assets/galeria/studio_203_bano_claraboya_cenital_flores.jpg',
+                tags: 'bano claraboya luz cenital flores espejo lavamanos studio 203'
+            },
+            {
+                id: 's203-7',
+                category: 'studio203',
+                badge: 'Studio 203 · Almacenamiento',
+                title: 'Armario en Madera y Espejo Vestidor',
+                desc: 'Armario de ropa en madera maciza, espejo de cuerpo entero con reflejo de la cocina y piso en parquet tradicional.',
+                src: 'assets/galeria/studio_203_armario_madera_espejo_vestidor.jpg',
+                tags: 'armario closet madera espejo vestidor puerta parquet studio 203'
+            },
+
+            // Studio 204 (Suite con Barra Americana, Ventanal y Baño en Mármol)
+            {
+                id: 's204-1',
+                category: 'studio204',
+                badge: 'Studio 204 · Suite Panorámica',
+                title: 'Suite con Cama, Barra Americana y Luz Cálida',
+                desc: 'Perspectiva de descanso y confort: cama con edredón nórdico, mesa auxiliar con flores, barra americana y cocina funcional al fondo.',
+                src: 'assets/galeria/studio_204_suite_cama_barra_americana_panoramica.jpg',
+                tags: 'suite cama barra americana flores cocina descanso studio 204'
+            },
+            {
+                id: 's204-2',
+                category: 'studio204',
+                badge: 'Studio 204 · Panorámica Completa',
+                title: 'Perspectiva Integral de Studio 204',
+                desc: 'Espacio completo: barra desayunadora, suelo de parquet clásico, cama Queen, credenza con Smart TV y ventanal con persianas.',
+                src: 'assets/galeria/studio_204_panoramica_suite_completa.jpg',
+                tags: 'panoramica suite cama tv credenza ventana persianas parquet studio 204'
+            },
+            {
+                id: 's204-3',
+                category: 'studio204',
+                badge: 'Studio 204 · Barra Americana',
+                title: 'Cocina Compacta con Barra y Pisos Hidráulicos',
+                desc: 'Cocina funcional compacta sin campana: barra americana con butacas altas, piso en baldosín geométrico y vajilla completa.',
+                src: 'assets/galeria/studio_204_cocina_compacta_barra_americana.jpg',
+                tags: 'cocina compacta barra americana butacas baldosin hidraulico studio 204'
+            },
+            {
+                id: 's204-4',
+                category: 'studio204',
+                badge: 'Studio 204 · Ventanal',
+                title: 'Dormitorio con Gran Ventanal y Persianas de Madera',
+                desc: 'Zona de descanso con gran ventanal arbolado, persianas horizontales de madera maciza, banca artesanal con cojines y luz natural.',
+                src: 'assets/galeria/studio_204_dormitorio_ventanal_persianas.jpg',
+                tags: 'ventana persianas madera banca cojines cama flores studio 204'
+            },
+            {
+                id: 's204-5',
+                category: 'studio204',
+                badge: 'Studio 204 · Perspectiva Social',
+                title: 'Perspectiva desde la Barra hacia Smart TV',
+                desc: 'Vista amplia desde la barra americana desayunadora hacia la cama, credenza restaurada con Smart TV y armario.',
+                src: 'assets/galeria/studio_204_perspectiva_barra_desayunador_tv.jpg',
+                tags: 'barra desayunador cama tv credenza armario studio 204'
+            },
+            {
+                id: 's204-6',
+                category: 'studio204',
+                badge: 'Studio 204 · Cocina Detalle',
+                title: 'Cocina Compacta con Minibar y Baldosín',
+                desc: 'Detalle de cocina compacta con salpicadero artesanal en baldosín geométrico, nevera minibar en acero y flores frescas.',
+                src: 'assets/galeria/studio_204_cocina_compacta_perspectiva_vertical.jpg',
+                tags: 'cocina nevera minibar baldosin flores studio 204'
+            },
+            {
+                id: 's204-7',
+                category: 'studio204',
+                badge: 'Studio 204 · Baño de Lujo',
+                title: 'Baño Privado con Ducha de Cristal y Mármol',
+                desc: 'Baño contemporáneo completo con cancelería de cristal corredizo, enchape en mármol blanco, sanitario moderno y tocador.',
+                src: 'assets/galeria/studio_204_bano_ducha_cristal_marmol.jpg',
+                tags: 'bano privado ducha cristal marmol tocador moderno studio 204'
+            },
+            {
+                id: 's204-8',
+                category: 'studio204',
+                badge: 'Studio 204 · Baño & Tocador',
+                title: 'Mueble Flotante de Madera y Ventana',
+                desc: 'Tocador flotante en madera con lavamanos contemporáneo, espejo, iluminación cálida y ventana de luz natural.',
+                src: 'assets/galeria/studio_204_bano_mueble_madera_espejo.jpg',
+                tags: 'bano tocador mueble madera espejo ventana luz studio 204'
+            },
+            {
+                id: 's204-9',
+                category: 'studio204',
+                badge: 'Studio 204 · Confort Térmico',
+                title: 'Luz Natural y Persianas de Madera',
+                desc: 'Gran ventanal con persianas horizontales de madera maciza, piso de madera natural y planta purificadora.',
+                src: 'assets/galeria/studio_204_luz_natural.jpg',
+                tags: 'ventana luz persianas madera planta sol studio 204'
+            },
+            {
+                id: 's204-10',
+                category: 'studio204',
+                badge: 'Studio 204 · Arquitectura 3D',
+                title: 'Diseño Arquitectónico 3D por Mundus Design',
+                desc: 'Plano renderizado de la reconversión espacial: cama, barra americana, cocina compacta y distribución heterotópica.',
+                src: 'assets/galeria/studio_204_plano_3d_render_arquitectonico.png',
+                tags: 'plano 3d render arquitectura diseno mundus heterotopia studio 204'
+            },
+
+            // Espacio 101 VIP
+            {
+                id: 'vip-1',
+                category: 'vip101',
+                badge: 'Espacio 101 VIP · Sala',
+                title: 'Gran Sofá Modular en L',
+                desc: 'Espacioso salón social con sofá seccional gris plomo, mesa de centro, iluminación cálida y atmósfera de descanso.',
+                src: 'assets/galeria/espacio_101_vip_sala.jpg',
+                tags: 'sala sofa modular lounge 101 vip amplia descanso'
+            },
+            {
+                id: 'vip-2',
+                category: 'vip101',
+                badge: 'Espacio 101 VIP · Social',
+                title: 'Perspectiva Social hacia Comedor',
+                desc: 'Plano panorámico de la zona social conectada hacia el comedor principal y la cocina grande.',
+                src: 'assets/galeria/espacio_101_vip_perspectiva.jpg',
+                tags: 'sala comedor cocina grande 101 vip familia estancia larga'
+            },
+            {
+                id: 'vip-3',
+                category: 'vip101',
+                badge: 'Espacio 101 VIP · Habitación',
+                title: 'Habitación Principal Independiente',
+                desc: 'Habitación de descanso profundo con cama doble confortable, biblioteca de madera maciza y mesa de noche.',
+                src: 'assets/galeria/espacio_101_vip_cama.jpg',
+                tags: 'habitacion cama biblioteca libros silencio 101 vip'
+            },
+            {
+                id: 'vip-4',
+                category: 'vip101',
+                badge: 'Espacio 101 VIP · Baño',
+                title: 'Baño Moderno con Claraboya Cenital',
+                desc: 'Baño contemporáneo con luz natural cenital mediante claraboya y cancelería de cristal templado.',
+                src: 'assets/galeria/espacio_101_vip_bano.jpg',
+                tags: 'bano claraboya luz natural moderno 101 vip ducha'
+            },
+            {
+                id: 'vip-5',
+                category: 'vip101',
+                badge: 'Espacio 101 VIP · Baño Contemporáneo',
+                title: 'Espejo Flotante Retroiluminado LED',
+                desc: 'Baño contemporáneo con mueble de madera, sensor táctil y ducha efecto lluvia de alta presión.',
+                src: 'assets/galeria/espacio_101_vip_bano_led.jpg',
+                tags: 'bano espejo led ducha 101 vip moderno lujo'
+            },
+
+            // Comunes & Normandía
+            {
+                id: 'com-1',
+                category: 'comunes',
+                badge: 'Zonas Comunes · Arquitectura',
+                title: 'Escalera Clásica en Granito Pulido',
+                desc: 'Escalera patrimonial en granito/terrazo blanco con baranda restaurada, macetas botánicas y luz de zaguán.',
+                src: 'assets/galeria/comun_escalera_granito.jpg',
+                tags: 'escalera granito plantas arquitectura patrimonio pasamanos'
+            },
+            {
+                id: 'com-2',
+                category: 'comunes',
+                badge: 'Zonas Comunes · Movilidad',
+                title: 'Porche de Entrada con Parqueadero de Bicicletas',
+                desc: 'Porche exterior con piso de gres/terracota y rack seguro para bicicletas (movilidad sostenible por ciclorrutas Calle 26).',
+                src: 'assets/galeria/comun_porche_bicicletas.jpg',
+                tags: 'porche entrada bicicletero bicicletas ciclorruta terracota'
+            },
+            {
+                id: 'com-3',
+                category: 'comunes',
+                badge: 'Entorno Urbano · Normandía',
+                title: 'Calle Residencial Verde y Silenciosa',
+                desc: 'Vista de la calle arbolada y andenes amplios de Normandía desde el jardín frontal. Tranquilidad absoluta a minutos del aeropuerto.',
+                src: 'assets/galeria/entorno_calle_residencial.jpg',
+                tags: 'calle normandia arboles silencio barrio seguro residencial'
+            },
+            {
+                id: 'com-4',
+                category: 'comunes',
+                badge: 'Fachada Patrimonial',
+                title: 'Fachada Clásica de Dos Pisos',
+                desc: 'Registro arquitectónico patrimonial de la casa familiar adaptada a hospitalidad boutique urbana.',
+                src: 'assets/galeria/fachada_patrimonial.png',
+                tags: 'fachada arquitectura exterior casa normandia historia'
+            },
+            {
+                id: 'com-5',
+                category: 'comunes',
+                badge: 'Hospitalidad & Bienvenida',
+                title: 'Recepción Cálida por Aristides',
+                desc: 'Aristides en la cancela de entrada con rosas recibiendo a huéspedes en víspera decembrina (Cra. 71 # 53-72).',
+                src: 'assets/galeria/anfitrion_bienvenida.jpg',
+                tags: 'anfitrion aristides bienvenida flores fachada entrada'
+            },
+            {
+                id: 'com-6',
+                category: 'comunes',
+                badge: 'Storytelling · Tradición',
+                title: 'Mesa Familiar con Pan Artesanal y Velas',
+                desc: 'Encuentro en torno a la mesa con tabla de quesos, pan recién horneado y velas; calidez de hogar y acogida.',
+                src: 'assets/galeria/storytelling_mesa_familiar.jpg',
+                tags: 'mesa quesos pan velas tradicion hogar bienvenida'
+            },
+
+            // Granja Nilo
+            {
+                id: 'nilo-1',
+                category: 'nilo',
+                badge: 'Granja Nilo · Cosecha Limpia',
+                title: 'Aguacates Orgánicos en el Árbol',
+                desc: 'Cosecha fresca de aguacates con rocío matutino en el bosque seco tropical de Nilo.',
+                src: 'assets/galeria/nilo_aguacates_cosecha.jpg',
+                tags: 'aguacate cosecha arbol fruta organica nilo granja'
+            },
+            {
+                id: 'nilo-2',
+                category: 'nilo',
+                badge: 'Granja Nilo · Frutales',
+                title: 'Canastillas Cosecheras de Mandarinas',
+                desc: 'Cítricos dulces recién recolectados en el huerto mixto sin fertilizantes químicos.',
+                src: 'assets/galeria/nilo_mandarinas_canastillas.jpg',
+                tags: 'mandarinas citricos fruta cosecha canastilla nilo'
+            },
+            {
+                id: 'nilo-3',
+                category: 'nilo',
+                badge: 'Granja Nilo · Tradición',
+                title: 'Cuajada Artesanal en Olla Campesina',
+                desc: 'Preparación tradicional de lácteos limpios y cuajada fresca de pastoreo.',
+                src: 'assets/galeria/nilo_cuajada_artesanal.jpg',
+                tags: 'cuajada queso artesanal leche comida tradicional nilo'
+            },
+            {
+                id: 'nilo-4',
+                category: 'nilo',
+                badge: 'Granja Nilo · Botica Viva',
+                title: 'Rizomas de Cúrcuma en Suelo Vivo',
+                desc: 'Bioproducto insignia: rizomas de cúrcuma pura recién desenterrados de suelo fértil regenerativo.',
+                src: 'assets/galeria/nilo_curcuma_organica.jpg',
+                tags: 'curcuma medicina plantas botica raiz suelo vivo nilo'
+            },
+            {
+                id: 'nilo-5',
+                category: 'nilo',
+                badge: 'Granja Nilo · Ganadería Regenerativa',
+                title: 'Bovinos en Pastoreo Rotacional de Ladera',
+                desc: 'Ganadería sostenible respetuosa con los ciclos biológicos y horizonte de la cordillera.',
+                src: 'assets/galeria/nilo_ganado_pastoreo.jpg',
+                tags: 'ganado vacas pastoreo silvopastoreo bienestar cordillera nilo'
+            },
+            {
+                id: 'nilo-6',
+                category: 'nilo',
+                badge: 'Granja Nilo · Agua y Vida',
+                title: 'Reservorio al Amanecer con Reflejo de Dosel',
+                desc: 'Espejo de agua al amanecer con reflejo de la vegetación nativa y conservación hídrica.',
+                src: 'assets/galeria/nilo_reservorio_amanecer.jpg',
+                tags: 'agua reservorio amanecer bosque reflejo naturaleza nilo'
+            },
+            {
+                id: 'nilo-7',
+                category: 'nilo',
+                badge: 'Granja Nilo · Bosque Nativo',
+                title: 'Quebrada Natural entre Piedras',
+                desc: 'Corriente hídrica natural y bosque de galería en la reserva forestal de la granja.',
+                src: 'assets/galeria/nilo_quebrada_bosque.jpg',
+                tags: 'quebrada arroyo agua piedras bosque verde nilo'
+            },
+            {
+                id: 'nilo-8',
+                category: 'nilo',
+                badge: 'Granja Nilo · Hospitalidad Rural',
+                title: 'Casa Campestre Tradicional y Jardines',
+                desc: 'Casa rústica con porche de descanso, prado impecable y tranquilidad para retiros de bienestar.',
+                src: 'assets/galeria/nilo_casa_campestre.jpg',
+                tags: 'casa campestre descanso retiro desconexion jardin nilo'
+            },
+            {
+                id: 'nilo-9',
+                category: 'nilo',
+                badge: 'Granja Nilo · Retiros Conscientes',
+                title: 'Huéspedes en Porche Campestre',
+                desc: 'Estancias de descanso y respiración consciente en contacto directo con la biodiversidad.',
+                src: 'assets/galeria/nilo_retiro_huespedes.jpg',
+                tags: 'huespedes retiro descanso porche hamaca bienestar nilo'
+            }
+        ];
+
+        let currentFilteredList = [...GALLERY_ITEMS];
+        let currentLightboxIndex = 0;
+        let activeCategory = 'all';
+
+        const CATEGORIES_META = {
+            studio201: {
+                title: 'Studio 201 · Suite Principal con Tina Clásica',
+                subtitle: 'Cama Queen, tina tradicional profunda, cocina amplia con campana extractora y sala con sofá azul',
+                icon: '🛁'
+            },
+            studio202: {
+                title: 'Studio 202 · Suite Ejecutiva de Trabajo',
+                subtitle: 'Habitación independiente con Smart TV, estación de trabajo ejecutiva con frutero y baño privado (sin cocina)',
+                icon: '💼'
+            },
+            studio203: {
+                title: 'Studio 203 · Suite Vintage con Cocina Compacta',
+                subtitle: 'Cómoda vintage restaurada, Smart TV, cocina compacta con baldosín geométrico y baño ensuite',
+                icon: '🌿'
+            },
+            studio204: {
+                title: 'Studio 204 · Suite con Barra Americana Desayunadora',
+                subtitle: 'Barra americana con butacas altas, cocina compacta, ventanal con persianas de madera y baño de mármol',
+                icon: '🍳'
+            },
+            vip101: {
+                title: 'Espacio 101 VIP · Apartamento Social & Familiar',
+                subtitle: 'Gran sofá modular en L, comedor principal, cocina grande, habitación independiente y baño contemporáneo con espejo LED',
+                icon: '🛋️'
+            },
+            comunes: {
+                title: 'Zonas Comunes & Entorno de Normandía',
+                subtitle: 'Escalera de terrazo blanco, porche con bicicletero, andenes verdes y calidez de bienvenida',
+                icon: '🚲'
+            },
+            nilo: {
+                title: 'Granja Nilo · Santuario Rural & Cosecha Limpia',
+                subtitle: 'Biofiltros de agua, cultivos orgánicos, reservorio, animales en pastoreo y retiros conscientes',
+                icon: '🌾'
+            }
+        };
+
+        const CATEGORIES_ORDER = ['studio201', 'studio202', 'studio203', 'studio204', 'vip101', 'comunes', 'nilo'];
+
+        function createCardHTML(item) {
+            return `
+                <div onclick="openLightboxById('${item.id}')" class="gallery-card bg-white rounded-xl overflow-hidden border border-rooted-terra/20 shadow-sm cursor-pointer group flex flex-col hover:shadow-md transition-shadow">
+                    <div class="relative overflow-hidden bg-gray-100 aspect-[4/3]">
+                        <img src="${item.src}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-rooted-green/90 backdrop-blur-sm text-white text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            ${item.badge}
+                        </span>
+                    </div>
+                    <div class="p-4 flex flex-col justify-between flex-grow">
+                        <div>
+                            <h4 class="font-serif font-bold text-rooted-green text-base group-hover:text-rooted-terra transition-colors leading-snug mb-1">
+                                ${item.title}
+                            </h4>
+                            <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">
+                                ${item.desc}
+                            </p>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-rooted-terra font-semibold">
+                            <span>Ver a pantalla completa</span>
+                            <span>🔍</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Cards (Organized by space sections in 'All' view)
+        function renderGallery(items) {
+            const container = document.getElementById('galleryContainer');
+            const noResults = document.getElementById('noResults');
+            const query = document.getElementById('searchInput') ? document.getElementById('searchInput').value.trim() : '';
+
+            if (items.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+
+            // 1. All category without search: Display organized space sections with headings!
+            if (activeCategory === 'all' && !query) {
+                let html = '';
+                CATEGORIES_ORDER.forEach(catKey => {
+                    const catItems = items.filter(it => it.category === catKey);
+                    if (catItems.length === 0) return;
+                    const meta = CATEGORIES_META[catKey] || { title: catKey, subtitle: '', icon: '📍' };
+
+                    html += `
+                        <section id="sec-${catKey}" class="space-y-4 pt-4">
+                            <div class="flex flex-col md:flex-row md:items-end justify-between pb-3 border-b border-rooted-terra/20 gap-2">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-2xl">${meta.icon}</span>
+                                        <h2 class="text-xl md:text-2xl font-serif font-bold text-rooted-green">${meta.title}</h2>
+                                    </div>
+                                    <p class="text-xs text-gray-600 mt-1">${meta.subtitle}</p>
+                                </div>
+                                <span class="text-xs font-semibold px-3 py-1 bg-rooted-sand/50 text-rooted-green rounded-full self-start md:self-auto border border-rooted-terra/20">
+                                    ${catItems.length} fotografías
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                ${catItems.map(createCardHTML).join('')}
+                            </div>
+                        </section>
+                    `;
+                });
+                container.innerHTML = html;
+                return;
+            }
+
+            // 2. Specific category selected: Display single section with its heading
+            if (activeCategory !== 'all' && !query) {
+                const meta = CATEGORIES_META[activeCategory] || { title: activeCategory, subtitle: '', icon: '📍' };
+                container.innerHTML = `
+                    <section class="space-y-4 pt-4">
+                        <div class="flex flex-col md:flex-row md:items-end justify-between pb-3 border-b border-rooted-terra/20 gap-2">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">${meta.icon}</span>
+                                    <h2 class="text-xl md:text-2xl font-serif font-bold text-rooted-green">${meta.title}</h2>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">${meta.subtitle}</p>
+                            </div>
+                            <span class="text-xs font-semibold px-3 py-1 bg-rooted-sand/50 text-rooted-green rounded-full self-start md:self-auto border border-rooted-terra/20">
+                                ${items.length} fotografías
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${items.map(createCardHTML).join('')}
+                        </div>
+                    </section>
+                `;
+                return;
+            }
+
+            // 3. Search query: Display search result heading + grid
+            container.innerHTML = `
+                <section class="space-y-4 pt-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-rooted-terra/20">
+                        <p class="text-sm font-serif text-rooted-green font-semibold">
+                            Resultados para: <span class="text-rooted-terra font-bold">"${query}"</span> (${items.length} fotos)
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${items.map(createCardHTML).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function openLightboxById(id) {
+            const index = currentFilteredList.findIndex(item => item.id === id);
+            if (index !== -1) {
+                openLightbox(index);
+            }
+        }
+
+        // Filter by Category
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-rooted-green', 'text-white');
+                    btn.classList.remove('bg-rooted-cream', 'text-rooted-green');
+                } else {
+                    btn.classList.remove('bg-rooted-green', 'text-white');
+                    btn.classList.add('bg-rooted-cream', 'text-rooted-green');
+                }
+            });
+
+            applyFilters();
+        }
+
+        // Live Search Input
+        function handleSearch() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            currentFilteredList = GALLERY_ITEMS.filter(item => {
+                const matchesCat = activeCategory === 'all' || item.category === activeCategory;
+                const matchesQuery = !query ||
+                    item.title.toLowerCase().includes(query) ||
+                    item.desc.toLowerCase().includes(query) ||
+                    item.tags.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+
+            renderGallery(currentFilteredList);
+        }
+
+        // Lightbox Functions
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateLightbox() {
+            const item = currentFilteredList[currentLightboxIndex];
+            if (!item) return;
+
+            document.getElementById('lbBadge').innerText = item.badge;
+            document.getElementById('lbTitle').innerText = item.title;
+            document.getElementById('lbDesc').innerText = item.desc;
+            document.getElementById('lbImg').src = item.src;
+            document.getElementById('lbImg').alt = item.title;
+            document.getElementById('lbCounter').innerText = `${currentLightboxIndex + 1} / ${currentFilteredList.length}`;
+
+            // WhatsApp Pre-filled link
+            const waMsg = encodeURIComponent(`Hola Casa Normandía, estuve viendo la foto "${item.title}" (${item.badge}) en su galería y quisiera consultar fechas y disponibilidad.`);
+            document.getElementById('lbWaBtn').href = `https://wa.me/573156166760?text=${waMsg}`;
+        }
+
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredList.length;
+            updateLightbox();
+        }
+
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentFilteredList.length) % currentFilteredList.length;
+            updateLightbox();
+        }
+
+        // Keyboard Controls
+        window.addEventListener('keydown', (e) => {
+            const lb = document.getElementById('lightbox');
+            if (lb.classList.contains('hidden')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Touch Swipe Support for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const lbEl = document.getElementById('lightbox');
+        lbEl.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        lbEl.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextImage();
+            if (touchEndX > touchStartX + 50) prevImage();
+        }, { passive: true });
+
+        // Initialize
+        document.getElementById('count-all').innerText = GALLERY_ITEMS.length;
+        renderGallery(GALLERY_ITEMS);
+    </script>
+
+    <!-- Register PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((reg) => console.log('[PWA] Service Worker activo en galería'))
+                    .catch((err) => console.warn('[PWA] Error SW:', err));
+            });
+        }
+    </script>
+</body>
+
+</html>

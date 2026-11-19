@@ -1,11 +1,31 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nilo | Experiencias Orgánicas & Turismo Rural</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- PWA Android / Chrome -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1B3022">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA iOS / Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Casa Normandía">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
     <meta name="description" content="Descubre experiencias auténticas en la granja Nilo: escuela de hierbas, ruta de la cosecha, turismo pedagógico y productos orgánicos.">
+    
+    <!-- Open Graph Metadata para LinkedIn & WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Granja Nilo | Santuario Agroecológico & Experiencias de Bienestar">
+    <meta property="og:description" content="Hospitalidad rural, medicina botánica, retiros conscientes y educación ambiental en Cundinamarca.">
+    <meta property="og:image" content="https://globalpartnerships.github.io/casa-normandia/assets/moodboard_ecosistema_dual.jpg">
+    <meta property="og:url" content="https://globalpartnerships.github.io/casa-normandia/nilo.html">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -106,7 +126,7 @@
                 <a href="index.html#bogota" class="hover:text-rooted-terra transition-colors">BOGOTÁ</a>
                 <a href="index.html#nilo" class="hover:text-rooted-terra transition-colors">NILO</a>
                 <a href="politicas.html#reglas-casa" class="hover:text-rooted-terra transition-colors">REGLAS</a>
-                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">🛎️ GUÍA HUÉSPED</a>
+                <a href="concierge.html" class="hover:text-rooted-terra transition-colors text-rooted-terra font-semibold">GUÍA HUÉSPED</a>
                 <button onclick="window.location.href='index.html#booking'" class="bg-rooted-terra text-white px-6 py-2 rounded-full hover:bg-rooted-green transition-colors shadow-lg transform hover:-translate-y-0.5">
                     RESERVAR
                 </button>
@@ -120,7 +140,7 @@
             <a href="index.html#bogota" class="block hover:text-rooted-terra">BOGOTÁ (Studios)</a>
             <a href="nilo.html" class="block text-rooted-terra font-bold">NILO (Granja)</a>
             <a href="politicas.html" class="block hover:text-rooted-terra">REGLAS Y POLÍTICAS</a>
-            <a href="concierge.html" class="block text-rooted-terra font-bold">🛎️ GUÍA DIGITAL DEL HUÉSPED</a>
+            <a href="concierge.html" class="block text-rooted-terra font-bold">Concierge Digital DEL HUÉSPED</a>
             <button onclick="window.location.href='index.html#booking'" class="w-full bg-rooted-terra text-white py-2 rounded-full">
                 RESERVAR DIRECTO
             </button>
@@ -356,7 +376,7 @@
                             <img src="assets/cierrec.png" alt="El Refugio - Hospedaje" class="w-full h-full object-cover opacity-80">
                             <div class="absolute inset-0 bg-gradient-to-t from-amber-900/40 to-transparent"></div>
                             <div class="absolute bottom-4 left-4 text-white">
-                                <div class="text-3xl mb-1">🏡</div>
+                                <div class="text-xs uppercase tracking-widest text-rooted-terra font-bold mb-1">Cabaña</div>
                             </div>
                         </div>
                         <div class="p-6">
@@ -369,9 +389,9 @@
                                 Estamos diseñando nuestra primera cabaña inmersiva. Un espacio sin WiFi, rodeado de árboles frutales y el sonido del campo. Perfecto para retiros de fin de semana, meditación y recarga total de energía.
                             </p>
                             <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                                <li> 🏡 Cabaña inmersiva</li>
-                                <li> 🌳 Sin WiFi, solo naturaleza</li>
-                                <li> 🧘 Retiros y meditación</li>
+                                <li>Cabaña inmersiva de bosque</li>
+                                <li>Desconexión digital en naturaleza pura</li>
+                                <li>Espacios de retiro y contemplación</li>
                             </ul>
                             <button onclick="openHospedajeModal()" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white py-3 rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all font-medium shadow-lg transform hover:-translate-y-1">
                                 Quiero ser de los primeros en hospedarme
@@ -441,7 +461,7 @@
                     <p class="text-xs text-gray-400 mb-4">Recibe nuestras experiencias orgánicas y novedades de la granja.</p>
                     <form onsubmit="event.preventDefault(); alert('¡Gracias! Te hemos agregado a nuestra lista.');" class="flex gap-2">
                         <input type="email" placeholder="Tu correo..." class="bg-gray-800 border-none rounded px-4 py-2 text-sm w-full focus:ring-1 focus:ring-rooted-terra">
-                        <button class="bg-rooted-terra px-4 py-2 rounded text-white font-bold hover:bg-white hover:text-rooted-terra transition-colors">Enviar ➡️</button>
+                        <button class="bg-rooted-terra px-4 py-2 rounded text-white font-bold hover:bg-white hover:text-rooted-terra transition-colors">Enviar →</button>
                     </form>
                 </div>
             </div>
@@ -532,7 +552,7 @@
 
                 <div class="bg-amber-100 p-4 rounded-lg border border-amber-200">
                     <p class="text-sm text-amber-700">
-                        <strong>🏡 Importante:</strong> Esta información nos ayudará a diseñar El Refugio según las expectativas reales de nuestros futuros huéspedes. Los pioneros recibirán ofertas exclusivas de pre-lanzamiento.
+                        <strong>Nota de Proyecto:</strong> Esta información nos ayudará a diseñar El Refugio según las expectativas reales de nuestros futuros huéspedes. Los pioneros recibirán ofertas exclusivas de pre-lanzamiento.
                     </p>
                 </div>
 
@@ -646,6 +666,17 @@
                 navbar.classList.remove('shadow-lg');
             }
         });
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('[PWA] Service Worker activo en scope:', reg.scope))
+            .catch((err) => console.warn('[PWA] Error SW:', err));
+        });
+      }
     </script>
 </body>
 </html>

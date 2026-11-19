@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Casa Normandía — Guía Digital & Concierge del Huésped</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- PWA Android / Chrome -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1B3022">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA iOS / Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Casa Normandía">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -292,8 +305,20 @@
     }
 
     .feature-icon {
-      font-size: 1.15rem;
-      line-height: 1;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(27,67,50,0.08);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .feature-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
     }
 
     .feature-text strong {
@@ -334,7 +359,20 @@
     }
 
     .tile-icon {
-      font-size: 1.5rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(200, 109, 81, 0.12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .tile-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .tile-title {
@@ -368,14 +406,20 @@
     }
 
     .item-icon {
-      font-size: 1.4rem;
-      background: #f1f8f4;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(27,67,50,0.08);
+      color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+    }
+    .item-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
     }
 
     .item-title {
@@ -486,7 +530,7 @@
       <a href="index.html" id="backToHomeBtn" class="btn-back-home" title="Volver al Sitio Principal">
         <span>←</span> <span id="backToHomeTxt">Volver al Sitio Web</span>
       </a>
-      <button class="lang-toggle" onclick="toggleLanguage()">🌐 English</button>
+      <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     </div>
     <div class="hero-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
       <img src="favicon.svg" alt="Sello Casa Normandía" style="width: 36px; height: 36px;">
@@ -511,7 +555,7 @@
     <!-- Buscador en tiempo real -->
     <div class="search-section">
       <div class="search-wrapper" style="position: relative;">
-        <span>🔍</span>
+        <span style="display:flex;align-items:center;"><svg class="w-4 h-4 fill-current text-gray-400" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></span>
         <input type="text" id="searchInput" class="search-bar" placeholder="¿Buscas la plancha, especias, basuras, tina...?" oninput="filterConcierge()">
         <button id="clearSearchBtn" onclick="clearSearch()" style="display: none; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 1.1rem; color: var(--text-muted); cursor: pointer; padding: 4px;" title="Limpiar búsqueda">✕</button>
       </div>
@@ -564,19 +608,41 @@
       <div id="bottomBarSub" style="color: var(--text-muted); font-size: 0.75rem;">Atención Directa · Operado por GPMF · <a href="https://www.linkedin.com/company/casa-normandia-living" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">LinkedIn</a></div>
     </div>
     <a href="https://wa.me/573156166760?text=Hola%20Concierge,%20te%20escribo%20desde%20Casa%20Normand%C3%ADa." class="btn-wa-call" target="_blank" id="bottomWaBtn">
-      <span>💬 WhatsApp (+57 315 616 6760)</span>
+      <span>WhatsApp (+57 315 616 6760)</span>
     </a>
   </footer>
 
-  <div class="toast" id="toast">✅ Clave Wi-Fi copiada</div>
+  <div class="toast" id="toast">Clave Wi-Fi copiada</div>
 
   <script>
     let isEnglish = false;
 
+    const ICONS_SVG = {
+      plancha: '<svg viewBox="0 0 24 24"><path d="M21 16c0 1.1-.9 2-2 2H4c-.55 0-1-.45-1-1 0-3.87 3.13-7 7-7h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1-.45-1-1s.45-1 1-1h7c2.21 0 4 1.79 4 4v5zm-2 0V9c0-1.1-.9-2-2-2h-6c-2.76 0-5 2.24-5 5v4h13z"/></svg>',
+      especias: '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm-2 18h4v2h-4z"/></svg>',
+      prestamo: '<svg viewBox="0 0 24 24"><path d="M19 12h-1.14c-.49-3.38-3.41-6-6.86-6S4.63 8.62 4.14 12H3c-.55 0-1 .45-1 1s.45 1 1 1h1.05c.44 4.07 3.9 7 7.95 7s7.51-2.93 7.95-7H21c.55 0 1-.45 1-1s-.45-1-1-1zM11 8.08c2.48.45 4.47 2.44 4.92 4.92H6.08C6.53 10.52 8.52 8.53 11 8.08z"/></svg>',
+      lavanderia: '<svg viewBox="0 0 24 24"><path d="M18 2.01L6 2c-1.11 0-2 .89-2 2v16c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V4c0-1.11-.89-1.99-2-1.99zM18 20H6v-9.02h12V20zm0-11H6V4h12v5zM12 12c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>',
+      basura: '<svg viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>',
+      agua: '<svg viewBox="0 0 24 24"><path d="M12 2c-3.87 0-7 3.13-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>',
+      silla: '<svg viewBox="0 0 24 24"><path d="M7 11v2h10v-2c0-1.86-1.28-3.41-3-3.86V4h2V2H8v2h2v3.14C8.28 7.59 7 9.14 7 11zm6-7h-2V4h2v-.01zM19 15H5c-.55 0-1 .45-1 1s.45 1 1 1h14c.55 0 1-.45 1-1s-.45-1-1-1zm-6 3v2.18c2.83.48 5 2.94 5 5.82h-2c0-2.21-1.79-4-4-4s-4 1.79-4 4H6c0-2.88 2.17-5.34 5-5.82V18h2z"/></svg>',
+      parqueadero: '<svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>',
+      botiquin: '<svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg>',
+      cama: '<svg viewBox="0 0 24 24"><path d="M19 7h-8v8H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm1 8h-8V9h7c.55 0 1 .45 1 1v5z"/><circle cx="7" cy="11" r="2"/></svg>',
+      tina: '<svg viewBox="0 0 24 24"><path d="M20 13V4h-2v1H6V4H4v9c0 3.31 2.69 6 6 6v2h4v-2c3.31 0 6-2.69 6-6zm-2 0c0 2.21-1.79 4-4 4h-4c-2.21 0-4-1.79-4-4V7h12v6z"/></svg>',
+      cocina: '<svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>',
+      trabajo: '<svg viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>',
+      silencio: '<svg viewBox="0 0 24 24"><path d="M12.3 2a10 10 0 0 0-1.9 19.8 10 10 0 0 0 11.5-11.5A10 10 0 0 0 12.3 2zm-1.8 17.8a8 8 0 0 1 0-15.6 8 8 0 0 1 7.6 10.3 8 8 0 0 1-7.6 5.3z"/></svg>',
+      info: '<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>',
+      tv: '<svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>'
+    };
+
+    function getIcon(key) {
+      return ICONS_SVG[key] || ICONS_SVG.info;
+    }
+
+
     const conciergeItems = [
-      {
-        id: "plancha",
-        icon: "👔",
+      { id: "plancha", icon: getIcon("plancha"),
         title_es: "Plancha y Tabla de Planchar",
         title_en: "Clothes Iron & Ironing Board",
         loc_es: "Armario café del pasillo (Piso 2)",
@@ -585,9 +651,7 @@
         desc_en: "Free of charge for all guests. Feel free to use it in your studio and kindly return it cold to the cabinet afterwards.",
         action: null
       },
-      {
-        id: "especias",
-        icon: "🧂",
+      { id: "especias", icon: getIcon("especias"),
         title_es: "Cajoncito de Especias, Sal y Café",
         title_en: "Shared Spice & Coffee Station",
         loc_es: "Pasillo común / Repisa de servicio",
@@ -596,9 +660,7 @@
         desc_en: "Complimentary salt, sugar, pepper, coffee and tea so you don't need to purchase full packs for short stays.",
         action: null
       },
-      {
-        id: "prestamo",
-        icon: "🍳",
+      { id: "prestamo", icon: getIcon("prestamo"),
         title_es: "Préstamo de Utensilios de Cocina",
         title_en: "Kitchen Appliances Loan (Free)",
         loc_es: "Bajo solicitud previa",
@@ -612,8 +674,7 @@
         }
       },
       {
-        id: "lavanderia",
-        icon: "🧺",
+        id: "lavanderia", icon: getIcon("lavanderia"),
         title_es: "Servicio de Lavandería ($120.000 COP)",
         title_en: "Laundry Service ($120,000 COP)",
         loc_es: "Canasta amarilla frente a tu puerta",
@@ -626,9 +687,7 @@
           url: "https://wa.me/573156166760?text=Hola%20Concierge,%20quisiera%20solicitar%20el%20servicio%20de%20lavanderia."
         }
       },
-      {
-        id: "basura",
-        icon: "♻️",
+      { id: "basura", icon: getIcon("basura"),
         title_es: "Manejo de Basuras y Reciclaje",
         title_en: "Trash & Recycling Schedule",
         loc_es: "Punto ecológico del pasillo",
@@ -638,8 +697,7 @@
         action: null
       },
       {
-        id: "agua",
-        icon: "🚿",
+        id: "agua", icon: getIcon("agua"),
         title_es: "Agua Caliente Continua & Tina",
         title_en: "Hot Water & Bathtub Instructions",
         loc_es: "En tu baño privado",
@@ -650,7 +708,7 @@
       },
       {
         id: "sabanas",
-        icon: "🛏️",
+        icon: getIcon("cama"),
         title_es: "Limpieza Semanal & Suministros",
         title_en: "Weekly Housekeeping & Supplies",
         loc_es: "Estancias de más de 20 días",
@@ -660,8 +718,7 @@
         action: null
       },
       {
-        id: "silla",
-        icon: "🪑",
+        id: "silla", icon: getIcon("silla"),
         title_es: "Préstamo de Silla Ergonómica de Oficina",
         title_en: "Ergonomic Office Chair Loan",
         loc_es: "Bajo solicitud previa (Disponibilidad: 2 unidades en casa)",
@@ -675,8 +732,7 @@
         }
       },
       {
-        id: "parqueadero",
-        icon: "🚗",
+        id: "parqueadero", icon: getIcon("parqueadero"),
         title_es: "Parqueadero Privado (Diario o Mensual)",
         title_en: "Private Parking (Daily or Monthly)",
         loc_es: "Antejardín de la casa",
@@ -690,8 +746,7 @@
         }
       },
       {
-        id: "botiquin",
-        icon: "🩹",
+        id: "botiquin", icon: getIcon("botiquin"),
         title_es: "Botiquín & Farmacias Cercanas",
         title_en: "First Aid & Nearby Pharmacies",
         loc_es: "Recepción / A menos de 100m",
@@ -702,11 +757,14 @@
       }
     ];
 
+    
+    
+
     const quickTilesData = [
-      { id: "plancha", icon: "👔", title_es: "Plancha de ropa", title_en: "Clothes Iron", desc_es: "Armario café del pasillo (Piso 2)", desc_en: "Hallway brown cabinet (2nd floor)" },
-      { id: "especias", icon: "🧂", title_es: "Sal & Especias", title_en: "Salt & Spices", desc_es: "Cajoncito común en el pasillo", desc_en: "Shared hallway drawer" },
-      { id: "basura", icon: "♻️", title_es: "Basuras & Reciclaje", title_en: "Trash & Recycling", desc_es: "Canecas y días de recolección", desc_en: "Bins & collection days" },
-      { id: "prestamo", icon: "🍳", title_es: "Préstamo de Cocina", title_en: "Kitchen Loan", desc_es: "Licuadora, tostadora u ollas", desc_en: "Blender, toaster or cookware" }
+      { id: "plancha", icon: getIcon("plancha"), title_es: "Plancha de ropa", title_en: "Clothes Iron", desc_es: "Armario café del pasillo (Piso 2)", desc_en: "Hallway brown cabinet (2nd floor)" },
+      { id: "especias", icon: getIcon("especias"), title_es: "Sal & Especias", title_en: "Salt & Spices", desc_es: "Cajoncito común en el pasillo", desc_en: "Shared hallway drawer" },
+      { id: "basura", icon: getIcon("basura"), title_es: "Basuras & Reciclaje", title_en: "Trash & Recycling", desc_es: "Canecas y días de recolección", desc_en: "Bins & collection days" },
+      { id: "prestamo", icon: getIcon("prestamo"), title_es: "Préstamo de Cocina", title_en: "Kitchen Loan", desc_es: "Licuadora, tostadora u ollas", desc_en: "Blender, toaster or cookware" }
     ];
 
     function renderQuickTiles() {
@@ -731,13 +789,13 @@
             <div class="item-icon">${item.icon}</div>
             <div>
               <div class="item-title">${isEnglish ? item.title_en : item.title_es}</div>
-              <span class="item-location">📍 ${isEnglish ? item.loc_en : item.loc_es}</span>
+              <span class="item-location">${isEnglish ? item.loc_en : item.loc_es}</span>
             </div>
           </div>
           <div class="item-text">${isEnglish ? item.desc_en : item.desc_es}</div>
           ${item.action ? `
             <a href="${item.action.url}" class="item-btn" target="_blank">
-              <span>💬 ${isEnglish ? item.action.label_en : item.action.label_es}</span>
+              <span>${isEnglish ? item.action.label_en : item.action.label_es}</span>
             </a>
           ` : ''}
         </article>
@@ -773,11 +831,11 @@
         if (filtered.length === 0) {
           list.innerHTML = `
             <div style="text-align: center; padding: 30px 16px; background: var(--surface); border-radius: var(--radius); border: 1px dashed var(--border);">
-              <p style="font-size: 2rem; margin-bottom: 8px;">🔍</p>
+              <p style="font-size: 2rem; margin-bottom: 8px;"></p>
               <p style="font-weight: 600; color: var(--primary); margin-bottom: 4px;">${isEnglish ? 'No exact match found' : 'No encontramos ese elemento'}</p>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">${isEnglish ? 'Need help finding something in the house?' : '¿Necesitas algo puntual que no ves aquí?'}</p>
               <a href="https://wa.me/573156166760?text=${encodeURIComponent(isEnglish ? 'Hello Concierge, I am looking for: ' + query : 'Hola Concierge, estoy buscando: ' + query)}" class="btn-wa-call" style="display: inline-flex; margin: 0 auto;" target="_blank">
-                <span>💬 ${isEnglish ? 'Ask WhatsApp Concierge' : 'Consultar al WhatsApp Concierge'}</span>
+                <span>${isEnglish ? 'Ask WhatsApp Concierge' : 'Consultar al WhatsApp Concierge'}</span>
               </a>
             </div>
           `;
@@ -788,13 +846,13 @@
                 <div class="item-icon">${item.icon}</div>
                 <div>
                   <div class="item-title">${isEnglish ? item.title_en : item.title_es}</div>
-                  <span class="item-location">📍 ${isEnglish ? item.loc_en : item.loc_es}</span>
+                  <span class="item-location">${isEnglish ? item.loc_en : item.loc_es}</span>
                 </div>
               </div>
               <div class="item-text">${isEnglish ? item.desc_en : item.desc_es}</div>
               ${item.action ? `
                 <a href="${item.action.url}" class="item-btn" target="_blank">
-                  <span>💬 ${isEnglish ? item.action.label_en : item.action.label_es}</span>
+                  <span>${isEnglish ? item.action.label_en : item.action.label_es}</span>
                 </a>
               ` : ''}
             </article>
@@ -828,7 +886,7 @@
 
     function copyWifi() {
       navigator.clipboard.writeText("Manabries1975").then(() => {
-        showToast(isEnglish ? "✅ Wi-Fi password copied!" : "✅ Clave Wi-Fi copiada");
+        showToast(isEnglish ? "Wi-Fi password copied!" : "Clave Wi-Fi copiada");
       }).catch(() => {
         showToast("Manabries1975");
       });
@@ -847,91 +905,91 @@
       '201': {
         title_es: "Studio 201 — The Garden Suite (Cocina Grande & Tina)",
         title_en: "Studio 201 — The Garden Suite (Large Kitchen & Tub)",
-        badge_es: "Estudio Amplio (37m²)",
-        badge_en: "Spacious Studio (37m²)",
+        badge_es: "Estudio Amplio",
+        badge_en: "Spacious Studio",
         features_es: [
-          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, 4 almohadas, sábanas de algodón, cobijas térmicas, mesitas de noche y clóset amplio." },
-          { icon: "🛁", title: "Baño con Tina", desc: "Tina tradicional profunda (150x70 cm, sin hidromasaje), ducha con calentador continuo y juego de toallas." },
-          { icon: "🍳", title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, nevera con congelador, microondas, hornilla, cafetera, set de ollas y vajilla completa." },
-          { icon: "💻", title: "Trabajo & Estar", desc: "Escritorio de madera para teletrabajo, Smart TV / Roku, mesa auxiliar y vista al jardín interior." }
+          { icon: getIcon("cama"), title: "Cama & Descanso", desc: "Cama doble confortable, 4 almohadas, sábanas de algodón, cobijas térmicas, mesitas de noche y clóset amplio." },
+          { icon: getIcon("tina"), title: "Baño con Tina", desc: "Tina tradicional profunda (150x70 cm, sin hidromasaje), ducha con calentador continuo y juego de toallas." },
+          { icon: getIcon("cocina"), title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, nevera con congelador, microondas, hornilla, cafetera, set de ollas y vajilla completa." },
+          { icon: getIcon("trabajo"), title: "Trabajo & Estar", desc: "Escritorio de madera para teletrabajo, Smart TV / Roku, mesa auxiliar y vista al jardín interior." }
         ],
         features_en: [
-          { icon: "🛏️", title: "Bed & Sleep", desc: "Double bed, 4 pillows, cotton linens, thermal blankets, nightstands and spacious closet." },
-          { icon: "🛁", title: "Bathroom with Tub", desc: "Deep traditional bathtub (150x70 cm, soaking tub), continuous hot water shower and fresh towels." },
-          { icon: "🍳", title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, fridge with freezer, microwave, electric burner, coffee maker, cookware and tableware." },
-          { icon: "💻", title: "Work & Living", desc: "Wooden laptop desk, Smart TV / Roku, auxiliary dining table and garden views." }
+          { icon: getIcon("cama"), title: "Bed & Sleep", desc: "Double bed, 4 pillows, cotton linens, thermal blankets, nightstands and spacious closet." },
+          { icon: getIcon("tina"), title: "Bathroom with Tub", desc: "Deep traditional bathtub (150x70 cm, soaking tub), continuous hot water shower and fresh towels." },
+          { icon: getIcon("cocina"), title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, fridge with freezer, microwave, electric burner, coffee maker, cookware and tableware." },
+          { icon: getIcon("trabajo"), title: "Work & Living", desc: "Wooden laptop desk, Smart TV / Roku, auxiliary dining table and garden views." }
         ]
       },
       '202': {
         title_es: "Studio 202 — Habitación Ejecutiva (Sin Cocina)",
         title_en: "Studio 202 — Executive Bedroom (No Kitchen)",
-        badge_es: "Habitación Privada (20m²)",
-        badge_en: "Private Bedroom (20m²)",
+        badge_es: "Habitación Privada",
+        badge_en: "Private Bedroom",
         features_es: [
-          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama funcional confortable con lencería limpia, mesita de noche, lámpara de lectura y armario amplio." },
-          { icon: "🚿", title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado, espejo iluminado y toallas limpias." },
-          { icon: "🚫", title: "Habitación Sin Cocina", desc: "Esta habitación independiente no cuenta con cocina ni estufa. Ideal para estancias de trabajo o tránsito y pedidos a domicilio." },
-          { icon: "📺", title: "Trabajo & Entretenimiento", desc: "Mesa de trabajo para computador con Wi-Fi 900 Mbps, silla cómoda y Smart TV / Roku para streaming." }
+          { icon: getIcon("cama"), title: "Cama & Descanso", desc: "Cama funcional confortable con lencería limpia, mesita de noche, lámpara de lectura y armario amplio." },
+          { icon: getIcon("agua"), title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado, espejo iluminado y toallas limpias." },
+          { icon: getIcon("info"), title: "Habitación Sin Cocina", desc: "Esta habitación independiente no cuenta con cocina ni estufa. Ideal para estancias de trabajo o tránsito y pedidos a domicilio." },
+          { icon: getIcon("tv"), title: "Trabajo & Entretenimiento", desc: "Mesa de trabajo para computador con Wi-Fi 900 Mbps, silla cómoda y Smart TV / Roku para streaming." }
         ],
         features_en: [
-          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable bed with fresh linens, nightstand, reading lamp and full wardrobe." },
-          { icon: "🚿", title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition, lighted mirror and fresh towels." },
-          { icon: "🚫", title: "No Kitchen", desc: "This independent room has no kitchen or stove. Perfect for business travelers or short stays." },
-          { icon: "📺", title: "Work & Entertainment", desc: "Computer work desk with 900 Mbps Wi-Fi, comfortable chair, and Smart TV / Roku for streaming." }
+          { icon: getIcon("cama"), title: "Bed & Sleep", desc: "Comfortable bed with fresh linens, nightstand, reading lamp and full wardrobe." },
+          { icon: getIcon("agua"), title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition, lighted mirror and fresh towels." },
+          { icon: getIcon("info"), title: "No Kitchen", desc: "This independent room has no kitchen or stove. Perfect for business travelers or short stays." },
+          { icon: getIcon("tv"), title: "Work & Entertainment", desc: "Computer work desk with 900 Mbps Wi-Fi, comfortable chair, and Smart TV / Roku for streaming." }
         ]
       },
       '203': {
         title_es: "Studio 203 — Executive Comfort (Cocina Compacta)",
         title_en: "Studio 203 — Executive Comfort (Compact Kitchen)",
-        badge_es: "Estudio con Balcón/Luz (21m²)",
-        badge_en: "Daylight Studio (21m²)",
+        badge_es: "Estudio con Balcón/Luz",
+        badge_en: "Daylight Studio",
         features_es: [
-          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, mesitas de noche, espejo de cuerpo entero y clóset amplio." },
-          { icon: "🚿", title: "Baño Privado", desc: "Ducha con división de vidrio templado, agua caliente continua, extractor y toalleros." },
-          { icon: "🍳", title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), estufa eléctrica, nevera, microondas, cafetera y menaje básico." },
-          { icon: "📺", title: "Trabajo & Estar", desc: "Escritorio con excelente luz natural, Smart TV / Roku para streaming y conexión rápida a internet." }
+          { icon: getIcon("cama"), title: "Cama & Descanso", desc: "Cama doble confortable, mesitas de noche, espejo de cuerpo entero y clóset amplio." },
+          { icon: getIcon("agua"), title: "Baño Privado", desc: "Ducha con división de vidrio templado, agua caliente continua, extractor y toalleros." },
+          { icon: getIcon("cocina"), title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), estufa eléctrica, nevera, microondas, cafetera y menaje básico." },
+          { icon: getIcon("tv"), title: "Trabajo & Estar", desc: "Escritorio con excelente luz natural, Smart TV / Roku para streaming y conexión rápida a internet." }
         ],
         features_en: [
-          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable double bed, nightstands, full-length mirror and spacious wardrobe." },
-          { icon: "🚿", title: "Private Bathroom", desc: "Tempered glass shower partition, continuous hot water, exhaust fan and fresh towels." },
-          { icon: "🍳", title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), electric stove, refrigerator, microwave, coffee maker and basic cookware." },
-          { icon: "📺", title: "Work & Living", desc: "Desk with natural daylight, Smart TV / Roku for streaming and fast 900 Mbps connection." }
+          { icon: getIcon("cama"), title: "Bed & Sleep", desc: "Comfortable double bed, nightstands, full-length mirror and spacious wardrobe." },
+          { icon: getIcon("agua"), title: "Private Bathroom", desc: "Tempered glass shower partition, continuous hot water, exhaust fan and fresh towels." },
+          { icon: getIcon("cocina"), title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), electric stove, refrigerator, microwave, coffee maker and basic cookware." },
+          { icon: getIcon("tv"), title: "Work & Living", desc: "Desk with natural daylight, Smart TV / Roku for streaming and fast 900 Mbps connection." }
         ]
       },
       '204': {
         title_es: "Studio 204 — The Quiet Sanctuary (Cocina Compacta)",
         title_en: "Studio 204 — The Quiet Sanctuary (Compact Kitchen)",
-        badge_es: "Máximo Silencio Interior (22m²)",
-        badge_en: "Maximum Acoustic Quiet (22m²)",
+        badge_es: "Máximo Silencio Interior",
+        badge_en: "Maximum Acoustic Quiet",
         features_es: [
-          { icon: "🛏️", title: "Cama & Descanso", desc: "Cama doble confortable, lencería hotelera, clóset doble, perchas y espejo de cuerpo entero." },
-          { icon: "🚿", title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado y espejo con iluminación." },
-          { icon: "🍳", title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), nevera con congelador, microondas, cafetera y vajilla básica." },
-          { icon: "🤫", title: "Trabajo & Aislamiento Acústico", desc: "Estudio interior con cero ruido de calle, escritorio de trabajo, Smart TV / Roku y sofá de 2 puestos." }
+          { icon: getIcon("cama"), title: "Cama & Descanso", desc: "Cama doble confortable, lencería hotelera, clóset doble, perchas y espejo de cuerpo entero." },
+          { icon: getIcon("agua"), title: "Baño Privado", desc: "Ducha con agua caliente continua, división de vidrio templado y espejo con iluminación." },
+          { icon: getIcon("cocina"), title: "Cocina Compacta", desc: "Cocina compacta funcional (sin campana extractora), nevera con congelador, microondas, cafetera y vajilla básica." },
+          { icon: getIcon("silencio"), title: "Trabajo & Aislamiento Acústico", desc: "Estudio interior con cero ruido de calle, escritorio de trabajo, Smart TV / Roku y sofá de 2 puestos." }
         ],
         features_en: [
-          { icon: "🛏️", title: "Bed & Sleep", desc: "Comfortable double bed, premium hotel-grade linens, double closet with hangers and full-length mirror." },
-          { icon: "🚿", title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition and vanity mirror." },
-          { icon: "🍳", title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), fridge with freezer, microwave, coffee maker and essential tableware." },
-          { icon: "🤫", title: "Work & Acoustic Silence", desc: "Interior studio with zero street noise, laptop work desk, Smart TV / Roku, and 2-seat sofa." }
+          { icon: getIcon("cama"), title: "Bed & Sleep", desc: "Comfortable double bed, premium hotel-grade linens, double closet with hangers and full-length mirror." },
+          { icon: getIcon("agua"), title: "Private Bathroom", desc: "Continuous hot water shower, tempered glass partition and vanity mirror." },
+          { icon: getIcon("cocina"), title: "Compact Kitchen", desc: "Functional compact kitchen (no exhaust hood), fridge with freezer, microwave, coffee maker and essential tableware." },
+          { icon: getIcon("silencio"), title: "Work & Acoustic Silence", desc: "Interior studio with zero street noise, laptop work desk, Smart TV / Roku, and 2-seat sofa." }
         ]
       },
       '101': {
         title_es: "Espacio 101 VIP — Executive Suite (Cocina Grande & Tina)",
         title_en: "Espacio 101 VIP — Executive Suite (Large Kitchen & Tub)",
-        badge_es: "Suite Planta Baja (55m²)",
-        badge_en: "Ground Floor Suite (55m²)",
+        badge_es: "Suite Planta Baja",
+        badge_en: "Ground Floor Suite",
         features_es: [
-          { icon: "🛏️", title: "Dormitorio & Descanso", desc: "Cama amplia en habitación independiente, lencería de primera y clóset espacioso." },
-          { icon: "🛁", title: "Baño Privado con Tina", desc: "Baño amplio con tina tradicional, ducha con agua caliente continua y toallas de alta calidad." },
-          { icon: "🍳", title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, estufa, nevera grande con congelador, microondas y vajilla completa." },
-          { icon: "🛋️", title: "Sala, Comedor & Smart TV", desc: "Sala de estar independiente con sofá, mesa de comedor, escritorio de trabajo y Smart TV / Roku." }
+          { icon: getIcon("cama"), title: "Dormitorio & Descanso", desc: "Cama amplia en habitación independiente, lencería de primera y clóset espacioso." },
+          { icon: getIcon("tina"), title: "Baño Privado con Tina", desc: "Baño amplio con tina tradicional, ducha con agua caliente continua y toallas de alta calidad." },
+          { icon: getIcon("cocina"), title: "Cocina Grande con Campana", desc: "Cocina grande completa con campana extractora, estufa, nevera grande con congelador, microondas y vajilla completa." },
+          { icon: getIcon("tv"), title: "Sala, Comedor & Smart TV", desc: "Sala de estar independiente con sofá, mesa de comedor, escritorio de trabajo y Smart TV / Roku." }
         ],
         features_en: [
-          { icon: "🛏️", title: "Bedroom & Sleep", desc: "Spacious bed in private master bedroom, premium linens and expansive wardrobe." },
-          { icon: "🛁", title: "Private Bathroom with Tub", desc: "Full bathroom with traditional soaking bathtub, continuous hot water shower and plush towels." },
-          { icon: "🍳", title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, full refrigerator/freezer, microwave and extended dinnerware." },
-          { icon: "🛋️", title: "Living, Dining & Smart TV", desc: "Separate living room, dining area, laptop workspace and Smart TV / Roku." }
+          { icon: getIcon("cama"), title: "Bedroom & Sleep", desc: "Spacious bed in private master bedroom, premium linens and expansive wardrobe." },
+          { icon: getIcon("tina"), title: "Private Bathroom with Tub", desc: "Full bathroom with traditional soaking bathtub, continuous hot water shower and plush towels." },
+          { icon: getIcon("cocina"), title: "Large Kitchen with Hood", desc: "Large full kitchen with exhaust range hood, full refrigerator/freezer, microwave and extended dinnerware." },
+          { icon: getIcon("tv"), title: "Living, Dining & Smart TV", desc: "Separate living room, dining area, laptop workspace and Smart TV / Roku." }
         ]
       }
     };
@@ -974,7 +1032,7 @@
 
     function toggleLanguage() {
       isEnglish = !isEnglish;
-      document.querySelector('.lang-toggle').innerText = isEnglish ? '🌐 Español' : '🌐 English';
+      document.querySelector('.lang-toggle').innerText = isEnglish ? 'ES' : 'EN';
       document.getElementById('welcomeTxt').innerText = isEnglish 
         ? 'Your digital guide to independent stays. Everything you need to know in one place.' 
         : 'Tu guía digital de estancia independiente. Todo lo que necesitas saber en un solo lugar.';
@@ -1023,7 +1081,7 @@
           ? 'Want to explore our studio apartments, Nilo Educational Farm, or book a new direct stay?' 
           : '¿Deseas explorar los estudios, la Granja en Nilo o reservar una nueva estancia directa?';
         footerBackLink.innerHTML = isEnglish 
-          ? '<span>🏡 Go to Main Website & Booking Calculator →</span>' 
+          ? '<span>Go to Main Website & Booking Calculator →</span>' 
           : '<span>Sitio Web Principal & Cotizador →</span>';
         footerBackLink.href = isEnglish ? 'index-en.html' : 'index.html';
       }
@@ -1037,5 +1095,16 @@
     renderQuickTiles();
     renderConcierge();
   </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('[PWA] Service Worker activo en scope:', reg.scope))
+            .catch((err) => console.warn('[PWA] Error SW:', err));
+        });
+      }
+    </script>
 </body>
 </html>

@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>House Policies &amp; Guidelines — Casa Normandía</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- PWA Android / Chrome -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1B3022">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- PWA iOS / Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Casa Normandía">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="./icons/icon-512.png">
   
   <!-- Google Fonts: Playfair Display + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -491,8 +504,8 @@
 
       <div class="nav-links">
         <a href="index-en.html" class="nav-link">← Back to Home</a>
-        <a href="concierge.html" class="nav-link">🛎️ Digital Concierge</a>
-        <a href="nilo.html" class="nav-link">🌿 Granja Nilo</a>
+        <a href="concierge.html" class="nav-link">Concierge Digital</a>
+        <a href="nilo.html" class="nav-link">Granja Nilo</a>
         
         <!-- Language Switcher -->
         <div class="lang-switcher">
@@ -510,10 +523,10 @@
     <p class="hero-desc">Clear rules and mutual respect guidelines to guarantee a peaceful, quiet, and comfortable stay across all our independent studios.</p>
     
     <div class="pills-bar">
-      <div class="standard-pill">🌙 Quiet Hours: 10:00 PM – 7:00 AM</div>
-      <div class="standard-pill">🚭 100% Smoke-Free Property</div>
-      <div class="standard-pill">🐾 Responsible Pet-Friendly Protocol</div>
-      <div class="standard-pill">⚖️ Mandatory TRA / SIRE Registration</div>
+      <div class="standard-pill">Quiet Hours: 10:00 PM – 7:00 AM</div>
+      <div class="standard-pill">100% Smoke-Free Property</div>
+      <div class="standard-pill">Responsible Pet-Friendly Protocol</div>
+      <div class="standard-pill">Mandatory TRA / SIRE Registration</div>
     </div>
   </header>
 
@@ -523,16 +536,16 @@
     <!-- Category Tabs -->
     <div class="tabs-wrapper">
       <button class="tab-btn active" onclick="switchTab('house', this)">
-        <span>🏠</span> The House &amp; Quiet
+        The House &amp; Quiet
       </button>
       <button class="tab-btn" onclick="switchTab('pets', this)">
-        <span>🐾</span> Pet Policy
+        Pet Policy
       </button>
       <button class="tab-btn" onclick="switchTab('access', this)">
-        <span>🔑</span> Security &amp; Visitors
+        Security &amp; Visitors
       </button>
       <button class="tab-btn" onclick="switchTab('legal', this)">
-        <span>⚖️</span> Legal &amp; SIRE Registration
+        Legal &amp; SIRE Registration
       </button>
     </div>
 
@@ -540,7 +553,7 @@
     <section id="panel-house" class="policy-panel active">
       <div class="policy-card">
         <div class="card-header-bar">
-          <div class="card-icon-box">🌙</div>
+          <div class="card-icon-box"><svg class="w-5 h-5 fill-current text-rooted-terra" viewBox="0 0 24 24"><path d="M12.3 2a10 10 0 0 0-1.9 19.8 10 10 0 0 0 11.5-11.5A10 10 0 0 0 12.3 2zm-1.8 17.8a8 8 0 0 1 0-15.6 8 8 0 0 1 7.6 10.3 8 8 0 0 1-7.6 5.3z"/></svg></div>
           <div class="card-title-group">
             <h2>Deep Rest &amp; Strict Quiet Hours</h2>
             <p>10:00 PM to 7:00 AM · Rest Priority</p>
@@ -558,7 +571,7 @@
         </div>
 
         <div class="policy-callout danger">
-          <strong>🚭 Strict 100% Smoke-Free Policy (Cleaning Charge: $200,000 COP)</strong><br>
+          <strong>Strict 100% Smoke-Free Policy (Cleaning Charge: $200,000 COP)</strong><br>
           Smoking traditional cigarettes, vaping (e-cigarettes), using tobacco, or lighting candles and incense is completely prohibited indoors and in common areas. Any violation incurs an automatic sanitization charge of <strong>$200,000 COP</strong> to cover professional deep cleaning and ozone air treatment required to remove odors and protect guests with allergies.
         </div>
 
@@ -576,7 +589,7 @@
     <section id="panel-pets" class="policy-panel">
       <div class="policy-card">
         <div class="card-header-bar">
-          <div class="card-icon-box">🐾</div>
+          <div class="card-icon-box"><svg class="w-5 h-5 fill-current text-rooted-terra" viewBox="0 0 24 24"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-5 1c-.83 0-1.5.67-1.5 1.5S6.17 14 7 14s1.5-.67 1.5-1.5S7.83 11 7 11zm10 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zM4.5 15.5C3.67 15.5 3 16.17 3 17s.67 1.5 1.5 1.5S6 17.83 6 17s-.67-1.5-1.5-1.5zm15 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg></div>
           <div class="card-title-group">
             <h2>Responsible Pet-Friendly Protocol</h2>
             <p>Peaceful Living for Four-Legged Companions</p>
@@ -600,7 +613,7 @@
         </div>
 
         <div class="policy-callout warning">
-          <strong>⚠️ Prohibition of Exotic Animals:</strong> Under Colombian environmental law and house safety standards, wild birds, reptiles, arachnids, and non-conventional species are strictly not permitted.
+          <strong>Prohibition of Exotic Animals:</strong> Under Colombian environmental law and house safety standards, wild birds, reptiles, arachnids, and non-conventional species are strictly not permitted.
         </div>
       </div>
     </section>
@@ -609,7 +622,7 @@
     <section id="panel-access" class="policy-panel">
       <div class="policy-card">
         <div class="card-header-bar">
-          <div class="card-icon-box">🔑</div>
+          <div class="card-icon-box"><svg class="w-5 h-5 fill-current text-rooted-terra" viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></div>
           <div class="card-title-group">
             <h2>Building Security, Keys &amp; Visitors</h2>
             <p>Peace of Mind &amp; Personal Safety</p>
@@ -641,7 +654,7 @@
     <section id="panel-legal" class="policy-panel">
       <div class="policy-card">
         <div class="card-header-bar">
-          <div class="card-icon-box">⚖️</div>
+          <div class="card-icon-box"><svg class="w-5 h-5 fill-current text-rooted-terra" viewBox="0 0 24 24"><path d="M12 2a1 1 0 0 1 1 1v1.08A7.002 7.002 0 0 1 19 11v1h1a1 1 0 1 1 0 2h-1v1a7.002 7.002 0 0 1-6 6.92V23a1 1 0 1 1-2 0v-1.08A7.002 7.002 0 0 1 5 15v-1H4a1 1 0 1 1 0-2h1v-1a7.002 7.002 0 0 1 6-6.92V3a1 1 0 0 1 1-1zm-5 9a5 5 0 0 0 10 0v-1H7v1z"/></svg></div>
           <div class="card-title-group">
             <h2>Legal Compliance &amp; Mandatory Registration</h2>
             <p>Colombian Tourism Regulations · Immigration Laws</p>
@@ -668,7 +681,7 @@
     <!-- Mandatory Registration CTA Banner -->
     <div class="register-banner">
       <div class="banner-text">
-        <h3>📝 Mandatory Digital Guest Registration</h3>
+        <h3>Mandatory Digital Guest Registration</h3>
         <p>To enable your access keys and comply with Colombian Tourism and Immigration regulations, please complete the guest registration form prior to arrival.</p>
       </div>
       <a href="https://forms.gle/JRicQokLquVgCDU97" target="_blank" rel="noopener" class="btn-register-cta">
@@ -684,10 +697,10 @@
       </div>
       <div class="host-contacts-list">
         <a href="https://wa.me/57315 616 6760" target="_blank" class="contact-badge">
-          <span>💬 WhatsApp: +57 315 616 6760</span>
+          <span>WhatsApp: +57 315 616 6760</span>
         </a>
         <a href="mailto:contacto.gpmfsas@gmail.com" class="contact-badge">
-          <span>✉️ contacto.gpmfsas@gmail.com</span>
+          <span>contacto.gpmfsas@gmail.com</span>
         </a>
       </div>
     </div>
@@ -712,5 +725,16 @@
     }
   </script>
 
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('[PWA] Service Worker activo en scope:', reg.scope))
+            .catch((err) => console.warn('[PWA] Error SW:', err));
+        });
+      }
+    </script>
 </body>
 </html>
